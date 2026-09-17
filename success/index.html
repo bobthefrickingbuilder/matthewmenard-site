@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you — Matthew Menard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;1,400&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">Matthew Menard</a>
+  <nav class="nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/scores/" class="nav-link">Scores</a>
+    <a href="/gallery/" class="nav-link">Gallery</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+    <a href="/checkout/" class="nav-link cart">Cart<span class="cart-count" data-cart-count>(0)</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="success-block" id="success-body">
+    <p class="eyebrow">Verifying your order…</p>
+    <h1>One moment</h1>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img src="/assets/bass-clef-logo.png" alt="" class="footer-mark">
+  <div class="footer-row">
+    <p>&copy; 2026 Matthew Menard</p>
+    <div class="links">
+      <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a>
+      <a href="https://instagram.com/matthewmenardbass">@matthewmenardbass</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script>
+async function verify() {
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get("session_id");
+  const body = document.getElementById("success-body");
+
+  if (!sessionId) {
+    body.innerHTML = '<p class="eyebrow">No order found</p><h1>Missing order details</h1><p>If you just completed a purchase, check your email for the receipt and download link. <a href="/contact/" style="text-decoration:underline;">Contact me</a> if something looks wrong.</p>';
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/verify-session?session_id=" + encodeURIComponent(sessionId));
+    const data = await res.json();
+
+    if (!res.ok || data.status !== "paid") {
+      body.innerHTML = '<p class="eyebrow">Order not confirmed</p><h1>We couldn\'t confirm this payment yet</h1><p>If you completed checkout, this can take a few seconds — try refreshing. Otherwise <a href="/contact/" style="text-decoration:underline;">contact me</a> and I\'ll sort it out.</p>';
+      return;
+    }
+
+    setCart([]); // clear the cart now that the order is paid
+
+    let html = '<p class="eyebrow">Order confirmed</p><h1>Thank you</h1><p>Your download' + (data.items.length > 1 ? "s are" : " is") + ' ready below, and a receipt is on its way to your email.</p>';
+    html += '<div class="download-list">';
+    data.items.forEach((item) => {
+      html += `<div class="download-item"><span class="title">${item.title}</span><a href="${item.fileUrl}" class="btn btn-primary" download>Download PDF</a></div>`;
+    });
+    html += "</div>";
+    body.innerHTML = html;
+  } catch (err) {
+    body.innerHTML = '<p class="eyebrow">Something went wrong</p><h1>Could not verify your order</h1><p>Please <a href="/contact/" style="text-decoration:underline;">contact me</a> with your payment confirmation and I\'ll send your download directly.</p>';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", verify);
+</script>
+</body>
+</html>

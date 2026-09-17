@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — Matthew Menard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;1,400&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">Matthew Menard</a>
+  <nav class="nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/scores/" class="nav-link">Scores</a>
+    <a href="/gallery/" class="nav-link">Gallery</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+    <a href="/checkout/" class="nav-link cart active">Cart<span class="cart-count" data-cart-count>(0)</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="checkout-block">
+    <h1>Checkout</h1>
+    <div id="checkout-body"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img src="/assets/bass-clef-logo.png" alt="" class="footer-mark">
+  <div class="footer-row">
+    <p>&copy; 2026 Matthew Menard</p>
+    <div class="links">
+      <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a>
+      <a href="https://instagram.com/matthewmenardbass">@matthewmenardbass</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script>
+function money(n) { return "$" + n.toFixed(2); }
+
+function renderCheckout() {
+  const cart = getCart();
+  const body = document.getElementById("checkout-body");
+
+  if (cart.length === 0) {
+    body.innerHTML = '<p class="empty-cart">Your cart is empty. <a href="/scores/" style="text-decoration:underline;">Browse scores</a></p>';
+    return;
+  }
+
+  const items = cart.map((id) => PRODUCTS[id]).filter(Boolean);
+  const total = items.reduce((sum, p) => sum + p.price, 0);
+
+  let html = '<div class="cart-list">';
+  items.forEach((p) => {
+    html += `
+      <div class="cart-item">
+        <div class="thumb"></div>
+        <div class="info">
+          <span class="title">${p.title}</span>
+          <span class="fmt">Digital PDF download</span>
+        </div>
+        <span class="amt">${money(p.price)}</span>
+        <button class="remove" data-remove="${p.id}" type="button">Remove</button>
+      </div>`;
+  });
+  html += "</div>";
+
+  html += `
+    <div class="cart-totals">
+      <div class="line"><span class="subtotal">Subtotal</span><span>${money(total)} CAD</span></div>
+      <div class="line"><span class="total-label">Total</span><span class="total-amt">${money(total)} CAD</span></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="pay-btn" type="button">Continue to payment</button>
+    <p class="checkout-note">Payment is processed securely by Stripe. Your download links appear immediately after purchase.</p>
+  `;
+
+  body.innerHTML = html;
+
+  body.querySelectorAll("[data-remove]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      removeFromCart(btn.getAttribute("data-remove"));
+      renderCheckout();
+    });
+  });
+
+  const payBtn = document.getElementById("pay-btn");
+  if (payBtn) {
+    payBtn.addEventListener("click", async () => {
+      payBtn.disabled = true;
+      payBtn.textContent = "Redirecting to payment…";
+      try {
+        const res = await fetch("/api/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items: cart }),
+        });
+        if (!res.ok) throw new Error("Checkout session request failed");
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error("No checkout URL returned");
+        }
+      } catch (err) {
+        payBtn.disabled = false;
+        payBtn.textContent = "Continue to payment";
+        alert("Something went wrong starting checkout. Please try again in a moment.");
+      }
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", renderCheckout);
+</script>
+</body>
+</html>

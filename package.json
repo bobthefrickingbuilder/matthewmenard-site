@@ -1,0 +1,9 @@
+{
+  "name": "matthewmenardmusic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "matthewmenardmusic.com — static site + Stripe Checkout for digital sheet music",
+  "dependencies": {
+    "stripe": "^16.0.0"
+  }
+}
