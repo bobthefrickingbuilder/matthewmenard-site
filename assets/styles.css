@@ -123,13 +123,13 @@ main { max-width: 1120px; margin: 0 auto; }
 .about-copy { display: flex; flex-direction: column; gap: 24px; }
 .about-copy h1 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 44px; line-height: 1.15; }
 .about-copy p { margin: 0; font-size: 16px; line-height: 1.85; color: #3a3630; }
-.about-photo { background: var(--tan); border-radius: 6px; aspect-ratio: 0.8; width: 100%; }
+.about-photo { background: var(--tan); border-radius: 6px; aspect-ratio: 0.8; width: 100%; object-fit: cover; display: block; }
 
 /* gallery */
 .gallery-head { padding: 72px 0 44px; display: flex; flex-direction: column; gap: 16px; }
 .gallery-head h1 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 52px; }
 .gallery-grid { padding-bottom: 90px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 22px; }
-.gallery-tile { border-radius: 6px; aspect-ratio: 1; }
+.gallery-tile { border-radius: 6px; aspect-ratio: 1; width: 100%; object-fit: cover; display: block; }
 .gallery-tile.tan { background: var(--tan); }
 .gallery-tile.sage { background: var(--sage); }
 
