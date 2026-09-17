@@ -173,3 +173,16 @@ main { max-width: 1120px; margin: 0 auto; }
 .site-footer a { font-size: 13px; color: var(--ink-2); }
 
 .status-banner { max-width: 1120px; margin: 20px auto 0; padding: 14px 20px; border-radius: 6px; background: var(--sage); color: var(--sage-desc); font-size: 13px; text-align: center; }
+
+
+/* legal pages (privacy / refund) */
+.legal-block { max-width: 720px; margin: 0 auto; padding: clamp(56px, 10vh, 90px) 0 100px; display: flex; flex-direction: column; gap: 26px; }
+.legal-block h1 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 4.4vw, 46px); line-height: 1.15; }
+.legal-block .updated { margin: -10px 0 0; font-size: 13px; color: var(--ink-dim); font-style: italic; }
+.legal-block h2 { margin: 14px 0 -8px; font-family: var(--font-display); font-weight: 400; font-size: clamp(20px, 2.2vw, 24px); }
+.legal-block p { margin: 0; font-size: 16px; line-height: 1.85; color: #3a3630; }
+.legal-block ul { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.legal-block li { font-size: 16px; line-height: 1.7; color: #3a3630; }
+
+/* real cover photo on score detail pages */
+.cover-photo { width: 100%; max-width: 380px; aspect-ratio: 0.77; object-fit: cover; border-radius: 6px; display: block; box-shadow: 0 2px 14px rgba(34,30,26,0.12); }
