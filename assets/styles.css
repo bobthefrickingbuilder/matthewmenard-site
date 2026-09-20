@@ -45,8 +45,8 @@ img, svg { max-width: 100%; }
   gap: 32px; flex-wrap: wrap; max-width: 1120px; margin: 0 auto;
   padding: 34px 0 24px;
 }
-.logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 26px; letter-spacing: 0.06em; color: var(--ink); font-weight: 500; }
-.logo-mark { height: 24px; width: auto; display: block; transform: translateY(5px); }
+.logo { font-family: var(--font-display); font-size: 26px; letter-spacing: 0.06em; color: var(--ink); font-weight: 500; }
+.logo-mark { height: 24px; width: auto; margin-right: 8px; vertical-align: baseline; position: relative; top: 9px; }
 .nav { display: flex; align-items: baseline; gap: clamp(16px, 2.4vw, 34px); flex-wrap: wrap; }
 .nav-link { font-family: var(--font-body); font-size: 12.5px; font-variant: small-caps; letter-spacing: 0.18em; color: var(--ink-2); padding-bottom: 2px; border-bottom: 1px solid transparent; cursor: pointer; }
 .nav-link.active { color: var(--ink); border-bottom-color: var(--accent); }
