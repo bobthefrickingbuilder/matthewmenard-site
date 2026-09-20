@@ -45,7 +45,8 @@ img, svg { max-width: 100%; }
   gap: 32px; flex-wrap: wrap; max-width: 1120px; margin: 0 auto;
   padding: 34px 0 24px;
 }
-.logo { font-family: var(--font-display); font-size: 26px; letter-spacing: 0.06em; color: var(--ink); font-weight: 500; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 26px; letter-spacing: 0.06em; color: var(--ink); font-weight: 500; }
+.logo-mark { height: 24px; width: auto; display: block; transform: translateY(5px); }
 .nav { display: flex; align-items: baseline; gap: clamp(16px, 2.4vw, 34px); flex-wrap: wrap; }
 .nav-link { font-family: var(--font-body); font-size: 12.5px; font-variant: small-caps; letter-spacing: 0.18em; color: var(--ink-2); padding-bottom: 2px; border-bottom: 1px solid transparent; cursor: pointer; }
 .nav-link.active { color: var(--ink); border-bottom-color: var(--accent); }
@@ -169,7 +170,6 @@ main { max-width: 1120px; margin: 0 auto; }
 .footer-social { display: flex; align-items: center; gap: 18px; }
 .social-icon { height: 26px; width: 26px; display: block; border-radius: 50%; transition: opacity 0.15s ease; }
 .social-icon:hover, .social-icon:focus-visible { opacity: 0.75; }
-.footer-mark { height: 22px; width: auto; display: block; opacity: 0.55; align-self: flex-end; }
 .footer-row { width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .site-footer p { margin: 0; font-size: 13px; color: var(--ink-dim); }
 .site-footer .links { display: flex; gap: clamp(18px, 2.4vw, 32px); flex-wrap: wrap; }
