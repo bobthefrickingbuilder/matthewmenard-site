@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('is-loading');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="view-transition" content="same-origin">
 <title>About — Matthew Menard</title>
 <meta name="description" content="Matthew Menard is a Taiwanese-Canadian composer and bass singer based in Ottawa, composer-in-residence at St. Joseph's Parish.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;1,400&display=swap">
@@ -14,6 +16,7 @@
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<div id="preloader" aria-hidden="true"><span class="preloader-mark">Matthew Menard</span></div>
 
 <header class="site-header">
   <a href="/" class="logo"><img src="/assets/bass-clef-logo.png" alt="" class="logo-mark">Matthew Menard</a>
@@ -30,13 +33,13 @@
 <main>
   <section class="about-grid">
     <div class="about-copy">
-      <p class="eyebrow">About</p>
-      <h1>Composer &amp; bass singer, Ottawa</h1>
-      <p>Matthew Menard is a Taiwanese-Canadian composer and bass singer, born in Ottawa, Ontario in 2004. He began composing at the age of 11, initially exploring pop and EDM production before gradually turning toward classical music.</p>
-      <p>Today, his focus is primarily on choral and sacred composition. He serves as composer-in-residence at St. Joseph&rsquo;s Parish in downtown Ottawa, where he has written a substantial body of liturgical works. His music has been performed by ensembles including the Capital Chamber Choir, Ontario Youth Choir, York University Chamber Choir, and the Ottawa Bach Choir, among others.</p>
-      <p>Since beginning his formal classical compositional path in 2023, Matthew has studied with several influential mentors whose guidance has shaped his artistic direction. Conductors Jamie Loback and Laurence Ewashko have been key figures in his development as a composer, while baritone Brett Polegato has played an important role in his vocal training and development, helping shape a voice marked by depth and resonance in both choral and operatic settings across Canada.</p>
+      <p class="eyebrow" data-reveal>About</p>
+      <h1 data-reveal>Composer &amp; bass singer, Ottawa</h1>
+      <p data-reveal>Matthew Menard is a Taiwanese-Canadian composer and bass singer, born in Ottawa, Ontario in 2004. He began composing at the age of 11, initially exploring pop and EDM production before gradually turning toward classical music.</p>
+      <p data-reveal>Today, his focus is primarily on choral and sacred composition. He serves as composer-in-residence at St. Joseph&rsquo;s Parish in downtown Ottawa, where he has written a substantial body of liturgical works. His music has been performed by ensembles including the Capital Chamber Choir, Ontario Youth Choir, York University Chamber Choir, and the Ottawa Bach Choir, among others.</p>
+      <p data-reveal>Since beginning his formal classical compositional path in 2023, Matthew has studied with several influential mentors whose guidance has shaped his artistic direction. Conductors Jamie Loback and Laurence Ewashko have been key figures in his development as a composer, while baritone Brett Polegato has played an important role in his vocal training and development, helping shape a voice marked by depth and resonance in both choral and operatic settings across Canada.</p>
     </div>
-    <img src="/assets/photos/headshot.jpg" alt="Matthew Menard" class="about-photo">
+    <img src="/assets/photos/headshot.jpg" alt="Matthew Menard" class="about-photo" data-reveal>
   </section>
 </main>
 
@@ -60,5 +63,9 @@
 </footer>
 
 <script src="/assets/site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="/assets/motion.js"></script>
 </body>
 </html>

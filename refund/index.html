@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('is-loading');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="view-transition" content="same-origin">
 <title>Refund Policy — Matthew Menard</title>
 <meta name="description" content="Refund policy for digital sheet music purchases at matthewmenardmusic.com.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;1,400&display=swap">
@@ -14,6 +16,7 @@
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<div id="preloader" aria-hidden="true"><span class="preloader-mark">Matthew Menard</span></div>
 
 <header class="site-header">
   <a href="/" class="logo"><img src="/assets/bass-clef-logo.png" alt="" class="logo-mark">Matthew Menard</a>
@@ -29,9 +32,9 @@
 
 <main>
   <section class="legal-block">
-    <p class="eyebrow">Legal</p>
-    <h1>Refund Policy</h1>
-    <p class="updated">Effective September 17, 2026</p>
+    <p class="eyebrow" data-reveal>Legal</p>
+    <h1 data-reveal>Refund Policy</h1>
+    <p class="updated" data-reveal>Effective September 17, 2026</p>
 
     <h2>Digital Delivery</h2>
     <p>Every score on this site is a PDF delivered instantly by download after a successful payment. There is no physical product, and nothing is shipped.</p>
@@ -75,5 +78,9 @@
 </footer>
 
 <script src="/assets/site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="/assets/motion.js"></script>
 </body>
 </html>
