@@ -119,12 +119,13 @@ main { max-width: 1120px; margin: 0 auto; }
 .buy-row .price { font-size: 30px; }
 
 /* about */
-.about-grid { padding: 72px 0 90px; display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 70px; align-items: start; }
+.about-grid { padding: 72px 0 90px; display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px 70px; align-items: start; }
 @media (max-width: 780px) { .about-grid { grid-template-columns: 1fr; } }
+.about-head { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 16px; }
+.about-head h1 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 44px; line-height: 1.15; }
 .about-copy { display: flex; flex-direction: column; gap: 24px; }
-.about-copy h1 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 44px; line-height: 1.15; }
 .about-copy p { margin: 0; font-size: 16px; line-height: 1.85; color: #3a3630; }
-.about-photo { background: var(--tan); border-radius: 6px; aspect-ratio: 0.8; width: 100%; object-fit: cover; display: block; }
+.about-photo { background: var(--tan); border-radius: 6px; aspect-ratio: 0.8; width: 100%; object-fit: cover; display: block; margin-top: -24px; }
 
 /* gallery — masonry: original aspect ratios, packed like a mosaic */
 .gallery-head { padding: 72px 0 44px; display: flex; flex-direction: column; gap: 16px; }
