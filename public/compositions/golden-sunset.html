@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/css/components.css">
   <link rel="stylesheet" href="/css/pages/composition.css">
   <script type="module" src="/js/nav.js"></script>
+  <script type="module" src="/js/buy.js"></script>
 </head>
 <body>
   <!-- header -->
@@ -118,7 +119,10 @@
             <p class="eyebrow">Score</p>
             <p class="buy__price">$4.00 <small>CAD</small></p>
             <p class="meta">PDF download, delivered right after payment.</p>
-            <a class="button button--primary" href="/checkout?add=golden-sunset">Buy the score</a>
+            <form method="post" action="/api/create-checkout-session" data-buy>
+              <input type="hidden" name="items" value="golden-sunset">
+              <button class="button button--primary" type="submit">Buy the score</button>
+            </form>
             <p class="meta">Payment by Stripe. See the <a href="/refund">refund policy</a>.</p>
           </div>
           <figure class="stack">
