@@ -1,0 +1,50 @@
+/* Composition page template. */
+
+.work {
+  display: grid;
+  gap: var(--space-2xl);
+  padding-block: var(--space-xl) var(--space-2xl);
+}
+
+@media (min-width: 56rem) {
+  .work {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+
+  .work__aside {
+    position: sticky;
+    top: calc(4.5rem + var(--space-l));
+  }
+}
+
+.work__head > * + * {
+  margin-block-start: var(--space-s);
+}
+
+.work__head h1 {
+  font-size: var(--step-5);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+}
+
+.buy {
+  display: grid;
+  gap: var(--space-s);
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-l);
+}
+
+.buy__price {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: 1;
+}
+
+.work__section > h2 {
+  font-size: var(--step-2);
+  margin-block-end: var(--space-s);
+}
