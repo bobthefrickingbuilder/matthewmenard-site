@@ -2,12 +2,13 @@
   "name": "matthewmenardmusic",
   "version": "2.0.0",
   "private": true,
-  "description": "matthewmenardmusic.com — hand-coded static site on Vercel, with Stripe checkout for digital scores",
+  "description": "matthewmenardmusic.com \u00e2\u20ac\u201d hand-coded static site on Vercel, with Stripe checkout for digital scores",
   "type": "commonjs",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "node scripts/dev.mjs",
     "check:contrast": "node scripts/contrast.mjs",
-    "check": "npm run check:contrast",
+    "check:todo": "node scripts/todo-check.mjs",
+    "check": "npm run check:contrast && npm run check:todo",
     "images": "node scripts/images.mjs",
     "partials": "node scripts/partials.mjs"
   },
