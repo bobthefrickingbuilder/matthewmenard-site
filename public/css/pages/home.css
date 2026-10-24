@@ -268,7 +268,7 @@
 
 @media (min-width: 48rem) {
   .explore {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -291,11 +291,12 @@
 
 @media (min-width: 48rem) {
   .explore__item .photo {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 4;
   }
 }
 
 .explore__item .photo img {
+  object-position: center 20%; /* Keeps faces in frame on the wide phone crop. */
   transition: transform 1.4s var(--ease-out);
 }
 
