@@ -31,11 +31,104 @@
   max-width: 30ch;
 }
 
-.hero__photo {
-  aspect-ratio: 4 / 5;
-  max-height: 78svh;
+.hero__media {
+  position: relative;
   justify-self: center;
-  width: 100%;
+  width: min(100%, 34rem);
+  padding-block: var(--space-l);
+}
+
+.hero__photo {
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  max-height: 72svh;
+  margin-inline-start: auto;
+  aspect-ratio: 4 / 5;
+  box-shadow: var(--shadow-3);
+}
+
+/* Smaller photos tucked behind and in front, each tilted, framed like prints. */
+.hero__inset {
+  position: absolute;
+  aspect-ratio: 4 / 5;
+  border: 6px solid var(--ground-800);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-3);
+  rotate: var(--tilt);
+  transition: rotate 900ms var(--ease-out), translate 900ms var(--ease-out);
+}
+
+.hero__inset--back {
+  --tilt: -7deg;
+  z-index: 0;
+  inset-inline-start: 2%;
+  inset-block-start: 4%;
+  width: 36%;
+}
+
+.hero__inset--front {
+  --tilt: 5deg;
+  z-index: 2;
+  inset-inline-start: 0;
+  inset-block-end: 2%;
+  width: 40%;
+}
+
+/* On hover the prints fan out a little further. */
+.hero__media:hover .hero__inset--back {
+  rotate: -11deg;
+  translate: -4% -3%;
+}
+
+.hero__media:hover .hero__inset--front {
+  rotate: 8deg;
+  translate: -3% 3%;
+}
+
+[data-parallax] {
+  transform: translateY(var(--parallax, 0%)) scale(1.12);
+  will-change: transform;
+}
+
+/* "Scroll" cue at the foot of the hero: a line that keeps drawing down. */
+.hero__cue {
+  display: none;
+}
+
+@media (min-width: 52rem) {
+  .hero__cue {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: var(--space-l);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.75rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+
+  .hero__cue span {
+    width: 3rem;
+    height: 1px;
+    background: var(--text-subtle);
+    transform-origin: left;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__cue span {
+    animation: cue 2.4s var(--ease-in-out) infinite;
+  }
+}
+
+@keyframes cue {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.1% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
 }
 
 .bio-teaser {
@@ -48,10 +141,6 @@
   .bio-teaser {
     grid-template-columns: 0.8fr 1.2fr;
   }
-}
-
-.bio-teaser .photo {
-  aspect-ratio: 4 / 3;
 }
 
 .contact-cta {
@@ -94,11 +183,6 @@
   display: inline-block;
 }
 
-.hero__photo img {
-  transform: translateY(var(--parallax, 0%)) scale(1.1);
-  will-change: transform;
-}
-
 @property --glow-x {
   syntax: "<percentage>";
   inherits: false;
@@ -118,7 +202,8 @@
 
   .intro-on .hero__text > *,
   .intro-on .hero__word > span,
-  .intro-on .hero__photo {
+  .intro-on .hero__photo,
+  .intro-on .hero__inset {
     opacity: 0;
   }
 
@@ -147,6 +232,13 @@
   .js:not(.intro-on) .hero__photo {
     animation: photo-in 1400ms var(--ease-out) 200ms both;
   }
+
+  .js:not(.intro-on) .hero__inset {
+    animation: print-in 1100ms var(--ease-out) both;
+  }
+
+  .js:not(.intro-on) .hero__inset--back { animation-delay: 700ms; }
+  .js:not(.intro-on) .hero__inset--front { animation-delay: 900ms; }
 }
 
 @keyframes word-up {
@@ -163,6 +255,15 @@
   to {
     clip-path: inset(0 0 0 0 round var(--radius-l));
     opacity: 1;
+  }
+}
+
+/* Prints drop in from slightly larger and untilted. */
+@keyframes print-in {
+  from {
+    opacity: 0;
+    rotate: 0deg;
+    scale: 1.15;
   }
 }
 
@@ -351,4 +452,139 @@
 .explore__text p {
   color: var(--text-muted);
   font-size: var(--step--1);
+}
+
+/* ---- Featured scores: sheets laid on a desk, straightening on hover -------- */
+.featured .work-card {
+  rotate: -1.2deg;
+  transition: border-color var(--dur-med) ease, transform var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) ease, rotate var(--dur-slow) var(--ease-out);
+}
+
+.featured .work-card:nth-child(even) {
+  rotate: 1deg;
+  margin-block-start: var(--space-l);
+}
+
+.featured .work-card:hover {
+  rotate: 0deg;
+}
+
+/* ---- Stats band: big numbers between thin rules ---------------------------- */
+.stats__list {
+  display: grid;
+  gap: var(--space-l);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 48rem) {
+  .stats__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .stats__list > li {
+    padding-inline: var(--space-l);
+  }
+
+  .stats__list > li + li {
+    border-inline-start: 1px solid var(--color-border-subtle);
+  }
+
+  .stats__list > li:first-child {
+    padding-inline-start: 0;
+  }
+}
+
+.stats__num {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 2rem + 6vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.stats__num--word {
+  font-size: clamp(2.2rem, 1.4rem + 3vw, 3.6rem);
+  font-style: italic;
+  line-height: 1.1;
+  padding-block-start: 0.35em;
+}
+
+.stats__label {
+  margin-block-start: var(--space-xs);
+  max-width: 26ch;
+  color: var(--text-muted);
+}
+
+/* ---- Photo strip: a row you scroll sideways --------------------------------- */
+.strip {
+  display: flex;
+  gap: var(--space-s);
+  margin: 0;
+  padding: var(--space-2xs) max(var(--gutter), (100% - var(--page-max)) / 2) var(--space-s);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(var(--gutter), (100% - var(--page-max)) / 2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--panel) transparent;
+}
+
+.strip:focus-visible {
+  outline-offset: -4px;
+}
+
+.strip > li {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.strip .photo {
+  height: clamp(16rem, 34vw, 26rem);
+  border-radius: var(--radius-l);
+}
+
+.strip .photo img {
+  width: auto;
+  height: 100%;
+}
+
+.strip__button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  border: 1.5px solid var(--panel-200);
+  border-radius: 50%;
+  background: none;
+  color: var(--text);
+  font-size: var(--step-1);
+  cursor: pointer;
+  transition: border-color var(--dur-med) ease, background-color var(--dur-med) ease, transform var(--dur-med) var(--ease-out);
+}
+
+.strip__button:hover {
+  border-color: var(--accent);
+  background: var(--ground-800);
+  transform: scale(1.06);
+}
+
+.strip__button:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+.strip__controls {
+  align-items: center;
+}
+
+/* Bio teaser: give the arch room. */
+.bio-teaser .arch {
+  margin-block: var(--space-m);
 }

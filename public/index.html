@@ -90,20 +90,37 @@
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="hero__text">
         <p class="eyebrow">Bass · Composer · Choral musician</p>
-        <h1 id="hero-title"><span class="hero__word"><span>Matthew</span></span> <span class="hero__word"><span>Menard</span></span></h1>
+        <h1 id="hero-title"><span class="hero__word"><span>Matthew</span></span> <span class="hero__word"><span><em>Menard</em></span></span></h1>
         <p class="lead">Bass singer, composer, and choral musician based in Ottawa.</p>
         <div class="cluster">
           <a class="button button--secondary" href="/compositions">Compositions</a>
           <a class="button" href="/about">About</a>
         </div>
       </div>
-      <figure class="photo hero__photo">
-        <picture>
-          <source type="image/avif" srcset="/img/singing-folder-480.avif 480w, /img/singing-folder-800.avif 800w, /img/singing-folder-933.avif 933w" sizes="(min-width: 52rem) 40vw, 92vw">
-          <source type="image/webp" srcset="/img/singing-folder-480.webp 480w, /img/singing-folder-800.webp 800w, /img/singing-folder-933.webp 933w" sizes="(min-width: 52rem) 40vw, 92vw">
-          <img src="/img/singing-folder-800.jpg" srcset="/img/singing-folder-480.jpg 480w, /img/singing-folder-800.jpg 800w, /img/singing-folder-933.jpg 933w" sizes="(min-width: 52rem) 40vw, 92vw" width="933" height="1400" fetchpriority="high" data-parallax="5" alt="Matthew Menard singing from a black choir folder">
-        </picture>
-      </figure>
+      <div class="hero__media">
+        <figure class="photo hero__inset hero__inset--back" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="/img/choir-bw-480.avif 480w, /img/choir-bw-800.avif 800w" sizes="(min-width: 52rem) 14vw, 30vw">
+            <source type="image/webp" srcset="/img/choir-bw-480.webp 480w, /img/choir-bw-800.webp 800w" sizes="(min-width: 52rem) 14vw, 30vw">
+            <img src="/img/choir-bw-800.jpg" srcset="/img/choir-bw-480.jpg 480w, /img/choir-bw-800.jpg 800w" sizes="(min-width: 52rem) 14vw, 30vw" width="1400" height="933" data-parallax="10" fetchpriority="low" decoding="async" alt="">
+          </picture>
+        </figure>
+        <figure class="photo hero__photo">
+          <picture>
+            <source type="image/avif" srcset="/img/singing-folder-480.avif 480w, /img/singing-folder-800.avif 800w, /img/singing-folder-933.avif 933w" sizes="(min-width: 52rem) 40vw, 92vw">
+            <source type="image/webp" srcset="/img/singing-folder-480.webp 480w, /img/singing-folder-800.webp 800w, /img/singing-folder-933.webp 933w" sizes="(min-width: 52rem) 40vw, 92vw">
+            <img src="/img/singing-folder-800.jpg" srcset="/img/singing-folder-480.jpg 480w, /img/singing-folder-800.jpg 800w, /img/singing-folder-933.jpg 933w" sizes="(min-width: 52rem) 40vw, 92vw" width="933" height="1400" fetchpriority="high" data-parallax="5" alt="Matthew Menard singing from a black choir folder">
+          </picture>
+        </figure>
+        <figure class="photo hero__inset hero__inset--front" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="/img/conducting-480.avif 480w, /img/conducting-800.avif 800w" sizes="(min-width: 52rem) 16vw, 36vw">
+            <source type="image/webp" srcset="/img/conducting-480.webp 480w, /img/conducting-800.webp 800w" sizes="(min-width: 52rem) 16vw, 36vw">
+            <img src="/img/conducting-800.jpg" srcset="/img/conducting-480.jpg 480w, /img/conducting-800.jpg 800w" sizes="(min-width: 52rem) 16vw, 36vw" width="933" height="1400" data-parallax="-12" fetchpriority="low" decoding="async" alt="">
+          </picture>
+        </figure>
+      </div>
+      <p class="hero__cue" aria-hidden="true"><span></span>Scroll</p>
     </section>
 
 
@@ -131,11 +148,11 @@
       <div class="section-head">
         <div class="stack">
           <p class="eyebrow">Compositions</p>
-          <h2 id="work-title">Featured work</h2>
+          <h2 id="work-title">Featured <em>work</em></h2>
         </div>
         <a class="link-arrow" href="/compositions">All compositions</a>
       </div>
-      <div class="grid grid--fit">
+      <div class="grid grid--fit featured">
         <article class="card work-card">
           <div class="card__media">
             <picture>
@@ -164,6 +181,23 @@
       </div>
     </section>
 
+    <section class="section wrapper stats" aria-label="At a glance">
+      <ul class="stats__list" role="list">
+        <li>
+          <p class="stats__num"><span data-count="11">11</span></p>
+          <p class="stats__label">Age he began composing, first in pop and EDM production</p>
+        </li>
+        <li>
+          <p class="stats__num">2023</p>
+          <p class="stats__label">The year he began formal classical composition</p>
+        </li>
+        <li>
+          <p class="stats__num stats__num--word">St.&nbsp;Joseph’s</p>
+          <p class="stats__label">Composer-in-residence, downtown Ottawa</p>
+        </li>
+      </ul>
+    </section>
+
     <section class="section wrapper" aria-labelledby="perf-title" data-performances-section hidden>
       <div class="section-head">
         <div class="stack">
@@ -179,7 +213,7 @@
       <div class="section-head">
         <div class="stack">
           <p class="eyebrow">Explore</p>
-          <h2 id="explore-title">On stage and in rehearsal</h2>
+          <h2 id="explore-title">On stage and <em>in rehearsal</em></h2>
         </div>
       </div>
       <ul class="explore" role="list">
@@ -212,18 +246,90 @@
       </ul>
     </section>
 
+    <section class="section strip-section" aria-labelledby="strip-title">
+      <div class="wrapper section-head">
+        <div class="stack">
+          <p class="eyebrow">Photos</p>
+          <h2 id="strip-title">In the <em>music</em></h2>
+        </div>
+        <div class="cluster strip__controls">
+          <button class="strip__button" type="button" data-strip="-1" aria-label="Previous photos" hidden>←</button>
+          <button class="strip__button" type="button" data-strip="1" aria-label="Next photos" hidden>→</button>
+          <a class="link-arrow" href="/about#photos">All photos</a>
+        </div>
+      </div>
+      <ul class="strip" role="list" tabindex="0" aria-label="Photos of Matthew Menard">
+        <li>
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/singing-folder-480.avif 480w, /img/singing-folder-800.avif 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <source type="image/webp" srcset="/img/singing-folder-480.webp 480w, /img/singing-folder-800.webp 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <img src="/img/singing-folder-800.jpg" srcset="/img/singing-folder-480.jpg 480w, /img/singing-folder-800.jpg 800w" sizes="(min-width: 48rem) 34vw, 80vw" width="933" height="1400" loading="lazy" alt="Matthew Menard singing from a black choir folder">
+            </picture>
+          </figure>
+        </li>
+        <li>
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/choir-strings-480.avif 480w, /img/choir-strings-800.avif 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <source type="image/webp" srcset="/img/choir-strings-480.webp 480w, /img/choir-strings-800.webp 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <img src="/img/choir-strings-800.jpg" srcset="/img/choir-strings-480.jpg 480w, /img/choir-strings-800.jpg 800w" sizes="(min-width: 48rem) 34vw, 80vw" width="1400" height="980" loading="lazy" alt="Matthew Menard singing in a choir with string players in front, in a church">
+            </picture>
+          </figure>
+        </li>
+        <li>
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/conducting-480.avif 480w, /img/conducting-800.avif 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <source type="image/webp" srcset="/img/conducting-480.webp 480w, /img/conducting-800.webp 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <img src="/img/conducting-800.jpg" srcset="/img/conducting-480.jpg 480w, /img/conducting-800.jpg 800w" sizes="(min-width: 48rem) 34vw, 80vw" width="933" height="1400" loading="lazy" alt="Matthew Menard conducting in a church, in a black suit">
+            </picture>
+          </figure>
+        </li>
+        <li>
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/singing-warm-480.avif 480w, /img/singing-warm-800.avif 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <source type="image/webp" srcset="/img/singing-warm-480.webp 480w, /img/singing-warm-800.webp 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <img src="/img/singing-warm-800.jpg" srcset="/img/singing-warm-480.jpg 480w, /img/singing-warm-800.jpg 800w" sizes="(min-width: 48rem) 34vw, 80vw" width="1400" height="933" loading="lazy" alt="Matthew Menard singing beside another chorister in warm light">
+            </picture>
+          </figure>
+        </li>
+        <li>
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/choir-stage-480.avif 480w, /img/choir-stage-800.avif 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <source type="image/webp" srcset="/img/choir-stage-480.webp 480w, /img/choir-stage-800.webp 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <img src="/img/choir-stage-800.jpg" srcset="/img/choir-stage-480.jpg 480w, /img/choir-stage-800.jpg 800w" sizes="(min-width: 48rem) 34vw, 80vw" width="1080" height="1350" loading="lazy" alt="Matthew Menard singing in a choir on a stage lit in blue, with an orchestra in front">
+            </picture>
+          </figure>
+        </li>
+        <li>
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/choir-bw-480.avif 480w, /img/choir-bw-800.avif 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <source type="image/webp" srcset="/img/choir-bw-480.webp 480w, /img/choir-bw-800.webp 800w" sizes="(min-width: 48rem) 34vw, 80vw">
+              <img src="/img/choir-bw-800.jpg" srcset="/img/choir-bw-480.jpg 480w, /img/choir-bw-800.jpg 800w" sizes="(min-width: 48rem) 34vw, 80vw" width="1400" height="933" loading="lazy" alt="Black-and-white photo of Matthew Menard at a music stand in front of a youth choir">
+            </picture>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
     <section class="section wrapper" aria-labelledby="bio-title">
       <div class="bio-teaser">
-        <figure class="photo">
-          <picture>
-            <source type="image/avif" srcset="/img/headshot-480.avif 480w, /img/headshot-800.avif 800w, /img/headshot-1200.avif 1200w" sizes="(min-width: 52rem) 36vw, 92vw">
-            <source type="image/webp" srcset="/img/headshot-480.webp 480w, /img/headshot-800.webp 800w, /img/headshot-1200.webp 1200w" sizes="(min-width: 52rem) 36vw, 92vw">
-            <img src="/img/headshot-800.jpg" srcset="/img/headshot-480.jpg 480w, /img/headshot-800.jpg 800w, /img/headshot-1200.jpg 1200w" sizes="(min-width: 52rem) 36vw, 92vw" width="1400" height="1050" loading="lazy" alt="Portrait of Matthew Menard smiling, in a green shirt">
-          </picture>
-        </figure>
+        <div class="arch">
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/headshot-480.avif 480w, /img/headshot-800.avif 800w, /img/headshot-1200.avif 1200w" sizes="(min-width: 52rem) 36vw, 92vw">
+              <source type="image/webp" srcset="/img/headshot-480.webp 480w, /img/headshot-800.webp 800w, /img/headshot-1200.webp 1200w" sizes="(min-width: 52rem) 36vw, 92vw">
+              <img src="/img/headshot-800.jpg" srcset="/img/headshot-480.jpg 480w, /img/headshot-800.jpg 800w, /img/headshot-1200.jpg 1200w" sizes="(min-width: 52rem) 36vw, 92vw" width="1400" height="1050" loading="lazy" alt="Portrait of Matthew Menard smiling, in a green shirt">
+            </picture>
+          </figure>
+        </div>
         <div class="stack">
           <p class="eyebrow">About</p>
-          <h2 id="bio-title">Choral and sacred music for voices</h2>
+          <h2 id="bio-title">Choral and sacred music <em>for voices</em></h2>
           <p>Matthew Menard is a Taiwanese-Canadian composer and bass singer from Ottawa. His focus is choral and sacred composition. He is composer-in-residence at St. Joseph’s Parish in downtown Ottawa, and his music has been performed by the Capital Chamber Choir, Ontario Youth Choir, York University Chamber Choir, and the Ottawa Bach Choir.</p>
           <a class="link-arrow" href="/about">Full biography</a>
         </div>
@@ -234,14 +340,14 @@
       <!-- [TODO: owner to confirm Commissions audience and wording] -->
       <div class="panel stack">
         <p class="eyebrow">A separate service · Websites</p>
-        <h2 id="commissions-title">Commission a website</h2>
+        <h2 id="commissions-title">Commission a <em>website</em></h2>
         <p class="measure">Matthew also builds hand-coded, fast, accessible websites for musicians, ensembles, artists, and small organizations.</p>
         <a class="link-arrow" href="/commissions">How it works</a>
       </div>
     </section>
 
     <section class="section wrapper contact-cta stack" aria-labelledby="contact-title">
-      <h2 id="contact-title">Get in touch</h2>
+      <h2 id="contact-title">Get in <em>touch</em></h2>
       <p class="lead measure">Questions about a score, a commission, or a performance?</p>
       <div class="cluster">
         <a class="button button--primary" href="/contact">Contact Matthew</a>
