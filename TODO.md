@@ -2,6 +2,12 @@
 
 Everything waiting on Matthew, with the file it affects. Kept current every phase.
 
+## Motion pass (2026-10-23)
+
+- Pull quote removed from Home.
+- Home now has a "Music performed by" scrolling list (the four ensembles from your bio) and three photo links to Performing, Conducting & Teaching, and Listen & Watch, using text already on those pages.
+- [ ] The Listen & Watch card on Home links to a page that is still empty. Add recordings, or I can drop that card for launch.
+
 ## Phase 6 (quality pass; done)
 
 - Lighthouse (mobile, local): accessibility, best practices, SEO 100 on every page tested; performance 93–99.

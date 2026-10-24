@@ -101,6 +101,14 @@ Open `public/listen.html`. The comment above the list shows one recording; copy 
 
 The contact form and the website request form on `/commissions` both send to `COMMISSION_TO_EMAIL` through Resend. The request form also sends the visitor a short fixed confirmation (nothing they typed is echoed back, so it can't be used to spam others). To change the request form's choices (project types, pages, budget ranges), edit both `public/commissions.html` and the lists at the top of `api/commission.js`; they must match. Spam defenses: a hidden field bots fill in, a minimum fill time, and a limit of 5 messages per 10 minutes per visitor. Bots get a fake "sent" so they don't retry. No CAPTCHA.
 
+## Motion
+
+- Sections rise into view as you scroll, pages cross-fade when you click between them, and buttons, cards, photos, and menu links ease on hover. All of it lives in the Motion section at the end of `public/css/components.css` and in `public/js/motion.js`.
+- Speeds are tokens in `tokens.css` (`--dur-reveal`, `--reveal-stagger`, `--reveal-distance`). Bigger numbers = slower, farther.
+- Anything new placed inside the usual page blocks (sections, grids, cards, lists) animates automatically. To add another kind of block, add its selector to the list in both `components.css` and `motion.js`.
+- Visitors who turn on "reduce motion" on their device see everything still, and the marquee becomes a plain list.
+- Home: to change the "Music performed by" names, edit both lists in the marquee section of `public/index.html` (the second is a copy for the seamless loop).
+
 ## Search engines and link previews
 
 - Each public page has a title, description, canonical link, and social preview tags in its `<head>`. A new page: copy the `<head>` from a similar page and change the title, description, and URLs.
