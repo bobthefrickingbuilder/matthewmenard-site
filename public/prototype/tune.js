@@ -1,7 +1,7 @@
 // Prototype only: read timing overrides from the URL, run the intro, and fill the tuning form.
 // Submitting the form reloads with ?intro&KEY=value…, which replays the intro with those values.
 
-import { TIMING, runIntro } from "./intro.js";
+import { TIMING, runIntro } from "/js/intro.js";
 
 const params = new URLSearchParams(location.search);
 const overrides = {};

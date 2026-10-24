@@ -35,7 +35,12 @@ export function runIntro(overrides = {}) {
   const root = document.documentElement;
   const intro = document.querySelector("[data-intro]");
   const skipButton = document.querySelector("[data-intro-skip]");
-  if (!intro || !root.classList.contains("intro-on")) return;
+  if (!intro) return;
+  if (!root.classList.contains("intro-on")) {
+    intro.remove();
+    skipButton?.remove();
+    return;
+  }
 
   const t = { ...TIMING, ...overrides };
   const stage = intro.querySelector(".intro-stage");
