@@ -48,19 +48,17 @@
   box-shadow: var(--shadow-3);
 }
 
-/* Smaller photos tucked behind and in front, each tilted, framed like prints. */
+/* Smaller photos tucked behind and in front, framed like prints. */
 .hero__inset {
   position: absolute;
   aspect-ratio: 4 / 5;
   border: 6px solid var(--ground-800);
   border-radius: var(--radius-m);
   box-shadow: var(--shadow-3);
-  rotate: var(--tilt);
-  transition: rotate 900ms var(--ease-out), translate 900ms var(--ease-out);
+  transition: translate 900ms var(--ease-out);
 }
 
 .hero__inset--back {
-  --tilt: -7deg;
   z-index: 0;
   inset-inline-start: 2%;
   inset-block-start: 4%;
@@ -68,21 +66,18 @@
 }
 
 .hero__inset--front {
-  --tilt: 5deg;
   z-index: 2;
   inset-inline-start: 0;
   inset-block-end: 2%;
   width: 40%;
 }
 
-/* On hover the prints fan out a little further. */
+/* On hover the prints spread out a little. */
 .hero__media:hover .hero__inset--back {
-  rotate: -11deg;
   translate: -4% -3%;
 }
 
 .hero__media:hover .hero__inset--front {
-  rotate: 8deg;
   translate: -3% 3%;
 }
 
@@ -258,11 +253,10 @@
   }
 }
 
-/* Prints drop in from slightly larger and untilted. */
+/* Prints drop in from slightly larger. */
 @keyframes print-in {
   from {
     opacity: 0;
-    rotate: 0deg;
     scale: 1.15;
   }
 }
@@ -454,20 +448,9 @@
   font-size: var(--step--1);
 }
 
-/* ---- Featured scores: sheets laid on a desk, straightening on hover -------- */
-.featured .work-card {
-  rotate: -1.2deg;
-  transition: border-color var(--dur-med) ease, transform var(--dur-slow) var(--ease-out),
-    box-shadow var(--dur-slow) ease, rotate var(--dur-slow) var(--ease-out);
-}
-
+/* ---- Featured scores: staggered, the second set a little lower ------------ */
 .featured .work-card:nth-child(even) {
-  rotate: 1deg;
   margin-block-start: var(--space-l);
-}
-
-.featured .work-card:hover {
-  rotate: 0deg;
 }
 
 /* ---- Stats band: big numbers between thin rules ---------------------------- */

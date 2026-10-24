@@ -115,7 +115,7 @@ The contact form and the website request form on `/commissions` both send to `CO
 - **Two-tone headings:** wrap a word in `<em>` inside an `<h1>` or `<h2>` and it turns italic sage, e.g. `<h2>Featured <em>work</em></h2>`.
 - **Film grain:** a faint texture over every page (`body::after` in `components.css`). Change its `opacity` to make it stronger or remove it.
 - **Arch photo:** put a photo inside `<div class="arch">` for the rounded-top frame with the floating copper dot.
-- **Home only:** layered hero prints (fan out on hover), a "Scroll" cue, tilted score sheets, the numbers band (numbers with `data-count` tick up), and the sideways photo strip with arrows.
+- **Home only:** layered hero prints (spread on hover), a "Scroll" cue, staggered score cards, the numbers band (numbers with `data-count` tick up), and the sideways photo strip with arrows.
 
 ## Search engines and link previews
 
