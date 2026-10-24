@@ -2,6 +2,7 @@
 // Without JS the header nav stays visible and wraps (see .no-js in components.css).
 // Also loads the site-wide motion layer.
 import "/js/motion.js";
+import "/js/palette-preview.js";
 
 const toggle = document.querySelector("[data-menu-open]");
 const menu = document.getElementById("mobile-menu");
