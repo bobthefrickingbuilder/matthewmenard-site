@@ -112,10 +112,10 @@ The contact form and the website request form on `/commissions` both send to `CO
 ## Signature details
 
 - **Staff dividers:** the line between sections is a five-line music staff that draws in as you scroll (`.section + .section` in `base.css`).
-- **Two-tone headings:** wrap a word in `<em>` inside an `<h1>` or `<h2>` and it turns italic sage, e.g. `<h2>Featured <em>work</em></h2>`.
+- **Slur headings:** wrap a word in `<em>` directly inside an `<h1>` or `<h2>` and it turns sage with a slur (a score's phrase mark) drawn under it, e.g. `<h2>Featured <em>work</em></h2>`. Work titles inside links stay italic.
 - **Film grain:** a faint texture over every page (`body::after` in `components.css`). Change its `opacity` to make it stronger or remove it.
-- **Arch photo:** put a photo inside `<div class="arch">` for the rounded-top frame with the floating copper dot.
-- **Home only:** layered hero prints (spread on hover), a "Scroll" cue, staggered score cards, the numbers band (numbers with `data-count` tick up), and the sideways photo strip with arrows.
+- **Chapel-window photo:** put a photo inside `<div class="arch">` for the pointed-arch frame (the `--lancet` shape in `components.css`).
+- **Home only:** the hero's three chapel windows and the staff under the name, staggered score cards, note-head separators in the names ticker, the numbers band (numbers with `data-count` tick up), and the sideways photo strip with arrows.
 
 ## Search engines and link previews
 

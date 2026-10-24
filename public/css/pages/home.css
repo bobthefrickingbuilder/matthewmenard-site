@@ -34,51 +34,29 @@
 .hero__media {
   position: relative;
   justify-self: center;
-  width: min(100%, 34rem);
+  display: grid;
+  grid-template-columns: 0.62fr 1fr 0.62fr;
+  align-items: end;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  width: min(100%, 36rem);
   padding-block: var(--space-l);
+  filter: drop-shadow(0 18px 28px hsl(var(--shadow-color) / 0.55));
+}
+
+/* Three chapel windows: the main photo in a tall pointed arch, a shorter one either
+   side, all standing on the same sill. The shape is the --lancet mask in components.css. */
+.hero__photo,
+.hero__inset {
+  position: relative;
+  aspect-ratio: 3 / 5;
+  border-radius: 0;
+  -webkit-mask: var(--lancet) center / 100% 100% no-repeat;
+  mask: var(--lancet) center / 100% 100% no-repeat;
 }
 
 .hero__photo {
-  position: relative;
   z-index: 1;
-  width: 78%;
   max-height: 72svh;
-  margin-inline-start: auto;
-  aspect-ratio: 4 / 5;
-  box-shadow: var(--shadow-3);
-}
-
-/* Smaller photos tucked behind and in front, framed like prints. */
-.hero__inset {
-  position: absolute;
-  aspect-ratio: 4 / 5;
-  border: 6px solid var(--ground-800);
-  border-radius: var(--radius-m);
-  box-shadow: var(--shadow-3);
-  transition: translate 900ms var(--ease-out);
-}
-
-.hero__inset--back {
-  z-index: 0;
-  inset-inline-start: 2%;
-  inset-block-start: 4%;
-  width: 36%;
-}
-
-.hero__inset--front {
-  z-index: 2;
-  inset-inline-start: 0;
-  inset-block-end: 2%;
-  width: 40%;
-}
-
-/* On hover the prints spread out a little. */
-.hero__media:hover .hero__inset--back {
-  translate: -4% -3%;
-}
-
-.hero__media:hover .hero__inset--front {
-  translate: -3% 3%;
 }
 
 [data-parallax] {
@@ -86,44 +64,16 @@
   will-change: transform;
 }
 
-/* "Scroll" cue at the foot of the hero: a line that keeps drawing down. */
-.hero__cue {
-  display: none;
-}
-
-@media (min-width: 52rem) {
-  .hero__cue {
-    position: absolute;
-    inset-inline-start: 0;
-    inset-block-end: var(--space-l);
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: 0.75rem;
-    letter-spacing: var(--tracking-caps);
-    text-transform: uppercase;
-    color: var(--text-subtle);
-  }
-
-  .hero__cue span {
-    width: 3rem;
-    height: 1px;
-    background: var(--text-subtle);
-    transform-origin: left;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero__cue span {
-    animation: cue 2.4s var(--ease-in-out) infinite;
-  }
-}
-
-@keyframes cue {
-  0% { transform: scaleX(0); transform-origin: left; }
-  50% { transform: scaleX(1); transform-origin: left; }
-  50.1% { transform-origin: right; }
-  100% { transform: scaleX(0); transform-origin: right; }
+/* A short five-line staff under the name, drawn in with the hero entrance. */
+.hero h1::after {
+  content: "";
+  display: block;
+  width: min(100%, 15rem);
+  height: 25px;
+  margin-block-start: var(--space-s);
+  border-inline-end: 1px solid var(--color-border-subtle);
+  background: repeating-linear-gradient(to bottom, var(--color-border-subtle) 0 1px, transparent 1px 6px);
+  transform-origin: left;
 }
 
 .bio-teaser {
@@ -235,6 +185,14 @@
 
   .js:not(.intro-on) .hero__inset--back { animation-delay: 700ms; }
   .js:not(.intro-on) .hero__inset--front { animation-delay: 900ms; }
+
+  .intro-on .hero h1::after {
+    transform: scaleX(0);
+  }
+
+  .js:not(.intro-on) .hero h1::after {
+    animation: staff-draw 1400ms var(--ease-out) 600ms both;
+  }
 }
 
 @keyframes word-up {
@@ -254,7 +212,13 @@
   }
 }
 
-/* Prints drop in from slightly larger. */
+/* Side windows fade in from slightly larger. */
+@keyframes staff-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
 @keyframes print-in {
   from {
     opacity: 0;
@@ -309,14 +273,15 @@
   color: var(--text);
 }
 
-/* Copper dot between names. */
+/* A hollow copper note-head (a whole note) between names. */
 .marquee__list li::after {
   content: "";
-  width: 0.35rem;
-  height: 0.35rem;
+  width: 0.8rem;
+  height: 0.55rem;
   margin-inline: var(--space-l);
+  border: 2px solid var(--spark);
   border-radius: 50%;
-  background: var(--spark);
+  rotate: -25deg;
 }
 
 @media (prefers-reduced-motion: no-preference) {
