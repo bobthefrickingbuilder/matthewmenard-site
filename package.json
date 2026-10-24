@@ -7,12 +7,17 @@
   "scripts": {
     "dev": "vercel dev",
     "check:contrast": "node scripts/contrast.mjs",
-    "check": "npm run check:contrast"
+    "check": "npm run check:contrast",
+    "images": "node scripts/images.mjs",
+    "partials": "node scripts/partials.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
     "stripe": "^16.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
   }
 }

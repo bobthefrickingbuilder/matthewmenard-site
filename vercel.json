@@ -6,23 +6,68 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/scores", "destination": "/compositions", "statusCode": 301 },
-    { "source": "/scores/", "destination": "/compositions", "statusCode": 301 },
-    { "source": "/scores/when-i-am-dead", "destination": "/compositions/when-i-am-dead", "statusCode": 301 },
-    { "source": "/scores/when-i-am-dead/", "destination": "/compositions/when-i-am-dead", "statusCode": 301 },
-    { "source": "/scores/golden-sunset", "destination": "/compositions/golden-sunset", "statusCode": 301 },
-    { "source": "/scores/golden-sunset/", "destination": "/compositions/golden-sunset", "statusCode": 301 },
-    { "source": "/gallery", "destination": "/about#photos", "statusCode": 301 },
-    { "source": "/gallery/", "destination": "/about#photos", "statusCode": 301 },
-    { "source": "/files/:file*", "destination": "/compositions", "statusCode": 301 }
+    {
+      "source": "/scores",
+      "destination": "/compositions",
+      "statusCode": 301
+    },
+    {
+      "source": "/scores/",
+      "destination": "/compositions",
+      "statusCode": 301
+    },
+    {
+      "source": "/scores/when-i-am-dead",
+      "destination": "/compositions/when-i-am-dead",
+      "statusCode": 301
+    },
+    {
+      "source": "/scores/when-i-am-dead/",
+      "destination": "/compositions/when-i-am-dead",
+      "statusCode": 301
+    },
+    {
+      "source": "/scores/golden-sunset",
+      "destination": "/compositions/golden-sunset",
+      "statusCode": 301
+    },
+    {
+      "source": "/scores/golden-sunset/",
+      "destination": "/compositions/golden-sunset",
+      "statusCode": 301
+    },
+    {
+      "source": "/gallery",
+      "destination": "/about#photos",
+      "statusCode": 301
+    },
+    {
+      "source": "/gallery/",
+      "destination": "/about#photos",
+      "statusCode": 301
+    },
+    {
+      "source": "/files/:file*",
+      "destination": "/compositions",
+      "statusCode": 301
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "DENY" },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=(), browsing-topics=()"
@@ -35,7 +80,21 @@
     },
     {
       "source": "/fonts/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     }
   ]
 }
