@@ -4,8 +4,8 @@
 import sharp from "sharp";
 import { writeFileSync } from "node:fs";
 
-const GROUND = "#1b1020";
-const MARK = "#f4efe8";
+const GROUND = "#101b17";
+const MARK = "#eef2ea";
 const OUT = "public/";
 
 // Clef as an alpha mask: dark pixels opaque, white background transparent.
@@ -62,11 +62,11 @@ writeFileSync(OUT + "icon-512.png", await icon(512, { radius: 0.18 }));
 // iOS rounds the corners itself, so the touch icon stays square.
 writeFileSync(OUT + "apple-touch-icon.png", await icon(180, { padding: 0.16 }));
 
-// Share image for links on social media and messaging apps: 1200 × 630, same plum wash as on the site.
+// Share image for links on social media and messaging apps: 1200 × 630, same moss wash as on the site.
 await sharp("source-media/gallery/photo-1.jpg")
   .resize(1200, 630, { fit: "cover", position: "attention" })
   .modulate({ saturation: 0.85 })
-  .composite([{ input: Buffer.from(`<svg width="1200" height="630"><rect width="1200" height="630" fill="#5a2e6b" opacity="0.28"/></svg>`), blend: "soft-light" }])
+  .composite([{ input: Buffer.from(`<svg width="1200" height="630"><rect width="1200" height="630" fill="#2b4a3d" opacity="0.28"/></svg>`), blend: "soft-light" }])
   .jpeg({ quality: 82, mozjpeg: true })
   .toFile(OUT + "img/share.jpg");
 

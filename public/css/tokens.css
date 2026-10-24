@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Bass Violet — design tokens
+   Chapel Green — design tokens
    The only file allowed to contain raw color values.
    Every text/background pairing used on the site is declared in the
    @pairings block below and checked by `npm run check:contrast`.
@@ -37,31 +37,31 @@
 :root {
   color-scheme: dark;
 
-  /* ---- Core palette (the five Bass Violet colors) ---------------------- */
-  --ground: #1b1020;  /* Page background. Aubergine. */
-  --panel: #5a2e6b;   /* Fills, cards, borders, decoration. Plum. Never text on ground (1.8:1). */
-  --text: #f4efe8;    /* Body text. Parchment. */
-  --accent: #c9b8e0;  /* Links, heading accents, focus ring. Lilac. */
-  --spark: #e8743b;   /* Primary action only. One per view. Ember. */
+  /* ---- Core palette (the five Chapel Green colors) ---------------------- */
+  --ground: #101b17;  /* Page background. Forest. */
+  --panel: #2b4a3d;   /* Fills, cards, borders, decoration. Moss. Never text on ground. */
+  --text: #eef2ea;    /* Body text. Mist. */
+  --accent: #b7d4a9;  /* Links, heading accents, focus ring. Sage. */
+  --spark: #e6a05c;   /* Primary action only. One per view. Copper. */
 
   /* ---- Tonal ramps ------------------------------------------------------ */
-  --ground-950: #120a16; /* Deepest: footer, intro backdrop edges. */
-  --ground-850: #22152a; /* Raised surface 1: cards on ground. */
-  --ground-800: #2b1a33; /* Raised surface 2: inputs, nested cards. */
-  --ground-700: #36223f; /* Raised surface 3: hovered rows, disabled fills. */
+  --ground-950: #0a120f; /* Deepest: footer, intro backdrop edges. */
+  --ground-850: #17251f; /* Raised surface 1: cards on ground. */
+  --ground-800: #1d2e27; /* Raised surface 2: inputs, nested cards. */
+  --ground-700: #263a31; /* Raised surface 3: hovered rows, disabled fills. */
 
-  --panel-700: #4a2558;  /* Plum pressed. */
-  --panel-400: #6b3a7e;  /* Plum hover fill. */
-  --panel-200: #8d6a9c;  /* Strong border: inputs and controls on ground (3:1). */
+  --panel-700: #223c31;  /* Moss pressed. */
+  --panel-400: #35594a;  /* Moss hover fill. */
+  --panel-200: #6f9282;  /* Strong border: inputs and controls on ground (3:1). */
 
-  --text-muted: #c9bfcc; /* Secondary text: captions, meta, labels. */
-  --text-subtle: #ab9eb0;/* Tertiary text: footnotes, timestamps. On ground and raised surfaces only. */
+  --text-muted: #c3cec6; /* Secondary text: captions, meta, labels. */
+  --text-subtle: #a0aea5;/* Tertiary text: footnotes, timestamps. On ground and raised surfaces only. */
 
-  --accent-hover: #ddd1ee;  /* Link and lilac button hover. */
-  --accent-pressed: #b29dcf;/* Lilac button pressed. */
+  --accent-hover: #cee3c4;  /* Link and sage button hover. */
+  --accent-pressed: #a2c592;/* Sage button pressed. */
 
-  --spark-hover: #f08b57;   /* Ember button hover. */
-  --spark-pressed: #d4632d; /* Ember button pressed. */
+  --spark-hover: #edb57f;   /* Copper button hover. */
+  --spark-pressed: #dd8f44; /* Copper button pressed. */
 
   /* ---- Status (forms) --------------------------------------------------- */
   --danger: #f4a3ab;  /* Error text and error borders. */
@@ -71,13 +71,13 @@
   --color-bg: var(--ground);
   --color-surface: var(--ground-850);
   --color-surface-2: var(--ground-800);
-  --color-fill: var(--panel);             /* Plum feature panels. Text on it: --text or --accent. */
+  --color-fill: var(--panel);             /* Moss feature panels. Text on it: --text or --accent. */
   --color-text: var(--text);
   --color-heading: var(--text);
   --color-link: var(--accent);
   --color-link-hover: var(--accent-hover);
-  --color-on-spark: var(--ground);        /* Text on ember buttons. */
-  --color-on-accent: var(--ground);       /* Text on lilac buttons. */
+  --color-on-spark: var(--ground);        /* Text on copper buttons. */
+  --color-on-accent: var(--ground);       /* Text on sage buttons. */
   --color-border-subtle: var(--panel);    /* Hairlines and dividers. Decoration only. */
   --color-border-control: var(--panel-200); /* Input and control outlines (needs 3:1). */
   --color-focus: var(--accent);
@@ -88,8 +88,8 @@
   --focus-width: 2px;
   --focus-offset: 2px;
 
-  /* ---- Shadows (aubergine-tinted, never pure black) -------------------- */
-  --shadow-color: 280 45% 4%;
+  /* ---- Shadows (forest-tinted, never pure black) -------------------- */
+  --shadow-color: 150 40% 3%;
   --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.5);
   --shadow-2: 0 4px 12px hsl(var(--shadow-color) / 0.55), 0 1px 3px hsl(var(--shadow-color) / 0.4);
   --shadow-3: 0 16px 40px hsl(var(--shadow-color) / 0.6), 0 4px 10px hsl(var(--shadow-color) / 0.4);

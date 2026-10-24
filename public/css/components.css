@@ -36,7 +36,7 @@
   transform: translateY(1px);
 }
 
-/* Primary: ember. One per view. */
+/* Primary: copper. One per view. */
 .button--primary {
   --button-bg: var(--spark);
   --button-fg: var(--color-on-spark);
@@ -54,7 +54,7 @@
   --button-border: var(--spark-pressed);
 }
 
-/* Secondary: lilac fill. */
+/* Secondary: sage fill. */
 .button--secondary {
   --button-bg: var(--accent);
   --button-fg: var(--color-on-accent);
@@ -276,7 +276,7 @@ fieldset {
   object-fit: cover;
 }
 
-/* Plum feature panel for teasers (Commissions, bio). */
+/* Moss feature panel for teasers (Commissions, bio). */
 .panel {
   padding: var(--space-xl) var(--space-l);
   background: var(--color-fill);
@@ -529,7 +529,7 @@ fieldset {
   filter: saturate(0.85) contrast(1.04) brightness(0.96);
 }
 
-/* Plum wash ties every photo to the palette. */
+/* Moss wash ties every photo to the palette. */
 .photo::after {
   content: "";
   position: absolute;

@@ -213,7 +213,7 @@
   color: var(--text);
 }
 
-/* Ember dot between names. */
+/* Copper dot between names. */
 .marquee__list li::after {
   content: "";
   width: 0.35rem;

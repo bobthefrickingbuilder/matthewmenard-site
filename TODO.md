@@ -2,6 +2,11 @@
 
 Everything waiting on Matthew, with the file it affects. Kept current every phase.
 
+## Colours (2026-10-24)
+
+- Site colours changed from Bass Violet (purple) to Chapel Green: forest green, moss, sage, copper. All 45 contrast pairings pass. Icons and the link preview image rebuilt to match.
+- The other options (Midnight & Brass, Score Paper, Stone & Teal) stay viewable on any page with `?palette=midnight`, `paper`, or `stone`. They can be deleted before launch (`public/design/palettes.*`, `public/js/palette-preview.js`).
+
 ## Motion pass (2026-10-23)
 
 - Pull quote removed from Home.

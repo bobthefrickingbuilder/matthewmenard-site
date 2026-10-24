@@ -1,4 +1,4 @@
-// Run: node scripts/palettes.mjs. Checks four candidate palettes against the site's @pairings and writes public/design/palettes.css.
+// Run: node scripts/palettes.mjs. Checks candidate palettes against the site's @pairings and writes public/design/palettes.css.
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 const SITE = fileURLToPath(new URL("../", import.meta.url));
@@ -44,20 +44,6 @@ export const PALETTES = {
       danger: "#9e1f2c", success: "#2d6a3c",
     },
     shadow: LIGHT_SHADOW("35 35% 25%"),
-  },
-  chapel: {
-    label: "Chapel Green",
-    note: "Dark forest green, sage, copper. Quiet and natural.",
-    scheme: "dark",
-    c: {
-      ground: "#101b17", "ground-950": "#0a120f", "ground-850": "#17251f", "ground-800": "#1d2e27", "ground-700": "#263a31",
-      panel: "#2b4a3d", "panel-700": "#223c31", "panel-400": "#35594a", "panel-200": "#6f9282",
-      text: "#eef2ea", "text-muted": "#c3cec6", "text-subtle": "#a0aea5",
-      accent: "#b7d4a9", "accent-hover": "#cee3c4", "accent-pressed": "#a2c592",
-      spark: "#e6a05c", "spark-hover": "#edb57f", "spark-pressed": "#dd8f44",
-      danger: "#f4a3ab", success: "#a9dcb8",
-    },
-    shadow: DARK_SHADOW("150 40% 3%"),
   },
   stone: {
     label: "Stone & Teal",

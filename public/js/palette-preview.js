@@ -33,7 +33,7 @@ async function start(initial) {
   };
 
   const palettes = await fetch("/design/palettes.json").then((r) => r.json());
-  const options = { current: { label: "Current (Bass Violet)", swatches: ["#1b1020", "#5a2e6b", "#f4efe8", "#c9b8e0", "#e8743b"] }, ...palettes };
+  const options = { current: { label: "Current (Chapel Green)", swatches: ["#101b17", "#2b4a3d", "#eef2ea", "#b7d4a9", "#e6a05c"] }, ...palettes };
 
   const bar = document.createElement("aside");
   bar.className = "palette-bar";
