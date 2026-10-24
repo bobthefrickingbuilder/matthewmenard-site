@@ -22,4 +22,79 @@
   display: grid;
   gap: var(--space-m);
   grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  align-items: start;
+}
+
+/* ---- Commissions ---------------------------------------------------------- */
+
+.commissions-hero {
+  max-width: 48rem;
+}
+
+
+/* Numbered process steps, numbers drawn from the list counter. */
+.process {
+  display: grid;
+  gap: var(--space-m) var(--space-l);
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  margin-block-start: var(--space-m);
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.process li {
+  display: grid;
+  gap: var(--space-3xs);
+  padding-block-start: var(--space-s);
+  border-block-start: 1px solid var(--color-border-subtle);
+  counter-increment: step;
+}
+
+.process h3::before {
+  content: counter(step) ". ";
+  color: var(--accent);
+}
+
+.process p {
+  color: var(--text-muted);
+}
+
+h2 + .grid {
+  margin-block-start: var(--space-m);
+}
+
+.faq {
+  display: grid;
+  margin-block-start: var(--space-m);
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.faq__item {
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+
+.faq__item summary {
+  padding-block: var(--space-s);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq__item[open] > :not(summary) {
+  margin-block-end: var(--space-s);
+}
+
+.request-form {
+  margin-block-start: var(--space-l);
+}
+
+.choice-grid {
+  display: grid;
+  gap: var(--space-2xs) var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(min(13rem, 100%), 1fr));
+  margin-block-start: var(--space-2xs);
+}
+
+#request:focus {
+  outline: none;
 }

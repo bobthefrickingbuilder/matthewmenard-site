@@ -112,7 +112,8 @@
   font-weight: 600;
 }
 
-.field .required {
+.field .required,
+.field .optional {
   font-weight: 400;
   color: var(--text-muted);
 }
