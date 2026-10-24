@@ -12,6 +12,7 @@ const REVEAL = [
   "main .events > li", "main .split > *", "main .panel", "main .prose > *", "main .bio-teaser > *",
   "main .contact-cta > *", "main .marquee", "main .explore > li", "main .work__aside", "main .facts",
   "main .score-sample", "main .work__section", "main .contact-layout > *", "main .request-form",
+  "main .stats__list > li", "main .strip > li", "main .arch",
 ].join(", ");
 
 function reveal() {
@@ -53,6 +54,36 @@ function reveal() {
   }).observe(document.querySelector("main") || document.body, { childList: true, subtree: true });
 }
 
+// Staff dividers between sections draw in from the left (see .section + .section in base.css).
+function staves() {
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) if (entry.isIntersecting) {
+      entry.target.classList.add("is-drawn");
+      observer.unobserve(entry.target);
+    }
+  }, { rootMargin: "0px 0px -10% 0px" });
+  document.querySelectorAll(".section + .section").forEach((el) => observer.observe(el));
+}
+
+// Numbers marked data-count tick up from zero the first time they are seen.
+function counters() {
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) if (entry.isIntersecting) {
+      observer.unobserve(entry.target);
+      const el = entry.target;
+      const end = Number(el.dataset.count);
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min((now - start) / 1400, 1);
+        el.textContent = Math.round(end * (1 - (1 - t) ** 3));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+  }, { threshold: 0.6 });
+  document.querySelectorAll("[data-count]").forEach((el) => observer.observe(el));
+}
+
 // Parallax: the image drifts a little slower than the page. The image is scaled up in CSS
 // so the drift never shows an edge.
 function parallax() {
@@ -84,6 +115,8 @@ function headerShadow() {
 headerShadow();
 if (!reduced && "IntersectionObserver" in window) {
   reveal();
+  staves();
+  counters();
   parallax();
   // Without this class the CSS failsafe shows everything after a moment.
   root.classList.add("motion-ready");

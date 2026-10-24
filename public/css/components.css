@@ -809,7 +809,8 @@ h2 + .gallery {
     main .grid > *, main .gallery > *, main .roles > li, main .process > li, main .faq__item,
     main .events > li, main .split > *, main .panel, main .prose > *, main .bio-teaser > *,
     main .contact-cta > *, main .marquee, main .explore > li, main .work__aside, main .facts,
-    main .score-sample, main .work__section, main .contact-layout > *, main .request-form
+    main .score-sample, main .work__section, main .contact-layout > *, main .request-form,
+    main .stats__list > li, main .strip > li, main .arch
   ):not(.is-in) {
     opacity: 0;
     transform: translateY(var(--reveal-distance));
@@ -996,4 +997,62 @@ h2 + .gallery {
 
 .is-scrolled .site-header {
   box-shadow: var(--shadow-2);
+}
+
+/* ==== Signature details ==================================================== */
+
+/* Film grain over the whole page, like a printed score under warm light.
+   An SVG noise tile; pointer-events: none so it never blocks clicks. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+
+/* Two-tone headings: an italic word in sage, e.g. <h2>Featured <em>work</em></h2>. */
+:is(h1, h2) em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+/* Arch frame: a photo with a rounded top, and a copper note-head floating at its edge. */
+.arch {
+  position: relative;
+  width: min(100%, 26rem);
+  justify-self: center;
+}
+
+.arch .photo {
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--radius-l) var(--radius-l);
+}
+
+.arch::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: -0.6rem;
+  inset-block-end: 18%;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--spark);
+  box-shadow: var(--shadow-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .arch::after {
+    animation: bob 5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes bob {
+  to {
+    transform: translateY(-0.9rem);
+  }
 }
