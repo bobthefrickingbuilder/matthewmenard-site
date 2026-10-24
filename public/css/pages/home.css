@@ -40,18 +40,15 @@
   gap: clamp(0.5rem, 1.5vw, 1rem);
   width: min(100%, 36rem);
   padding-block: var(--space-l);
-  filter: drop-shadow(0 18px 28px hsl(var(--shadow-color) / 0.55));
 }
 
-/* Three chapel windows: the main photo in a tall pointed arch, a shorter one either
-   side, all standing on the same sill. The shape is the --lancet mask in components.css. */
+/* Three photos side by side: the main one tall in the middle, a shorter one either
+   side, all lined up along the bottom. */
 .hero__photo,
 .hero__inset {
   position: relative;
   aspect-ratio: 3 / 5;
-  border-radius: 0;
-  -webkit-mask: var(--lancet) center / 100% 100% no-repeat;
-  mask: var(--lancet) center / 100% 100% no-repeat;
+  box-shadow: var(--shadow-3);
 }
 
 .hero__photo {
@@ -62,18 +59,6 @@
 [data-parallax] {
   transform: translateY(var(--parallax, 0%)) scale(1.12);
   will-change: transform;
-}
-
-/* A short five-line staff under the name, drawn in with the hero entrance. */
-.hero h1::after {
-  content: "";
-  display: block;
-  width: min(100%, 15rem);
-  height: 25px;
-  margin-block-start: var(--space-s);
-  border-inline-end: 1px solid var(--color-border-subtle);
-  background: repeating-linear-gradient(to bottom, var(--color-border-subtle) 0 1px, transparent 1px 6px);
-  transform-origin: left;
 }
 
 .bio-teaser {
@@ -185,14 +170,6 @@
 
   .js:not(.intro-on) .hero__inset--back { animation-delay: 700ms; }
   .js:not(.intro-on) .hero__inset--front { animation-delay: 900ms; }
-
-  .intro-on .hero h1::after {
-    transform: scaleX(0);
-  }
-
-  .js:not(.intro-on) .hero h1::after {
-    animation: staff-draw 1400ms var(--ease-out) 600ms both;
-  }
 }
 
 @keyframes word-up {
@@ -213,12 +190,6 @@
 }
 
 /* Side windows fade in from slightly larger. */
-@keyframes staff-draw {
-  from {
-    transform: scaleX(0);
-  }
-}
-
 @keyframes print-in {
   from {
     opacity: 0;
@@ -273,15 +244,13 @@
   color: var(--text);
 }
 
-/* A hollow copper note-head (a whole note) between names. */
+/* A thin upright rule between names. */
 .marquee__list li::after {
   content: "";
-  width: 0.8rem;
-  height: 0.55rem;
+  width: 1px;
+  height: 0.9em;
   margin-inline: var(--space-l);
-  border: 2px solid var(--spark);
-  border-radius: 50%;
-  rotate: -25deg;
+  background: var(--color-border-subtle);
 }
 
 @media (prefers-reduced-motion: no-preference) {
