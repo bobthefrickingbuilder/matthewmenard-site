@@ -40,7 +40,8 @@ function staticFile(pathname) {
 async function readBody(req) {
   const chunks = [];
   for await (const chunk of req) chunks.push(chunk);
-  const raw = Buffer.concat(chunks).toString("utf8");
+  req.rawBody = Buffer.concat(chunks); // For the Stripe webhook, which checks the exact bytes.
+  const raw = req.rawBody.toString("utf8");
   const type = req.headers["content-type"] || "";
   if (type.includes("application/json")) return raw ? JSON.parse(raw) : {};
   if (type.includes("application/x-www-form-urlencoded")) {

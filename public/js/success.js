@@ -20,7 +20,7 @@ if (!sessionId) {
     if (data.status !== "paid") {
       show("Payment not confirmed yet", "If you completed checkout, wait a few seconds and refresh. If it still shows this, contact Matthew with your Stripe receipt.");
     } else {
-      show("Thank you", `Your ${data.items.length > 1 ? "scores are" : "score is"} ready. A receipt is on its way to your email. Bookmark this page to download again later.`);
+      show("Thank you", `Your ${data.items.length > 1 ? "scores are" : "score is"} ready. The download ${data.items.length > 1 ? "links have" : "link has"} also been emailed to you, so you can download again later.`);
       list.replaceChildren(
         ...data.items.map((item) => {
           const li = document.createElement("li");

@@ -12,7 +12,7 @@ Hand-coded static site on Vercel. Plain HTML, CSS, and JavaScript. No framework,
 | `public/css/components.css` | Buttons, forms, cards, header, menu, footer. | yes |
 | `public/fonts/` | Self-hosted font files and their licenses. | yes |
 | `public/design/` | Internal pages: type specimen and style guide. Not linked from the site. | yes (noindex) |
-| `api/` | Serverless functions: score checkout, order check, PDF download, contact form. | runs on Vercel |
+| `api/` | Serverless functions: score checkout, order check, PDF download, the Stripe webhook that emails buyers their download links, contact and commission forms. | runs on Vercel |
 | `lib/products.js` | Score titles and prices. The one place prices are set. | no |
 | `lib/forms.js`, `lib/mail.js` | Form checking, spam defenses, and sending email through Resend. | no |
 | `partials/` | The header and footer, copied into every page. | no |

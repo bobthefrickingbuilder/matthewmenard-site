@@ -26,6 +26,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - [ ] Every visible `[TODO]` filled or its section removed. Production deploys fail until then (`npm run check:todo`). Now: Commissions (12), Teaching (1), Listen (1).
 - [ ] Resend set up (key, verified domain, both addresses) and one test message from each form on a preview.
 - [ ] One Stripe test purchase on a preview, then confirm the live key is on Production.
+- [ ] Stripe webhook for the download-link email: add the endpoint in Stripe (test mode for Preview, live mode for Production; URL and events in `.env.example`), put each signing secret in Vercel as `STRIPE_WEBHOOK_SECRET`, and confirm the test purchase's email arrives with working links. Until then the thank-you page still works, but it says the links were emailed when they were not.
 - [ ] Merge to `main` (your go-ahead), then check redirects and headers on the live domain.
 
 ## Phase 5 (built; auto-approved per your instruction)

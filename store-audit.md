@@ -26,7 +26,7 @@ How the score store works on the live site, what the rebuild keeps, and what it 
 - One product list: `lib/products.js`, plus a small `/api/products` endpoint (or a generated JSON file) that the site reads for display. Prices stay server-authoritative.
 - Cart and checkout keep the same Stripe flow, `localStorage` key, and success URL, so in-flight carts and saved success links keep working.
 - `STRIPE_SECRET_KEY` already exists on the Vercel project. Preview deployments need it too (Stripe test key for Preview, live key for Production). `[TODO: owner to confirm a Stripe test key is set for Preview in Vercel]`
-- Optional, owner to decide: add a Stripe webhook that emails the download link (via Resend, shared with the Commissions form) so a closed tab does not lose the purchase.
+- Done (2026-10-24, owner approved): `api/stripe-webhook.js` emails the buyer their download links through Resend when Stripe reports a paid checkout, so a closed tab does not lose the purchase. Needs `STRIPE_WEBHOOK_SECRET` (see `.env.example`).
 
 ## Not changing
 
