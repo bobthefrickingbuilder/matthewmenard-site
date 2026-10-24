@@ -101,6 +101,12 @@ Open `public/listen.html`. The comment above the list shows one recording; copy 
 
 The contact form and the website request form on `/commissions` both send to `COMMISSION_TO_EMAIL` through Resend. The request form also sends the visitor a short fixed confirmation (nothing they typed is echoed back, so it can't be used to spam others). To change the request form's choices (project types, pages, budget ranges), edit both `public/commissions.html` and the lists at the top of `api/commission.js`; they must match. Spam defenses: a hidden field bots fill in, a minimum fill time, and a limit of 5 messages per 10 minutes per visitor. Bots get a fake "sent" so they don't retry. No CAPTCHA.
 
+## Search engines and link previews
+
+- Each public page has a title, description, canonical link, and social preview tags in its `<head>`. A new page: copy the `<head>` from a similar page and change the title, description, and URLs.
+- After adding or removing a page, run `npm run sitemap` to rebuild `public/sitemap.xml`.
+- `npm run icons` rebuilds the favicon set and the link-preview image (`public/img/share.jpg`) from `source-media/`.
+
 ## Placeholders
 
 Missing content shows on preview pages as a dashed red box marked `[TODO: …]`. A production deploy fails while any are visible (`npm run check:todo`), so nothing unfinished goes live. `TODO.md` lists them all.

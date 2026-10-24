@@ -2,6 +2,21 @@
 
 Everything waiting on Matthew, with the file it affects. Kept current every phase.
 
+## Phase 6 (quality pass; done)
+
+- Lighthouse (mobile, local): accessibility, best practices, SEO 100 on every page tested; performance 93–99.
+- Favicon and touch icons: your existing bass clef mark, recolored to the site palette. Want a different mark? Replace `source-media/apple-touch-icon.png` and run `npm run icons`.
+- Share image for links (`public/img/share.jpg`): the choir-and-strings photo. Say if you want a different photo.
+- Search: Open Graph and Twitter tags on every public page; Person data on Home and About; composition data with price on both score pages; `sitemap.xml`, `robots.txt`.
+- [ ] **Vercel Web Analytics:** the old site used it. Keep it? (Cookieless; one script tag, a CSP line, and a sentence in the privacy policy.)
+
+## Before launch (Phase 7)
+
+- [ ] Every visible `[TODO]` filled or its section removed. Production deploys fail until then (`npm run check:todo`). Now: Commissions (12), Teaching (1), Listen (1).
+- [ ] Resend set up (key, verified domain, both addresses) and one test message from each form on a preview.
+- [ ] One Stripe test purchase on a preview, then confirm the live key is on Production.
+- [ ] Merge to `main` (your go-ahead), then check redirects and headers on the live domain.
+
 ## Phase 5 (built; auto-approved per your instruction)
 
 - [ ] Look over `/commissions` on the preview. Its placeholders block a production deploy until filled or removed:
@@ -27,7 +42,6 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - [ ] **The Golden Sunset voicing:** the live site says bass voice; the score names Baritone. Which is right? (`public/index.html`, `public/compositions/golden-sunset.html`)
 - [ ] **Years and durations** for both works. *When I am dead, my dearest* is marked © 2025 on the score; is that the composition year?
 - [ ] **Commissions teaser wording** on Home (`public/index.html`).
-- [ ] **Vercel Web Analytics:** the old site used it. Keep it on the new site? (Cookieless; needs one script tag and a line in the privacy policy.)
 
 ## Decisions (Phase 2 checkpoint)
 
@@ -67,7 +81,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 - [ ] Confirm on the first preview that each old URL redirects in one hop, including trailing-slash forms, and that `/success/?session_id=…` keeps its query string. (`vercel.json`)
 - [x] Store port: PDFs served only through `/api/download` after a paid-session check; cart, checkout, and success pages rebuilt (Phase 4).
-- [ ] Favicon and touch icon (new mark) — every page currently 404s on `/favicon.ico`. (Phase 3)
+- [x] Favicon and touch icon (Phase 6).
 - [x] CSP `frame-src` allows YouTube (no-cookie), Vimeo, Spotify, SoundCloud for click-to-load players (Phase 4).
 - [ ] CSP: prune `frame-src` to the services actually used once recordings are in (Phase 6). (`vercel.json`)
 - [ ] Rate limit on forms is per server instance (in memory). Fine at this traffic; revisit if spam gets through.
