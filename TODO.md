@@ -4,7 +4,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 ## Decisions (Phase 1 checkpoint)
 
-- [ ] **Pick a type pairing**, A or B. See `public/design/type-specimen.html`.
+- [x] Type pairing: A, Fraunces + Source Sans 3 (picked 2026-10-23).
 - [ ] **Approve tokens and style guide.** See `public/design/styleguide.html`.
 - [ ] **Paid PDFs are public on the live site.** Patch `main` now, or wait for launch? See `store-audit.md`.
 
@@ -40,4 +40,3 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - [ ] Confirm on the first preview that each old URL redirects in one hop, including trailing-slash forms, and that `/success/?session_id=…` keeps its query string. (`vercel.json`)
 - [ ] Store port: serve PDFs through `/api/download` after payment check; update `lib/products.js` file paths (still point at old `/files/`). (`store-audit.md`)
 - [ ] CSP: add `frame-src` for click-to-load players on Listen and Watch (Phase 4) and the Turnstile domain if approved (Phase 5). (`vercel.json`)
-- [ ] Delete the unused type pairing's fonts and `design.css` @font-face rules after the pick.

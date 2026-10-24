@@ -1,27 +1,5 @@
 /* Styles for the internal design pages only (type specimen, style guide). Not loaded on the site. */
 
-@font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("/fonts/bricolage-grotesque-latin-var.woff2") format("woff2");
-  font-weight: 200 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Newsreader";
-  src: url("/fonts/newsreader-latin-var.woff2") format("woff2");
-  font-weight: 200 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Newsreader";
-  src: url("/fonts/newsreader-latin-var-italic.woff2") format("woff2");
-  font-weight: 200 800;
-  font-style: italic;
-  font-display: swap;
-}
-
 .doc-header {
   padding-block: var(--space-xl) var(--space-l);
   border-bottom: 1px solid var(--color-border-subtle);
@@ -58,23 +36,6 @@ code {
   border-radius: var(--radius-l);
 }
 
-.pairing + .pairing {
-  margin-block-start: var(--space-xl);
-}
-
-.pairing--b {
-  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Newsreader", Georgia, serif;
-  font-family: var(--font-body);
-}
-
-.pairing--b h1,
-.pairing--b h2,
-.pairing--b h3,
-.pairing--b .display {
-  font-family: var(--font-display);
-}
-
 .pairing--a {
   font-family: var(--font-body);
 }
@@ -95,11 +56,6 @@ code {
   text-transform: uppercase;
 }
 
-.pairing--b .specimen-name {
-  font-weight: 600;
-  letter-spacing: -0.03em;
-}
-
 .specimen-columns {
   display: grid;
   gap: var(--space-l);
@@ -118,7 +74,6 @@ code {
 .w-400 { font-weight: 400; }
 .w-500 { font-weight: 500; }
 .w-600 { font-weight: 600; }
-.w-700 { font-weight: 700; }
 .italic { font-style: italic; }
 
 .specimen-works {
