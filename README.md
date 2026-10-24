@@ -12,8 +12,11 @@ Hand-coded static site on Vercel. Plain HTML, CSS, and JavaScript. No framework,
 | `public/css/components.css` | Buttons, forms, cards, header, menu, footer. | yes |
 | `public/fonts/` | Self-hosted font files and their licenses. | yes |
 | `public/design/` | Internal pages: type specimen and style guide. Not linked from the site. | yes (noindex) |
-| `api/` | Serverless functions (Stripe checkout and order check). | runs on Vercel |
+| `api/` | Serverless functions: score checkout, order check, PDF download, contact form. | runs on Vercel |
 | `lib/products.js` | Score titles and prices. The one place prices are set. | no |
+| `lib/forms.js`, `lib/mail.js` | Form checking, spam defenses, and sending email through Resend. | no |
+| `partials/` | The header and footer, copied into every page. | no |
+| `public/data/performances.js` | Upcoming performances list. | yes |
 | `private-scores/` | The paid PDFs. Only sent after payment is confirmed. | no |
 | `source-media/` | Original photos before optimizing. | no |
 | `scripts/contrast.mjs` | Checks every color pairing meets accessibility contrast. | no |
@@ -30,13 +33,16 @@ npx serve public
 
 Then open the address it prints.
 
-Full site including the `api/` functions:
+Full site including the forms and store:
 
 ```bash
-npx vercel dev
+npm run dev
 ```
 
-The first time, it asks you to log in to Vercel and link this folder to the existing project. Say yes to linking, and pick the current matthewmenardmusic project.
+Then open http://localhost:3000. Keys come from a `.env` file in this folder (copy `.env.example` and fill it in; it never gets committed). With no keys:
+
+- The contact form works and prints the email in the terminal instead of sending it.
+- Checkout says it is not configured yet. Put an `sk_test_…` Stripe key in `.env` to try a test purchase with card 4242 4242 4242 4242.
 
 ## Check colors
 
@@ -80,6 +86,24 @@ Open `public/data/performances.js` and add a line (the format is in the comment 
 ## Add a composition
 
 Copy `public/compositions/when-i-am-dead.html` to a new file named after the work (for example `ave-maria.html`). Change the title, description, details, and score image. Leave out anything you do not know yet; the template has commented-out sections for year, duration, premiere, recordings, and performances.
+
+## Add a recording
+
+Open `public/listen.html`. The comment above the list shows one recording; copy it into the list and change the link, title, and details. Players load only when a visitor presses Play, so nothing from YouTube or Spotify loads until then. Then delete the `[TODO]` paragraph.
+
+## Put a new score on sale
+
+1. Put the PDF in `private-scores/`.
+2. Add it to `lib/products.js` (id, title, price in cents, file name, page).
+3. On its composition page, copy the buy box from `when-i-am-dead.html` and change the `items` value to the new id.
+
+## Forms and email
+
+The contact form sends to `COMMISSION_TO_EMAIL` through Resend. Spam defenses: a hidden field bots fill in, a minimum fill time, and a limit of 5 messages per 10 minutes per visitor. Bots get a fake "sent" so they don't retry. No CAPTCHA.
+
+## Placeholders
+
+Missing content shows on preview pages as a dashed red box marked `[TODO: …]`. A production deploy fails while any are visible (`npm run check:todo`), so nothing unfinished goes live. `TODO.md` lists them all.
 
 ## Change a font
 

@@ -2,9 +2,16 @@
 
 Everything waiting on Matthew, with the file it affects. Kept current every phase.
 
+## Phase 4 (built; auto-approved per your instruction)
+
+- [ ] Look over About, Compositions, Performing, Conducting & Teaching, Listen & Watch, Contact, and Checkout on the preview.
+- [ ] **Contact form needs Resend** to actually send: a Resend API key plus `COMMISSION_TO_EMAIL` and `COMMISSION_FROM_EMAIL` in Vercel. Until then the form validates but logs instead of sending (and fails on production, so nothing is silently lost).
+- [ ] **Stripe test key for Preview** (`STRIPE_SECRET_KEY` = an `sk_test_…` key, Preview environment only) so checkout can be tried on previews without real charges.
+- [ ] Contact page lists Instagram and Facebook. Add others?
+
 ## Decisions (Phase 3 checkpoint)
 
-- [ ] **Approve Home and the composition page template.** See `/` and `/compositions/when-i-am-dead` on the preview.
+- [x] Home and the composition template approved (2026-10-23).
 - [ ] **The Golden Sunset voicing:** the live site says bass voice; the score names Baritone. Which is right? (`public/index.html`, `public/compositions/golden-sunset.html`)
 - [ ] **Years and durations** for both works. *When I am dead, my dearest* is marked © 2025 on the score; is that the composition year?
 - [ ] **Commissions teaser wording** on Home (`public/index.html`).
@@ -36,12 +43,11 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 | Higher-resolution photos, if you have them (`Documents/Matthew Menard Website/media/` is empty) | All pages | 3 |
 | Social links beyond Facebook and Instagram (YouTube, Spotify, SoundCloud?) | Footer, Contact | 3 |
 | Works list: title, year, voicing, duration, text source, premiere, performances, audio/video links | Compositions | 4 |
-| Upcoming performances: date, title, venue | Home, Performing | 4 |
+| Upcoming performances: date, title, venue (sections stay hidden until one is added) | Home, Performing | 4 |
 | Repertoire: roles and works, by category, performed vs. learned | Performing | 4 |
-| Teaching: pricing, instruments/voice focus, location, availability blurb; Cal.com account if you want booking | Conducting and Teaching | 4 |
-| Audio and video links | Listen and Watch | 4 |
+| Teaching: pricing, instruments/voice focus, location, availability blurb; Cal.com account if you want booking (visible placeholder on the page now; blocks launch) | Conducting and Teaching | 4 |
+| Audio and video links: URL, title, performers, year (visible placeholder on the page now; blocks launch) | Listen and Watch | 4 |
 | Planning docs from claude.ai: "Site Design", "Hosting & Payment Questionnaire", "Studio Launch Roadmap", "Stripe payments roadmap" | Store port, Commissions | 4–5 |
-| Stripe **test** key set for Preview in Vercel | Store testing on previews | 4 |
 | Refund policy: remove "Choral Licensing Tiers" section? Soften "sample pages, skill level" line? | `/refund` | 4 |
 | Commissions: audience wording, package names/scope/prices, budget ranges, FAQ answers | `/commissions` | 5 |
 | Commissions portfolio: URLs, screenshots, and permission for ORYC, the luthier site, Esmée Peets | `/commissions` | 5 |
@@ -50,7 +56,8 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 ## Technical follow-ups (mine)
 
 - [ ] Confirm on the first preview that each old URL redirects in one hop, including trailing-slash forms, and that `/success/?session_id=…` keeps its query string. (`vercel.json`)
-- [ ] Store port: serve PDFs through `/api/download` after payment check; update `lib/products.js` file paths (still point at old `/files/`). (`store-audit.md`)
-- [ ] Store port (Phase 4): composition pages link to `/checkout?add=<id>`; the checkout page must read that and add the score to the cart.
+- [x] Store port: PDFs served only through `/api/download` after a paid-session check; cart, checkout, and success pages rebuilt (Phase 4).
 - [ ] Favicon and touch icon (new mark) — every page currently 404s on `/favicon.ico`. (Phase 3)
-- [ ] CSP: add `frame-src` for click-to-load players on Listen and Watch (Phase 4) and the Turnstile domain if approved (Phase 5). (`vercel.json`)
+- [x] CSP `frame-src` allows YouTube (no-cookie), Vimeo, Spotify, SoundCloud for click-to-load players (Phase 4).
+- [ ] CSP: prune `frame-src` to the services actually used once recordings are in (Phase 6). (`vercel.json`)
+- [ ] Rate limit on forms is per server instance (in memory). Fine at this traffic; revisit if spam gets through.
