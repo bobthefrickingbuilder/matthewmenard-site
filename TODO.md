@@ -53,7 +53,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - [x] Home and the composition template approved (2026-10-23).
 - [ ] **The Golden Sunset voicing:** the live site says bass voice; the score names Baritone. Which is right? (`public/index.html`, `public/compositions/golden-sunset.html`)
 - [ ] **Years and durations** for both works. *When I am dead, my dearest* is marked © 2025 on the score; is that the composition year?
-- [ ] **Commissions teaser wording** on Home (`public/index.html`).
+- [x] **Commissions teaser wording** on Home: teaser removed from Home (2026-10-24, owner request). The Websites page stays in the menu.
 
 ## Decisions (Phase 2 checkpoint)
 
