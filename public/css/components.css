@@ -347,11 +347,11 @@ fieldset {
 }
 
 .nav__list a:hover,
-.nav__list a[aria-current="page"] {
+.nav__list a[aria-current] {
   color: var(--text);
 }
 
-.nav__list a[aria-current="page"] {
+.nav__list a[aria-current] {
   text-decoration: underline;
   text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
@@ -444,7 +444,7 @@ fieldset {
   text-decoration: none;
 }
 
-.mobile-menu__list a[aria-current="page"] {
+.mobile-menu__list a[aria-current] {
   color: var(--accent);
 }
 
@@ -491,6 +491,11 @@ fieldset {
   color: var(--text);
 }
 
+.site-footer ul.cluster {
+  display: flex;
+  align-content: start;
+}
+
 .site-footer__legal {
   margin-block-start: var(--space-xl);
   padding-block-start: var(--space-m);
@@ -501,4 +506,146 @@ fieldset {
   width: 1.25rem;
   height: 1.25rem;
   fill: currentColor;
+}
+
+/* ---- Photos (one tonal treatment across the site) ------------------------ */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background: var(--ground-800);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.04) brightness(0.96);
+}
+
+/* Plum wash ties every photo to the palette. */
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--panel);
+  mix-blend-mode: soft-light;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.photo figcaption,
+figure > figcaption {
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+/* Score pages are shown as paper: no wash, no filter. */
+.score-sample {
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  box-shadow: var(--shadow-3);
+}
+
+/* ---- Section heading with a trailing link -------------------------------- */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-s) var(--space-l);
+  margin-block-end: var(--space-l);
+}
+
+/* ---- Breadcrumb ----------------------------------------------------------- */
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs);
+  list-style: none;
+  padding: 0;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-inline-end: var(--space-3xs);
+  color: var(--text-subtle);
+}
+
+/* ---- Definition list of facts (composition details) ---------------------- */
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2xs) var(--space-m);
+}
+
+.facts dt {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-block-start: 0.2em;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+/* ---- Event list ----------------------------------------------------------- */
+.events {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.events li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: var(--space-s);
+  padding-block: var(--space-s);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.events time {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ---- Long-form text (policies, bios) -------------------------------------- */
+.prose {
+  max-width: var(--measure);
+}
+
+.prose > * + * {
+  margin-block-start: var(--space-s);
+}
+
+.prose > h2 {
+  margin-block-start: var(--space-xl);
+  font-size: var(--step-2);
+}
+
+.prose > h3 {
+  margin-block-start: var(--space-l);
+}
+
+.prose ul,
+.prose ol {
+  padding-inline-start: 1.25em;
+}
+
+.prose li + li {
+  margin-block-start: var(--space-3xs);
+}
+
+/* ---- Page header for inner pages ----------------------------------------- */
+.page-head {
+  padding-block: var(--space-2xl) var(--space-xl);
+}
+
+.page-head > * + * {
+  margin-block-start: var(--space-s);
 }
