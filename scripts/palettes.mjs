@@ -1,6 +1,7 @@
 // Run: node scripts/palettes.mjs. Checks four candidate palettes against the site's @pairings and writes public/design/palettes.css.
 import { readFileSync, writeFileSync } from "node:fs";
-const SITE = new URL("../", import.meta.url).pathname.replace(/^/([A-Za-z]:)/, "$1");
+import { fileURLToPath } from "node:url";
+const SITE = fileURLToPath(new URL("../", import.meta.url));
 
 const DARK_SHADOW = (hsl) => ({
   "shadow-color": hsl,
