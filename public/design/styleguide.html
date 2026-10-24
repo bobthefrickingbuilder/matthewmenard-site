@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en-CA" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style guide — Matthew Menard (internal)</title>
+  <meta name="robots" content="noindex">
+  <script>document.documentElement.classList.replace("no-js","js")</script>
+  <link rel="preload" href="/fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/design/design.css">
+  <script type="module" src="/js/nav.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrapper site-header__inner">
+      <a class="wordmark" href="/">Matthew Menard</a>
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="/about">About</a></li>
+          <li><a href="/compositions">Compositions</a></li>
+          <li><a href="/performing">Performing</a></li>
+          <li><a href="/conducting-teaching">Conducting &amp; Teaching</a></li>
+          <li><a href="/listen">Listen</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li class="nav__service"><a href="/commissions">Commission a Website</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+    <div class="mobile-menu__top">
+      <a class="wordmark" href="/">Matthew Menard</a>
+      <button class="menu-toggle" type="button" data-menu-close>Close</button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/compositions">Compositions</a></li>
+      <li><a href="/performing">Performing</a></li>
+      <li><a href="/conducting-teaching">Conducting &amp; Teaching</a></li>
+      <li><a href="/listen">Listen</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li class="mobile-menu__service"><a href="/commissions">Commission a Website</a></li>
+    </ul>
+  </div>
+
+  <main id="main" class="wrapper">
+    <header class="doc-header stack">
+      <p class="eyebrow">Internal · Phase 1</p>
+      <h1>Bass Violet style guide</h1>
+      <p class="lead measure">Every color, size, and component the site is built from. Tab through the page to check focus rings. Narrow the window below 1200px to see the mobile menu button.</p>
+      <p class="doc-note">Shown with pairing A (Fraunces + Source Sans 3). Switching to B changes two lines in <code>tokens.css</code>.</p>
+    </header>
+
+    <section class="doc-section" aria-labelledby="colors">
+      <h2 id="colors">Color</h2>
+      <div class="stack stack-l">
+        <div class="stack">
+          <h3>Core</h3>
+          <div class="swatches">
+            <div class="swatch"><div class="swatch__chip chip-ground"></div><strong>Aubergine</strong><code>--ground</code><span class="meta">#1B1020 · page background</span></div>
+            <div class="swatch"><div class="swatch__chip chip-panel"></div><strong>Plum</strong><code>--panel</code><span class="meta">#5A2E6B · fills only, never text on ground</span></div>
+            <div class="swatch"><div class="swatch__chip chip-text"></div><strong>Parchment</strong><code>--text</code><span class="meta">#F4EFE8 · body text</span></div>
+            <div class="swatch"><div class="swatch__chip chip-accent"></div><strong>Lilac</strong><code>--accent</code><span class="meta">#C9B8E0 · links, focus, accents</span></div>
+            <div class="swatch"><div class="swatch__chip chip-spark"></div><strong>Ember</strong><code>--spark</code><span class="meta">#E8743B · one primary action per view</span></div>
+          </div>
+        </div>
+        <div class="stack">
+          <h3>Derived</h3>
+          <div class="swatches">
+            <div class="swatch"><div class="swatch__chip chip-ground-950"></div><code>--ground-950</code><span class="meta">Footer, menu</span></div>
+            <div class="swatch"><div class="swatch__chip chip-ground-850"></div><code>--ground-850</code><span class="meta">Cards</span></div>
+            <div class="swatch"><div class="swatch__chip chip-ground-800"></div><code>--ground-800</code><span class="meta">Inputs</span></div>
+            <div class="swatch"><div class="swatch__chip chip-ground-700"></div><code>--ground-700</code><span class="meta">Disabled fill</span></div>
+            <div class="swatch"><div class="swatch__chip chip-panel-700"></div><code>--panel-700</code><span class="meta">Plum pressed</span></div>
+            <div class="swatch"><div class="swatch__chip chip-panel-400"></div><code>--panel-400</code><span class="meta">Plum hover</span></div>
+            <div class="swatch"><div class="swatch__chip chip-panel-200"></div><code>--panel-200</code><span class="meta">Control borders (4.1:1)</span></div>
+            <div class="swatch"><div class="swatch__chip chip-text-muted"></div><code>--text-muted</code><span class="meta">Secondary text (10.3:1)</span></div>
+            <div class="swatch"><div class="swatch__chip chip-text-subtle"></div><code>--text-subtle</code><span class="meta">Tertiary text (7.2:1)</span></div>
+            <div class="swatch"><div class="swatch__chip chip-accent-hover"></div><code>--accent-hover</code><span class="meta">Link hover</span></div>
+            <div class="swatch"><div class="swatch__chip chip-accent-pressed"></div><code>--accent-pressed</code><span class="meta">Lilac pressed</span></div>
+            <div class="swatch"><div class="swatch__chip chip-spark-hover"></div><code>--spark-hover</code><span class="meta">Ember hover</span></div>
+            <div class="swatch"><div class="swatch__chip chip-spark-pressed"></div><code>--spark-pressed</code><span class="meta">Ember pressed</span></div>
+            <div class="swatch"><div class="swatch__chip chip-danger"></div><code>--danger</code><span class="meta">Form errors (9.4:1)</span></div>
+            <div class="swatch"><div class="swatch__chip chip-success"></div><code>--success</code><span class="meta">Form success (11.9:1)</span></div>
+          </div>
+        </div>
+        <p class="doc-note">All 41 declared pairings pass WCAG AA. <code>npm run check:contrast</code> runs on every deploy and blocks it if a pairing fails.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" aria-labelledby="type">
+      <h2 id="type">Type scale</h2>
+      <div class="type-scale">
+        <div><code>--step-6</code><span class="step-6 font-display">Matthew Menard</span></div>
+        <div><code>--step-5</code><span class="step-5 font-display">Display</span></div>
+        <div><code>--step-4</code><span class="step-4 font-display">Heading 1</span></div>
+        <div><code>--step-3</code><span class="step-3 font-display">Heading 2</span></div>
+        <div><code>--step-2</code><span class="step-2 font-display">Heading 3</span></div>
+        <div><code>--step-1</code><span class="step-1">Lead paragraph and heading 4</span></div>
+        <div><code>--step-0</code><span class="step-0">Body text. Choral and sacred music for voices, written in Ottawa.</span></div>
+        <div><code>--step--1</code><span class="step--1">Captions, meta, form hints.</span></div>
+      </div>
+
+      <div class="stack measure doc-section">
+        <p class="eyebrow">Eyebrow label</p>
+        <h3>Prose sample</h3>
+        <p class="lead">A lead paragraph sets up the page in one or two sentences.</p>
+        <p>Body text runs at a comfortable measure with generous line height. <a href="#type">Inline links</a> are lilac with an underline. <strong>Strong text</strong> and <em>italic titles</em> work as expected.</p>
+        <blockquote>Each work is my invitation—to walk the emotional path that gave it life.</blockquote>
+        <p class="meta">Meta line · 2026 · Bass and piano</p>
+      </div>
+    </section>
+
+    <section class="doc-section" aria-labelledby="buttons">
+      <h2 id="buttons">Buttons and links</h2>
+      <div class="stack stack-l">
+        <div class="cluster">
+          <a class="button button--primary" href="#buttons">Primary (ember)</a>
+          <a class="button button--secondary" href="#buttons">Secondary (lilac)</a>
+          <a class="button" href="#buttons">Outline</a>
+          <button class="button" type="button" disabled>Disabled</button>
+          <a class="link-arrow" href="#buttons">View score</a>
+        </div>
+        <p class="doc-note">Ember appears once per view. Hover and press each button; tab to see the 2px lilac ring at 2px offset. Disabled uses a dashed border so it does not rely on faded text.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" aria-labelledby="forms">
+      <h2 id="forms">Forms</h2>
+      <form class="form-demo" action="#forms" novalidate>
+        <div class="field">
+          <label for="sg-name">Name <span class="required">(required)</span></label>
+          <input class="input" id="sg-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field field--error">
+          <label for="sg-email">Email <span class="required">(required)</span></label>
+          <input class="input" id="sg-email" name="email" type="email" autocomplete="email" required aria-invalid="true" aria-describedby="sg-email-error" value="matthew@">
+          <p class="error-message" id="sg-email-error">Enter a full email address, like name@example.com.</p>
+        </div>
+        <div class="field">
+          <label for="sg-type">Project type <span class="required">(required)</span></label>
+          <select class="select" id="sg-type" name="type" required>
+            <option value="">Choose one</option>
+            <option>Musician</option>
+            <option>Ensemble or choir</option>
+            <option>Artist</option>
+            <option>Small business</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sg-message">What the site needs to do <span class="required">(required)</span></label>
+          <p class="hint" id="sg-message-hint">A few sentences is enough.</p>
+          <textarea class="textarea" id="sg-message" name="message" aria-describedby="sg-message-hint" required></textarea>
+        </div>
+        <fieldset class="field">
+          <legend>Pages needed</legend>
+          <label class="choice"><input type="checkbox" name="pages" value="home"> Home</label>
+          <label class="choice"><input type="checkbox" name="pages" value="about"> About</label>
+          <label class="choice"><input type="checkbox" name="pages" value="events"> Events</label>
+        </fieldset>
+        <label class="choice"><input type="checkbox" name="consent" required> <span>I agree to my message being stored so Matthew can reply. <a href="/privacy">Privacy notice</a></span></label>
+        <div class="status status--success" role="status">Thank you. Your request was sent.</div>
+        <div class="status status--error" role="alert">The request could not be sent. Try again, or email directly.</div>
+        <div><button class="button button--primary" type="submit">Send request</button></div>
+      </form>
+    </section>
+
+    <section class="doc-section" aria-labelledby="cards">
+      <h2 id="cards">Cards and panels</h2>
+      <div class="stack stack-l">
+        <div class="grid">
+          <article class="card">
+            <p class="eyebrow">Art song</p>
+            <h3><a href="#cards">When I am dead, my dearest</a></h3>
+            <p>A setting of Christina Rossetti’s poem on grief, and the quiet it leaves behind.</p>
+            <div class="cluster"><span class="tag">Bass and piano</span></div>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Art song</p>
+            <h3><a href="#cards">The Golden Sunset</a></h3>
+            <p>A setting of Samuel Longfellow’s poem on the passage between day and night.</p>
+            <div class="cluster"><span class="tag">Voice and piano</span></div>
+          </article>
+        </div>
+        <div class="panel stack">
+          <p class="eyebrow">Commissions</p>
+          <h3>Plum feature panel</h3>
+          <p>Used for teasers that need to stand apart from the page: the Commissions teaser on Home, the short bio. Parchment and lilac text only.</p>
+          <a class="link-arrow" href="#cards">Learn more</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" aria-labelledby="space">
+      <h2 id="space">Space, radii, shadows</h2>
+      <div class="stack stack-l">
+        <div class="stack">
+          <div class="space-row"><code>3xs</code><div class="space-bar bar-3xs"></div></div>
+          <div class="space-row"><code>2xs</code><div class="space-bar bar-2xs"></div></div>
+          <div class="space-row"><code>xs</code><div class="space-bar bar-xs"></div></div>
+          <div class="space-row"><code>s</code><div class="space-bar bar-s"></div></div>
+          <div class="space-row"><code>m</code><div class="space-bar bar-m"></div></div>
+          <div class="space-row"><code>l</code><div class="space-bar bar-l"></div></div>
+          <div class="space-row"><code>xl</code><div class="space-bar bar-xl"></div></div>
+          <div class="space-row"><code>2xl</code><div class="space-bar bar-2xl"></div></div>
+          <div class="space-row"><code>3xl</code><div class="space-bar bar-3xl"></div></div>
+        </div>
+        <div class="shadow-demo">
+          <div class="shadow-1"><code>--shadow-1</code></div>
+          <div class="shadow-2"><code>--shadow-2</code></div>
+          <div class="shadow-3"><code>--shadow-3</code></div>
+        </div>
+        <p class="doc-note">Radii: 4px inputs and tags, 8px buttons and cards, 16px panels and media.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" aria-labelledby="chrome">
+      <h2 id="chrome">Header, mobile menu, footer</h2>
+      <div class="stack stack-l">
+        <p class="doc-note">The live header is at the top of this page. Below, the full-screen mobile menu shown open, and the footer.</p>
+        <div class="demo-frame" aria-hidden="true" inert>
+          <div class="mobile-menu">
+            <div class="mobile-menu__top">
+              <span class="wordmark">Matthew Menard</span>
+              <span class="menu-toggle">Close</span>
+            </div>
+            <ul class="mobile-menu__list">
+              <li><a href="/" aria-current="page">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/compositions">Compositions</a></li>
+              <li><a href="/performing">Performing</a></li>
+              <li class="mobile-menu__service"><a href="/commissions">Commission a Website</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="site-footer__grid">
+        <div class="stack">
+          <a class="wordmark" href="/">Matthew Menard</a>
+          <p>Bass, composer, and choral musician in Ottawa.</p>
+          <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a>
+        </div>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/compositions">Compositions</a></li>
+            <li><a href="/performing">Performing</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/commissions">Commission a Website</a></li>
+          </ul>
+        </nav>
+        <ul class="cluster" aria-label="Social">
+          <li><a href="https://instagram.com/matthewmenardbass" rel="me"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg><span class="visually-hidden">Instagram</span></a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61580524025330" rel="me"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6a22 22 0 0 0-2.5-.1c-2.4 0-4.1 1.5-4.1 4.2v2.2H7.5V14h2.7v8h3.3Z"/></svg><span class="visually-hidden">Facebook</span></a></li>
+        </ul>
+      </div>
+      <p class="site-footer__legal">© 2026 Matthew Menard. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
