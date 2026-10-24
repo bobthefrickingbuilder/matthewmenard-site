@@ -1,38 +1,24 @@
-const Stripe = require("stripe");
 const PRODUCTS = require("../lib/products");
+const { stripeClient, paidItems } = require("../lib/stripe");
 
+// Confirms a checkout session. Returns download links only when it is paid.
 module.exports = async function handler(req, res) {
-  if (req.method !== "GET") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
-  }
+  if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
+  const stripe = stripeClient();
+  if (!stripe) return res.status(500).json({ error: "Checkout is not configured yet." });
 
-  if (!process.env.STRIPE_SECRET_KEY) {
-    res.status(500).json({ error: "Stripe is not configured yet (missing STRIPE_SECRET_KEY)." });
-    return;
-  }
-
-  const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
-  const sessionId = req.query.session_id;
-
-  if (!sessionId) {
-    res.status(400).json({ error: "Missing session_id." });
-    return;
-  }
-
+  res.setHeader("Cache-Control", "private, no-store");
   try {
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
-    const ids = (session.metadata && session.metadata.items ? session.metadata.items.split(",") : []).filter(
-      (id) => PRODUCTS[id]
-    );
-    const items = ids.map((id) => ({
+    const result = await paidItems(stripe, req.query.session_id);
+    if (!result) return res.status(400).json({ error: "Missing or invalid order reference." });
+    const sid = encodeURIComponent(req.query.session_id);
+    const items = result.ids.map((id) => ({
       id,
       title: PRODUCTS[id].title,
-      fileUrl: PRODUCTS[id].fileUrl,
+      download: `/api/download?session_id=${sid}&id=${encodeURIComponent(id)}`,
     }));
-
-    res.status(200).json({ status: session.payment_status, items });
-  } catch (err) {
-    res.status(404).json({ error: "Order not found." });
+    return res.status(200).json({ status: result.paid ? "paid" : "unpaid", items });
+  } catch (error) {
+    return res.status(404).json({ error: "Order not found." });
   }
 };
