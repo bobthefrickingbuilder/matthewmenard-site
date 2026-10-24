@@ -138,6 +138,10 @@
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-fast: 150ms;
   --dur-med: 250ms;
+  --dur-slow: 600ms;      /* Image zooms, menu entrances. */
+  --dur-reveal: 900ms;    /* Content rising into view on scroll. */
+  --reveal-distance: 1.5rem;
+  --reveal-stagger: 90ms; /* Gap between items revealed together. */
 }
 
 /* @pairings
@@ -182,4 +186,8 @@
    danger          on ground-800      ui
    spark           on ground          ui
    panel           on ground          decor
+   text            on ground-950      text
+   text-muted      on ground-950      text
+   accent          on ground-950      text
+   spark           on ground-950      ui
 */

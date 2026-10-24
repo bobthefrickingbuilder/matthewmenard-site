@@ -794,3 +794,206 @@ h2 + .gallery {
   font-size: var(--step-1);
   font-weight: 500;
 }
+
+/* ==== Motion ================================================================
+   Everything here is off with reduced motion (see base.css and the media
+   queries below). Content never depends on it: without JS it shows at once.
+
+   Scroll reveal: blocks start lowered and transparent, and /js/motion.js adds
+   .is-in as each one scrolls into view, then .reveal-done once it has settled
+   so hover effects work normally. Keep this selector list in sync with
+   REVEAL in /js/motion.js. */
+@media (prefers-reduced-motion: no-preference) {
+  .js :is(
+    main .page-head > *, main .section-head, main .section > h2, main .section > .stack,
+    main .grid > *, main .gallery > *, main .roles > li, main .process > li, main .faq__item,
+    main .events > li, main .split > *, main .panel, main .prose > *, main .bio-teaser > *,
+    main .contact-cta > *, main .marquee, main .explore > li, main .work__aside, main .facts,
+    main .score-sample, main .work__section, main .contact-layout > *, main .request-form
+  ):not(.is-in) {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance));
+  }
+
+  .js .is-in:not(.reveal-done) {
+    transition: opacity var(--dur-reveal) ease-out, transform var(--dur-reveal) var(--ease-out);
+    transition-delay: calc(var(--reveal-i, 0) * var(--reveal-stagger));
+  }
+
+  /* Failsafe: if motion.js never runs, show everything after a moment. */
+  .js:not(.motion-ready) main :not(.hero, .hero *, .marquee *) {
+    animation: reveal-failsafe 0s 2.5s forwards;
+  }
+}
+
+@keyframes reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Page transitions between pages (Chrome, Edge, Safari; others just load).
+   The header stays put while the page underneath cross-fades. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  .site-header {
+    view-transition-name: site-header;
+  }
+
+  ::view-transition-old(root) {
+    animation: page-out 220ms var(--ease-in-out) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-in 420ms var(--ease-out) both;
+  }
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+/* Nav: underline grows from the left on hover and marks the current page. */
+.nav__list a {
+  position: relative;
+  transition: color var(--dur-med) ease;
+}
+
+.nav__list a[aria-current] {
+  text-decoration: none;
+}
+
+.nav__list a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.nav__list a:hover::after,
+.nav__list a[aria-current]::after {
+  transform: scaleX(1);
+}
+
+/* Buttons: a small lift on hover, a press on click. */
+.button {
+  transition: background-color var(--dur-med) ease, color var(--dur-med) ease,
+    border-color var(--dur-med) ease, transform var(--dur-med) var(--ease-out),
+    box-shadow var(--dur-med) ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+  transition-duration: 80ms;
+}
+
+/* Cards and photos: images ease in a little closer on hover. */
+.card {
+  transition: border-color var(--dur-med) ease, transform var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-3);
+}
+
+.card__media img,
+.gallery .photo img,
+.split .photo img,
+.bio-teaser .photo img {
+  transition: transform 1.2s var(--ease-out), object-position 1.6s var(--ease-out);
+}
+
+.card:hover .card__media img,
+.gallery .photo:hover img,
+.split .photo:hover img,
+.bio-teaser .photo:hover img {
+  transform: scale(1.04);
+}
+
+/* Score cards: the page scrolls down a little, as if reading on. */
+.work-card:hover .card__media img {
+  object-position: center 30%;
+}
+
+.link-arrow::after {
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+/* FAQ answers and form results ease in. */
+@media (prefers-reduced-motion: no-preference) {
+  details[open] > :not(summary) {
+    animation: rise-in var(--dur-slow) var(--ease-out);
+  }
+
+  .status--success,
+  .error-message {
+    animation: rise-in var(--dur-med) var(--ease-out);
+  }
+
+  /* Mobile menu: fades in, links rise one after another. */
+  .mobile-menu:not([hidden]) {
+    animation: fade-in var(--dur-med) ease-out;
+  }
+
+  .mobile-menu:not([hidden]) li {
+    animation: rise-in var(--dur-slow) var(--ease-out) both;
+  }
+
+  .mobile-menu:not([hidden]) li:nth-child(2) { animation-delay: 40ms; }
+  .mobile-menu:not([hidden]) li:nth-child(3) { animation-delay: 80ms; }
+  .mobile-menu:not([hidden]) li:nth-child(4) { animation-delay: 120ms; }
+  .mobile-menu:not([hidden]) li:nth-child(5) { animation-delay: 160ms; }
+  .mobile-menu:not([hidden]) li:nth-child(6) { animation-delay: 200ms; }
+  .mobile-menu:not([hidden]) li:nth-child(7) { animation-delay: 240ms; }
+  .mobile-menu:not([hidden]) li:nth-child(n + 8) { animation-delay: 280ms; }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+/* Header gains a shadow once the page has scrolled (class set by motion.js). */
+.site-header {
+  transition: box-shadow var(--dur-slow) ease, background-color var(--dur-slow) ease;
+}
+
+.is-scrolled .site-header {
+  box-shadow: var(--shadow-2);
+}
