@@ -2,9 +2,17 @@
 
 Everything waiting on Matthew, with the file it affects. Kept current every phase.
 
+## Decisions (Phase 3 checkpoint)
+
+- [ ] **Approve Home and the composition page template.** See `/` and `/compositions/when-i-am-dead` on the preview.
+- [ ] **The Golden Sunset voicing:** the live site says bass voice; the score names Baritone. Which is right? (`public/index.html`, `public/compositions/golden-sunset.html`)
+- [ ] **Years and durations** for both works. *When I am dead, my dearest* is marked © 2025 on the score; is that the composition year?
+- [ ] **Commissions teaser wording** on Home (`public/index.html`).
+- [ ] **Vercel Web Analytics:** the old site used it. Keep it on the new site? (Cookieless; needs one script tag and a line in the privacy policy.)
+
 ## Decisions (Phase 2 checkpoint)
 
-- [ ] **Approve intro feel and timing.** Tune at `/prototype/intro` on the preview; send the address-bar link when it feels right.
+- [x] Intro feel and timing approved as is (2026-10-23).
 
 ## Decisions (Phase 1 checkpoint)
 
@@ -43,5 +51,6 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 - [ ] Confirm on the first preview that each old URL redirects in one hop, including trailing-slash forms, and that `/success/?session_id=…` keeps its query string. (`vercel.json`)
 - [ ] Store port: serve PDFs through `/api/download` after payment check; update `lib/products.js` file paths (still point at old `/files/`). (`store-audit.md`)
+- [ ] Store port (Phase 4): composition pages link to `/checkout?add=<id>`; the checkout page must read that and add the score to the cart.
 - [ ] Favicon and touch icon (new mark) — every page currently 404s on `/favicon.ico`. (Phase 3)
 - [ ] CSP: add `frame-src` for click-to-load players on Listen and Watch (Phase 4) and the Turnstile domain if approved (Phase 5). (`vercel.json`)

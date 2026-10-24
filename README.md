@@ -63,7 +63,23 @@ Each page is one HTML file in `public/`. Open it, find the sentence, change it, 
 
 ## Swap a photo
 
-Details are filled in once images are set up in Phase 3.
+1. Put the new photo in `source-media/`, replacing the old file with the same name (for example `source-media/photos/headshot.jpg`).
+2. Run `npm run images`. It rebuilds every size and format in `public/img/`.
+3. If the new photo has a different shape (portrait instead of landscape), update the `width` and `height` numbers on its `<img>` tag to the new photo's pixel size. That keeps the page from jumping while it loads.
+
+To add a new photo, add a line for it in the list at the top of `scripts/images.mjs`, then run `npm run images`.
+
+## Change the header or footer
+
+Edit `partials/header.html` or `partials/footer.html`, then run `npm run partials`. It copies the change into every page and marks the current page in the menu.
+
+## Add a performance
+
+Open `public/data/performances.js` and add a line (the format is in the comment at the top). Past dates hide themselves. Home shows the next three.
+
+## Add a composition
+
+Copy `public/compositions/when-i-am-dead.html` to a new file named after the work (for example `ave-maria.html`). Change the title, description, details, and score image. Leave out anything you do not know yet; the template has commented-out sections for year, duration, premiere, recordings, and performances.
 
 ## Change a font
 
