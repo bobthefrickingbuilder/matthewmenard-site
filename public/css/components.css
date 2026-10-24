@@ -239,24 +239,24 @@ fieldset {
   box-shadow: var(--shadow-2);
 }
 
-.card h3 a {
+.card :is(h2, h3) a {
   color: var(--color-heading);
   text-decoration: none;
 }
 
 /* Whole card clickable via the heading link. */
-.card h3 a::after {
+.card :is(h2, h3) a::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
 }
 
-.card h3 a:focus-visible {
+.card :is(h2, h3) a:focus-visible {
   outline: none;
 }
 
-.card:has(h3 a:focus-visible) {
+.card:has(:is(h2, h3) a:focus-visible) {
   outline: var(--focus-width) solid var(--color-focus);
   outline-offset: var(--focus-offset);
 }
@@ -516,6 +516,11 @@ fieldset {
   background: var(--ground-800);
 }
 
+.photo picture {
+  display: block;
+  height: 100%;
+}
+
 .photo img {
   width: 100%;
   height: 100%;
@@ -648,4 +653,143 @@ figure > figcaption {
 
 .page-head > * + * {
   margin-block-start: var(--space-s);
+}
+
+/* ---- Visible placeholder (previews only; blocked on production by check:todo) ---- */
+.todo {
+  padding: var(--space-s) var(--space-m);
+  border: 2px dashed var(--danger);
+  border-radius: var(--radius-m);
+  color: var(--danger);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: var(--step--1);
+}
+
+/* Spam trap: off-screen for people, still in the form for bots. */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Heading level and visual size kept separate. */
+.h3 {
+  font-size: var(--step-2);
+  line-height: var(--leading-snug);
+}
+
+/* Button that looks like a link. */
+.text-button {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-link);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Heading styled one step down, when the document outline needs h2 but the design needs smaller. */
+.h4 {
+  font-size: var(--step-1);
+}
+
+.buy form .button {
+  width: 100%;
+}
+
+/* Composition card: score page as the image, cropped to the title area. */
+.work-card .card__media {
+  aspect-ratio: 16 / 9;
+  background: var(--text);
+}
+
+.work-card .card__media img {
+  object-position: top;
+}
+
+/* Photo grid (About, Performing). One column on phones, two on tablets,
+   three on desktop where wide photos span two. Fixed rows and dense packing
+   keep the tiles free of holes. */
+.gallery {
+  display: grid;
+  gap: var(--space-s);
+}
+
+h2 + .gallery {
+  margin-top: var(--space-m);
+}
+
+.gallery .photo {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-m);
+}
+
+.gallery .photo--wide {
+  aspect-ratio: 3 / 2;
+}
+
+@media (min-width: 36rem) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: clamp(16rem, 40vw, 22rem);
+    grid-auto-flow: dense;
+  }
+
+  .gallery .photo,
+  .gallery .photo--wide {
+    aspect-ratio: auto;
+  }
+}
+
+@media (min-width: 52rem) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: clamp(18rem, 26vw, 24rem);
+  }
+
+  .gallery .photo--wide {
+    grid-column: span 2;
+  }
+}
+
+/* Two columns: text and a photo. */
+.split {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+@media (min-width: 52rem) {
+  .split {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .split--reverse {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+}
+
+.split .photo {
+  aspect-ratio: 4 / 5;
+}
+
+/* Plain list of roles: name on one line, role underneath. */
+.roles {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.roles li {
+  padding-block-end: var(--space-s);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.roles strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 500;
 }

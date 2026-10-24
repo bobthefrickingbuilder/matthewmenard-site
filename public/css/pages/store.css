@@ -1,0 +1,38 @@
+/* Checkout and order pages. */
+
+.checkout {
+  max-width: 40rem;
+}
+
+.cart {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.cart li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: var(--space-s);
+  padding-block: var(--space-s);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.cart__remove {
+  min-height: 2.75rem;
+  padding-inline: var(--space-xs);
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.cart__remove:hover {
+  color: var(--text);
+}
+
+.cart__total {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--step-1);
+}

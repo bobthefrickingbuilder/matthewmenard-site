@@ -51,15 +51,6 @@
   margin-block-start: var(--space-s);
 }
 
-.work-card .card__media {
-  aspect-ratio: 16 / 9;
-  background: var(--text);
-}
-
-.work-card .card__media img {
-  object-position: top;
-}
-
 .bio-teaser {
   display: grid;
   gap: var(--space-xl);

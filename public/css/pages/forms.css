@@ -1,0 +1,25 @@
+/* Pages with a main form: Contact, Commissions. */
+
+.contact-layout {
+  display: grid;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 56rem) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  }
+}
+
+.form-stack {
+  display: grid;
+  gap: var(--space-m);
+  max-width: 40rem;
+}
+
+.form-stack .field-row {
+  display: grid;
+  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+}

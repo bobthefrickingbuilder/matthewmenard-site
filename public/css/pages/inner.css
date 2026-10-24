@@ -1,0 +1,18 @@
+/* About, Performing, Conducting & Teaching. */
+
+.split .about-photo {
+  aspect-ratio: 4 / 3;
+}
+
+.page-head.split {
+  align-items: end;
+}
+
+.measure-panel {
+  max-width: calc(var(--measure) + 2 * var(--space-l));
+}
+
+.photo--banner {
+  aspect-ratio: 3 / 2;
+  max-height: 80svh;
+}
