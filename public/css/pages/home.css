@@ -166,12 +166,13 @@
   opacity: 0.8;
 }
 
-/* Each word rises out of its own mask. */
+/* Each word rises out of its own mask. The padding gives italic letters room to
+   lean past their box (the "d" in Menard); the negative margin cancels it in the layout. */
 .hero__word {
   display: inline-block;
   overflow: hidden;
-  padding-block-end: 0.12em;
-  margin-block-end: -0.12em;
+  padding: 0.1em 0.2em 0.12em;
+  margin: -0.1em -0.2em -0.12em;
 }
 
 .hero__word > span {
