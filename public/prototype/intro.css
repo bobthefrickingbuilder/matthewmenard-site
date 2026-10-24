@@ -1,0 +1,164 @@
+/* Intro overlay. Hidden unless <html> has .intro-on (set before first paint by the inline
+   head script). If intro.js never starts, the failsafe animation hides it after 3s. */
+
+.intro,
+.intro-skip {
+  display: none;
+}
+
+.intro-on .intro {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--ground);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  animation: intro-failsafe 0s 3s forwards;
+}
+
+.intro-on .intro-skip {
+  display: inline-flex;
+  animation: intro-failsafe 0s 3s forwards;
+}
+
+.intro.is-running,
+.intro-skip.is-running {
+  animation: none;
+}
+
+@keyframes intro-failsafe {
+  to {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* ---- The name ------------------------------------------------------------- */
+.intro-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Letters stay hidden until intro.js has the font and starts animating them. */
+.intro-stage.is-waiting .intro-letter {
+  opacity: 0;
+}
+
+.intro-name {
+  display: flex;
+  gap: 0 0.3em;
+  font-family: var(--font-display);
+  font-size: min(8vw, 24vh);
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.intro-word {
+  display: flex;
+}
+
+.intro-letter {
+  display: inline-block;
+}
+
+/* Narrow or tall screens: two lines. */
+@media (max-width: 40rem), (max-aspect-ratio: 4/5) {
+  .intro-name {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.04em;
+    font-size: min(15.5vw, 14vh);
+  }
+}
+
+/* ---- Hint and skip -------------------------------------------------------- */
+.intro-hint {
+  position: absolute;
+  inset-inline: 0;
+  bottom: max(var(--space-xl), env(safe-area-inset-bottom));
+  text-align: center;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  opacity: 0;
+}
+
+.intro-skip {
+  position: fixed;
+  top: var(--space-s);
+  right: var(--gutter);
+  z-index: 1001;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-s);
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--color-border-control);
+  border-radius: var(--radius-pill);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.intro-skip:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+/* ---- Flip tiles ----------------------------------------------------------- */
+.intro-tiles {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+
+.intro.is-breaking {
+  background: transparent;
+  cursor: default;
+}
+
+.intro.is-breaking > .intro-stage,
+.intro.is-breaking > .intro-hint {
+  visibility: hidden;
+}
+
+.intro.is-breaking .intro-tiles {
+  visibility: visible;
+}
+
+.intro-tile {
+  position: absolute;
+  perspective: 1400px;
+}
+
+.intro-card {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.intro-face {
+  position: absolute;
+  inset: -0.5px;
+  overflow: hidden;
+  background: var(--ground);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.intro-stage--slice {
+  inset: auto;
+}
