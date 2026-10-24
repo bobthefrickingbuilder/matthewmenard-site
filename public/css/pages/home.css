@@ -1,6 +1,8 @@
 /* Home page. */
 
 .hero {
+  position: relative;
+  isolation: isolate;
   display: grid;
   gap: var(--space-xl);
   align-items: center;
@@ -36,21 +38,6 @@
   width: 100%;
 }
 
-.pull-quote {
-  max-width: 34ch;
-  margin-inline: auto;
-  text-align: center;
-  border: 0;
-  padding: 0;
-  font-size: var(--step-3);
-  color: var(--text);
-}
-
-.pull-quote + .meta {
-  text-align: center;
-  margin-block-start: var(--space-s);
-}
-
 .bio-teaser {
   display: grid;
   gap: var(--space-xl);
@@ -77,4 +64,290 @@
 
 .contact-cta .cluster {
   justify-content: center;
+}
+
+/* ---- Hero motion ------------------------------------------------------------
+   The entrance starts when the page shows, or right after the intro when it plays
+   (intro.js removes .intro-on from <html>). */
+
+/* Slow-drifting glow behind the hero. */
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 50% at var(--glow-x, 70%) var(--glow-y, 40%), color-mix(in srgb, var(--panel) 55%, transparent), transparent 70%),
+    radial-gradient(30% 40% at 15% 80%, color-mix(in srgb, var(--panel-700) 40%, transparent), transparent 70%);
+  opacity: 0.8;
+}
+
+/* Each word rises out of its own mask. */
+.hero__word {
+  display: inline-block;
+  overflow: hidden;
+  padding-block-end: 0.12em;
+  margin-block-end: -0.12em;
+}
+
+.hero__word > span {
+  display: inline-block;
+}
+
+.hero__photo img {
+  transform: translateY(var(--parallax, 0%)) scale(1.1);
+  will-change: transform;
+}
+
+@property --glow-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 70%;
+}
+
+@property --glow-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 40%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__glow {
+    animation: glow-drift 18s ease-in-out infinite alternate;
+  }
+
+  .intro-on .hero__text > *,
+  .intro-on .hero__word > span,
+  .intro-on .hero__photo {
+    opacity: 0;
+  }
+
+  .js:not(.intro-on) .hero__text > * {
+    animation: rise-in 900ms var(--ease-out) both;
+  }
+
+  .js:not(.intro-on) .hero__text > :nth-child(1) { animation-delay: 100ms; }
+  .js:not(.intro-on) .hero__text > :nth-child(3) { animation-delay: 650ms; }
+  .js:not(.intro-on) .hero__text > :nth-child(4) { animation-delay: 800ms; }
+
+  /* The heading itself stays put; its words slide up. */
+  .js:not(.intro-on) .hero__text > h1 {
+    animation: none;
+  }
+
+  .js:not(.intro-on) .hero__word > span {
+    animation: word-up 1100ms var(--ease-out) both;
+    animation-delay: 250ms;
+  }
+
+  .js:not(.intro-on) .hero__word + .hero__word > span {
+    animation-delay: 380ms;
+  }
+
+  .js:not(.intro-on) .hero__photo {
+    animation: photo-in 1400ms var(--ease-out) 200ms both;
+  }
+}
+
+@keyframes word-up {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes photo-in {
+  from {
+    clip-path: inset(100% 0 0 0 round var(--radius-l));
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--radius-l));
+    opacity: 1;
+  }
+}
+
+@keyframes glow-drift {
+  50% {
+    --glow-x: 55%;
+    --glow-y: 60%;
+  }
+  to {
+    --glow-x: 80%;
+    --glow-y: 25%;
+  }
+}
+
+/* ---- Ensembles marquee ------------------------------------------------------ */
+.marquee {
+  display: grid;
+  gap: var(--space-s);
+  padding-block: var(--space-l);
+  border-block: 1px solid var(--color-border-subtle);
+}
+
+.marquee__viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee__list {
+  display: flex;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marquee__list li {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-style: italic;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+/* Ember dot between names. */
+.marquee__list li::after {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-inline: var(--space-l);
+  border-radius: 50%;
+  background: var(--spark);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee__track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+}
+
+/* Reduced motion: no scrolling; the names wrap and the copy is hidden. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track,
+  .marquee__list {
+    flex-wrap: wrap;
+    width: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .marquee__list[aria-hidden] {
+    display: none;
+  }
+
+  .marquee__viewport {
+    mask-image: none;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---- Explore: photo cards to the other music pages --------------------------- */
+.explore {
+  display: grid;
+  gap: var(--space-s);
+  margin-block-start: var(--space-m);
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 48rem) {
+  .explore {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.explore__item {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  isolation: isolate;
+}
+
+.explore__item > * {
+  grid-area: 1 / 1;
+}
+
+.explore__item .photo {
+  aspect-ratio: 3 / 2;
+  border-radius: 0;
+}
+
+@media (min-width: 48rem) {
+  .explore__item .photo {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+.explore__item .photo img {
+  transition: transform 1.4s var(--ease-out);
+}
+
+.explore__item:hover .photo img {
+  transform: scale(1.06);
+}
+
+/* Solid ground behind the text (fading out only above it), so contrast never depends on the photo. */
+.explore__text {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  display: grid;
+  gap: var(--space-2xs);
+  padding: var(--space-xl) var(--space-m) var(--space-m);
+  background: linear-gradient(to top, var(--ground-950) calc(100% - var(--space-xl)), transparent);
+}
+
+.explore__text h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.explore__text h3 a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.explore__text h3 a::after {
+  content: "→";
+  display: inline-block;
+  margin-inline-start: 0.3em;
+  color: var(--accent);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.explore__item:hover h3 a::after {
+  transform: translateX(4px);
+}
+
+.explore__item:has(a:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.explore__text h3 a:focus-visible {
+  outline: none;
+}
+
+.explore__text p {
+  color: var(--text-muted);
+  font-size: var(--step--1);
 }

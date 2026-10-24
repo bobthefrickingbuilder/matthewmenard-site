@@ -87,9 +87,10 @@
 
   <main id="main" tabindex="-1">
     <section class="wrapper hero" aria-labelledby="hero-title">
+      <div class="hero__glow" aria-hidden="true"></div>
       <div class="hero__text">
         <p class="eyebrow">Bass · Composer · Choral musician</p>
-        <h1 id="hero-title">Matthew Menard</h1>
+        <h1 id="hero-title"><span class="hero__word"><span>Matthew</span></span> <span class="hero__word"><span>Menard</span></span></h1>
         <p class="lead">Bass singer, composer, and choral musician based in Ottawa.</p>
         <div class="cluster">
           <a class="button button--secondary" href="/compositions">Compositions</a>
@@ -100,16 +101,30 @@
         <picture>
           <source type="image/avif" srcset="/img/singing-folder-480.avif 480w, /img/singing-folder-800.avif 800w, /img/singing-folder-933.avif 933w" sizes="(min-width: 52rem) 40vw, 92vw">
           <source type="image/webp" srcset="/img/singing-folder-480.webp 480w, /img/singing-folder-800.webp 800w, /img/singing-folder-933.webp 933w" sizes="(min-width: 52rem) 40vw, 92vw">
-          <img src="/img/singing-folder-800.jpg" srcset="/img/singing-folder-480.jpg 480w, /img/singing-folder-800.jpg 800w, /img/singing-folder-933.jpg 933w" sizes="(min-width: 52rem) 40vw, 92vw" width="933" height="1400" fetchpriority="high" alt="Matthew Menard singing from a black choir folder">
+          <img src="/img/singing-folder-800.jpg" srcset="/img/singing-folder-480.jpg 480w, /img/singing-folder-800.jpg 800w, /img/singing-folder-933.jpg 933w" sizes="(min-width: 52rem) 40vw, 92vw" width="933" height="1400" fetchpriority="high" data-parallax="5" alt="Matthew Menard singing from a black choir folder">
         </picture>
       </figure>
     </section>
 
-    <section class="section wrapper" aria-label="Quote">
-      <blockquote class="pull-quote">
-        <p>Each work is my invitation—to walk the emotional path that gave it life.</p>
-      </blockquote>
-      <p class="meta">Matthew Menard</p>
+
+    <section class="marquee" aria-labelledby="marquee-title">
+      <p class="eyebrow wrapper" id="marquee-title">Music performed by</p>
+      <div class="marquee__viewport">
+        <div class="marquee__track">
+          <ul class="marquee__list" role="list">
+            <li>Capital Chamber Choir</li>
+            <li>Ontario Youth Choir</li>
+            <li>York University Chamber Choir</li>
+            <li>Ottawa Bach Choir</li>
+          </ul>
+          <ul class="marquee__list" role="list" aria-hidden="true">
+            <li>Capital Chamber Choir</li>
+            <li>Ontario Youth Choir</li>
+            <li>York University Chamber Choir</li>
+            <li>Ottawa Bach Choir</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section class="section wrapper" aria-labelledby="work-title">
@@ -158,6 +173,56 @@
         <a class="link-arrow" href="/performing">All performances</a>
       </div>
       <ul class="events" data-performances data-limit="3"></ul>
+    </section>
+
+    <section class="section wrapper" aria-labelledby="explore-title">
+      <div class="section-head">
+        <div class="stack">
+          <p class="eyebrow">Explore</p>
+          <h2 id="explore-title">On stage and in rehearsal</h2>
+        </div>
+      </div>
+      <ul class="explore" role="list">
+        <li class="explore__item">
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/choir-stage-480.avif 480w, /img/choir-stage-800.avif 800w, /img/choir-stage-1080.avif 1080w" sizes="(min-width: 52rem) 30vw, 92vw">
+              <source type="image/webp" srcset="/img/choir-stage-480.webp 480w, /img/choir-stage-800.webp 800w, /img/choir-stage-1080.webp 1080w" sizes="(min-width: 52rem) 30vw, 92vw">
+              <img src="/img/choir-stage-800.jpg" srcset="/img/choir-stage-480.jpg 480w, /img/choir-stage-800.jpg 800w, /img/choir-stage-1080.jpg 1080w" sizes="(min-width: 52rem) 30vw, 92vw" width="1080" height="1350" loading="lazy" alt="">
+            </picture>
+          </figure>
+          <div class="explore__text">
+            <h3><a href="/performing">Performing</a></h3>
+            <p>Bass with the Capital Chamber Choir, the Ottawa Regional Youth Choir, and the Ewashko Singers.</p>
+          </div>
+        </li>
+        <li class="explore__item">
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/conducting-480.avif 480w, /img/conducting-800.avif 800w, /img/conducting-933.avif 933w" sizes="(min-width: 52rem) 30vw, 92vw">
+              <source type="image/webp" srcset="/img/conducting-480.webp 480w, /img/conducting-800.webp 800w, /img/conducting-933.webp 933w" sizes="(min-width: 52rem) 30vw, 92vw">
+              <img src="/img/conducting-800.jpg" srcset="/img/conducting-480.jpg 480w, /img/conducting-800.jpg 800w, /img/conducting-933.jpg 933w" sizes="(min-width: 52rem) 30vw, 92vw" width="933" height="1400" loading="lazy" alt="">
+            </picture>
+          </figure>
+          <div class="explore__text">
+            <h3><a href="/conducting-teaching">Conducting &amp; Teaching</a></h3>
+            <p>Assistant Conductor of the Ottawa Regional Youth Choir.</p>
+          </div>
+        </li>
+        <li class="explore__item">
+          <figure class="photo">
+            <picture>
+              <source type="image/avif" srcset="/img/singing-warm-480.avif 480w, /img/singing-warm-800.avif 800w, /img/singing-warm-1200.avif 1200w" sizes="(min-width: 52rem) 30vw, 92vw">
+              <source type="image/webp" srcset="/img/singing-warm-480.webp 480w, /img/singing-warm-800.webp 800w, /img/singing-warm-1200.webp 1200w" sizes="(min-width: 52rem) 30vw, 92vw">
+              <img src="/img/singing-warm-800.jpg" srcset="/img/singing-warm-480.jpg 480w, /img/singing-warm-800.jpg 800w, /img/singing-warm-1200.jpg 1200w" sizes="(min-width: 52rem) 30vw, 92vw" width="1400" height="933" loading="lazy" alt="">
+            </picture>
+          </figure>
+          <div class="explore__text">
+            <h3><a href="/listen">Listen &amp; Watch</a></h3>
+            <p>Recordings and video of Matthew’s compositions and performances.</p>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <section class="section wrapper" aria-labelledby="bio-title">
