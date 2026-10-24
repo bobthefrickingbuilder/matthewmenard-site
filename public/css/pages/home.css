@@ -405,13 +405,18 @@
   margin-block-start: var(--space-l);
 }
 
-/* ---- Stats band: big numbers between thin rules ---------------------------- */
+/* ---- Roles band: Singer, Composer, Conductor in big type between thin rules.
+   Each block links to its page; the whole block is clickable. ------------------ */
 .stats__list {
   display: grid;
-  gap: var(--space-l);
+  gap: var(--space-xl);
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.stats__list > li {
+  position: relative;
 }
 
 @media (min-width: 48rem) {
@@ -433,26 +438,68 @@
   }
 }
 
-.stats__num {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 2rem + 6vw, 6.5rem);
+.stats__title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  font-size: clamp(2.6rem, 1.6rem + 3.4vw, 4.6rem);
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
 }
 
-.stats__num--word {
-  font-size: clamp(2.2rem, 1.4rem + 3vw, 3.6rem);
-  font-style: italic;
-  line-height: 1.1;
-  padding-block-start: 0.35em;
+.stats__title a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--dur-med) ease;
+}
+
+.stats__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.stats__title a:focus-visible {
+  outline: none;
+}
+
+.stats__list > li:has(a:focus-visible) {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-s);
+}
+
+/* The arrow slides in when the block is hovered. */
+.stats__arrow {
+  font-size: 0.45em;
+  color: var(--accent);
+  opacity: 0;
+  translate: -0.6em 0;
+  transition: opacity var(--dur-med) ease, translate var(--dur-med) var(--ease-out);
+}
+
+.stats__list > li:hover .stats__title a {
+  color: var(--accent-hover);
+}
+
+.stats__list > li:hover .stats__arrow,
+.stats__list > li:has(a:focus-visible) .stats__arrow {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.stats__fact {
+  margin-block-start: var(--space-s);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
 }
 
 .stats__label {
   margin-block-start: var(--space-xs);
-  max-width: 26ch;
+  max-width: 30ch;
   color: var(--text-muted);
 }
 
