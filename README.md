@@ -99,7 +99,7 @@ Open `public/listen.html`. The comment above the list shows one recording; copy 
 
 ## Forms and email
 
-The contact form sends to `COMMISSION_TO_EMAIL` through Resend. Spam defenses: a hidden field bots fill in, a minimum fill time, and a limit of 5 messages per 10 minutes per visitor. Bots get a fake "sent" so they don't retry. No CAPTCHA.
+The contact form and the website request form on `/commissions` both send to `COMMISSION_TO_EMAIL` through Resend. The request form also sends the visitor a short fixed confirmation (nothing they typed is echoed back, so it can't be used to spam others). To change the request form's choices (project types, pages, budget ranges), edit both `public/commissions.html` and the lists at the top of `api/commission.js`; they must match. Spam defenses: a hidden field bots fill in, a minimum fill time, and a limit of 5 messages per 10 minutes per visitor. Bots get a fake "sent" so they don't retry. No CAPTCHA.
 
 ## Placeholders
 

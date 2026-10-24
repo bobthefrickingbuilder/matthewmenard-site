@@ -2,6 +2,18 @@
 
 Everything waiting on Matthew, with the file it affects. Kept current every phase.
 
+## Phase 5 (built; auto-approved per your instruction)
+
+- [ ] Look over `/commissions` on the preview. Its placeholders block a production deploy until filled or removed:
+  - **Packages** (3 cards): name, scope, price for each. Fewer tiers is fine; delete a card.
+  - **Recent sites** (ORYC, the luthier site, Esmée Peets): URL, screenshot, one line, and permission. Or delete the section to launch without it.
+  - **FAQ answers:** code and content ownership, hosting and domain, maintenance, timeline, revisions.
+  - **Budget ranges** for the form's select (`public/commissions.html` and `api/commission.js`; only "Not sure yet" now).
+- [ ] Confirm the wording: hero line, "What gets built" sentence (from the brief), and the 7 process steps.
+- [ ] **Privacy policy:** I drafted sections for both forms, Resend, and retention (`public/privacy.html`). I'm not a lawyer; review it and set a new effective date.
+- [ ] Spam: honeypot + minimum fill time + in-memory rate limit. Approve Cloudflare Turnstile only if spam gets through.
+- [ ] A deposit step can slot into the process later (marked in the page source). Nothing built.
+
 ## Phase 4 (built; auto-approved per your instruction)
 
 - [ ] Look over About, Compositions, Performing, Conducting & Teaching, Listen & Watch, Contact, and Checkout on the preview.
@@ -49,9 +61,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 | Audio and video links: URL, title, performers, year (visible placeholder on the page now; blocks launch) | Listen and Watch | 4 |
 | Planning docs from claude.ai: "Site Design", "Hosting & Payment Questionnaire", "Studio Launch Roadmap", "Stripe payments roadmap" | Store port, Commissions | 4–5 |
 | Refund policy: remove "Choral Licensing Tiers" section? Soften "sample pages, skill level" line? | `/refund` | 4 |
-| Commissions: audience wording, package names/scope/prices, budget ranges, FAQ answers | `/commissions` | 5 |
-| Commissions portfolio: URLs, screenshots, and permission for ORYC, the luthier site, Esmée Peets | `/commissions` | 5 |
-| Resend account + verified sending domain; approve Turnstile for spam (optional) | `/api/commission` | 5 |
+| Resend account + verified sending domain (needed for both forms to send) | `/api/contact`, `/api/commission` | 4–5 |
 
 ## Technical follow-ups (mine)
 
