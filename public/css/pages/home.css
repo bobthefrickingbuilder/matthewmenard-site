@@ -56,6 +56,17 @@
   max-height: 72svh;
 }
 
+/* With a mouse, the photos shift a few pixels with the pointer, the side ones the
+   opposite way to the middle one (motion.js sets --mx / --my from -1 to 1). */
+.hero__media > figure {
+  translate: calc(var(--mx, 0) * var(--depth, 0px)) calc(var(--my, 0) * var(--depth, 0px));
+  transition: translate 1.2s var(--ease-out);
+}
+
+.hero__photo { --depth: 8px; }
+.hero__inset--back { --depth: -14px; }
+.hero__inset--front { --depth: -18px; }
+
 [data-parallax] {
   transform: translateY(var(--parallax, 0%)) scale(1.12);
   will-change: transform;
@@ -263,6 +274,12 @@
   }
 }
 
+/* motion.js drives the ticker instead, so it can react to scrolling. */
+.marquee.is-driven .marquee__track {
+  animation: none;
+  will-change: transform;
+}
+
 /* Reduced motion: no scrolling; the names wrap and the copy is hidden. */
 @media (prefers-reduced-motion: reduce) {
   .marquee__track,
@@ -453,6 +470,19 @@
   scrollbar-color: var(--panel) transparent;
 }
 
+/* With a mouse the strip can be dragged (home.js). */
+@media (hover: hover) and (pointer: fine) {
+  .strip {
+    cursor: grab;
+  }
+
+  .strip.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+  }
+}
+
 .strip:focus-visible {
   outline-offset: -4px;
 }
@@ -505,4 +535,17 @@
 /* Bio teaser: give the arch room. */
 .bio-teaser .arch {
   margin-block: var(--space-m);
+}
+
+/* The portrait drifts in very slowly, as if breathing. */
+@media (prefers-reduced-motion: no-preference) {
+  .arch img {
+    animation: breathe 18s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes breathe {
+  to {
+    scale: 1.06;
+  }
 }

@@ -23,3 +23,33 @@ if (strip && buttons.length) {
   addEventListener("resize", update);
   update();
 }
+
+// With a mouse, the strip can also be dragged sideways. Snapping is paused while dragging
+// and comes back on release, so it settles on the nearest photo.
+if (strip) {
+  let startX = 0, startScroll = 0, dragging = false, moved = false;
+  strip.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    dragging = true;
+    moved = false;
+    startX = e.clientX;
+    startScroll = strip.scrollLeft;
+  });
+  addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    if (!moved && Math.abs(dx) > 4) {
+      moved = true;
+      strip.classList.add("is-dragging");
+    }
+    if (moved) strip.scrollLeft = startScroll - dx;
+  });
+  addEventListener("pointerup", () => {
+    if (!dragging) return;
+    dragging = false;
+    strip.classList.remove("is-dragging");
+  });
+  // A drag never counts as a click on a photo.
+  strip.addEventListener("click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  strip.addEventListener("dragstart", (e) => e.preventDefault());
+}

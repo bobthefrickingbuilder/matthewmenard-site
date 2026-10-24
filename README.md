@@ -107,6 +107,7 @@ The contact form and the website request form on `/commissions` both send to `CO
 - Speeds are tokens in `tokens.css` (`--dur-reveal`, `--reveal-stagger`, `--reveal-distance`). Bigger numbers = slower, farther.
 - Anything new placed inside the usual page blocks (sections, grids, cards, lists) animates automatically. To add another kind of block, add its selector to the list in both `components.css` and `motion.js`.
 - Visitors who turn on "reduce motion" on their device see everything still, and the marquee becomes a plain list.
+- Reactive touches (all in `motion.js`): a thin progress line under the header shows how far down the page you are; section headings rise word by word; the names ticker speeds up while you scroll. With a mouse, a soft light follows the pointer over the hero, cards, and panels, the hero photos shift slightly with it, buttons lean toward it, and the photo strip can be dragged. Phones skip the mouse-only ones.
 - Home: to change the "Music performed by" names, edit both lists in the marquee section of `public/index.html` (the second is a copy for the seamless loop).
 
 ## Signature details
