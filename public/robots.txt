@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /api/
+Disallow: /design/
+Disallow: /prototype/
+
+Sitemap: https://www.matthewmenardmusic.com/sitemap.xml
