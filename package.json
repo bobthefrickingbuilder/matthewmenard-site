@@ -1,8 +1,17 @@
 {
   "name": "matthewmenardmusic",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "matthewmenardmusic.com — static site + Stripe Checkout for digital sheet music",
+  "description": "matthewmenardmusic.com — hand-coded static site on Vercel, with Stripe checkout for digital scores",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vercel dev",
+    "check:contrast": "node scripts/contrast.mjs",
+    "check": "npm run check:contrast"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "stripe": "^16.0.0"
   }

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run check",
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/scores", "destination": "/compositions", "statusCode": 301 },
+    { "source": "/scores/", "destination": "/compositions", "statusCode": 301 },
+    { "source": "/scores/when-i-am-dead", "destination": "/compositions/when-i-am-dead", "statusCode": 301 },
+    { "source": "/scores/when-i-am-dead/", "destination": "/compositions/when-i-am-dead", "statusCode": 301 },
+    { "source": "/scores/golden-sunset", "destination": "/compositions/golden-sunset", "statusCode": 301 },
+    { "source": "/scores/golden-sunset/", "destination": "/compositions/golden-sunset", "statusCode": 301 },
+    { "source": "/gallery", "destination": "/about#photos", "statusCode": 301 },
+    { "source": "/gallery/", "destination": "/about#photos", "statusCode": 301 },
+    { "source": "/files/:file*", "destination": "/compositions", "statusCode": 301 }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=(), browsing-topics=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-vyD0tDLKSgU2naTnaXTz2+x9ZDwIx28ZDvB62usV+EQ='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ]
+}
