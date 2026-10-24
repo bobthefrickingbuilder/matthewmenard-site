@@ -1,0 +1,504 @@
+/* ==========================================================================
+   Components: buttons, forms, cards, header, nav, mobile menu, footer.
+   ========================================================================== */
+
+/* ---- Buttons -------------------------------------------------------------- */
+.button {
+  --button-bg: transparent;
+  --button-fg: var(--accent);
+  --button-border: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  min-height: 2.75rem; /* 44px touch target. */
+  padding: 0.6em 1.4em;
+  border: 1.5px solid var(--button-border);
+  border-radius: var(--radius-m);
+  background: var(--button-bg);
+  color: var(--button-fg);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+
+.button:hover {
+  --button-fg: var(--accent-hover);
+  --button-border: var(--accent-hover);
+  text-decoration: none;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Primary: ember. One per view. */
+.button--primary {
+  --button-bg: var(--spark);
+  --button-fg: var(--color-on-spark);
+  --button-border: var(--spark);
+}
+
+.button--primary:hover {
+  --button-bg: var(--spark-hover);
+  --button-fg: var(--color-on-spark);
+  --button-border: var(--spark-hover);
+}
+
+.button--primary:active {
+  --button-bg: var(--spark-pressed);
+  --button-border: var(--spark-pressed);
+}
+
+/* Secondary: lilac fill. */
+.button--secondary {
+  --button-bg: var(--accent);
+  --button-fg: var(--color-on-accent);
+  --button-border: var(--accent);
+}
+
+.button--secondary:hover {
+  --button-bg: var(--accent-hover);
+  --button-fg: var(--color-on-accent);
+  --button-border: var(--accent-hover);
+}
+
+.button--secondary:active {
+  --button-bg: var(--accent-pressed);
+  --button-border: var(--accent-pressed);
+}
+
+/* Disabled: dashed border and muted fill, so it reads as off without relying on low contrast. */
+.button:disabled,
+.button[aria-disabled="true"] {
+  --button-bg: var(--color-disabled-bg);
+  --button-fg: var(--color-disabled-text);
+  --button-border: var(--color-disabled-text);
+  border-style: dashed;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Text-style action with an arrow, for "View score →" and similar. */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-arrow::after {
+  content: "→";
+  transition: transform var(--dur-fast) ease;
+}
+
+.link-arrow:hover::after {
+  transform: translateX(3px);
+}
+
+/* ---- Forms ---------------------------------------------------------------- */
+.field {
+  display: grid;
+  gap: var(--space-3xs);
+}
+
+.field > label,
+.field legend {
+  font-weight: 600;
+}
+
+.field .required {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.field .hint {
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.6em 0.8em;
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border-control);
+  border-radius: var(--radius-s);
+  transition: border-color var(--dur-fast) ease;
+}
+
+.textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: var(--accent);
+}
+
+.input:focus-visible,
+.select:focus-visible,
+.textarea:focus-visible {
+  border-color: var(--accent);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--text-subtle);
+}
+
+.select {
+  appearance: none;
+  padding-inline-end: 2.5em;
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%),
+    linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+  background-position: calc(100% - 1.2em) 55%, calc(100% - 0.85em) 55%;
+  background-size: 0.35em 0.35em;
+  background-repeat: no-repeat;
+}
+
+.field--error .input,
+.field--error .select,
+.field--error .textarea,
+[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.error-message {
+  font-size: var(--step--1);
+  color: var(--danger);
+}
+
+/* "Error:" prefix so the state does not rely on color alone. */
+.error-message::before {
+  content: "Error: ";
+  font-weight: 600;
+}
+
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2xs);
+}
+
+.choice input {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-block-start: 0.2em;
+  accent-color: var(--accent);
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+.status {
+  padding: var(--space-s);
+  border-radius: var(--radius-m);
+  border-inline-start: 3px solid currentColor;
+  background: var(--color-surface);
+}
+
+.status--success {
+  color: var(--success);
+}
+
+.status--error {
+  color: var(--danger);
+}
+
+/* ---- Cards ---------------------------------------------------------------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-m);
+  transition: border-color var(--dur-med) ease, transform var(--dur-med) var(--ease-out),
+    box-shadow var(--dur-med) ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+.card h3 a {
+  color: var(--color-heading);
+  text-decoration: none;
+}
+
+/* Whole card clickable via the heading link. */
+.card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card h3 a:focus-visible {
+  outline: none;
+}
+
+.card:has(h3 a:focus-visible) {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+}
+
+.card__media {
+  margin: calc(var(--space-m) * -1) calc(var(--space-m) * -1) var(--space-2xs);
+  border-radius: var(--radius-m) var(--radius-m) 0 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--ground-800);
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Plum feature panel for teasers (Commissions, bio). */
+.panel {
+  padding: var(--space-xl) var(--space-l);
+  background: var(--color-fill);
+  border-radius: var(--radius-l);
+}
+
+.panel .eyebrow,
+.panel a:not(.button) {
+  color: var(--accent);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.15em 0.65em;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--text-muted);
+  border: 1px solid var(--color-border-control);
+  border-radius: var(--radius-pill);
+}
+
+/* ---- Header --------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  min-height: 4.5rem;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.wordmark:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  list-style: none;
+  padding: 0;
+}
+
+.nav__list a {
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-decoration: none;
+  padding-block: var(--space-3xs);
+}
+
+.nav__list a:hover,
+.nav__list a[aria-current="page"] {
+  color: var(--text);
+}
+
+.nav__list a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.45em;
+}
+
+/* Service link, set apart from the music nav. */
+.nav__service {
+  padding-inline-start: var(--space-m);
+  border-inline-start: 1px solid var(--color-border-subtle);
+}
+
+.nav__list .nav__service a {
+  color: var(--accent);
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-height: 2.75rem;
+  padding: 0 var(--space-xs);
+  background: none;
+  border: 1.5px solid var(--color-border-control);
+  border-radius: var(--radius-m);
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (max-width: 75rem) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  /* Without JS the nav stays visible and wraps below the wordmark. */
+  .js .nav {
+    display: none;
+  }
+
+  .no-js .site-header__inner {
+    flex-wrap: wrap;
+    padding-block: var(--space-xs);
+  }
+
+  .no-js .menu-toggle {
+    display: none;
+  }
+
+  .no-js .nav__list {
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-s);
+  }
+}
+
+/* ---- Mobile menu (full screen) ------------------------------------------- */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-s) var(--gutter) var(--space-xl);
+  background: var(--ground-950);
+  overflow-y: auto;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.5rem;
+}
+
+.mobile-menu__list {
+  list-style: none;
+  padding: 0;
+  margin-block-start: var(--space-xl);
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.mobile-menu__list a {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.mobile-menu__list a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.mobile-menu__service {
+  margin-block-start: var(--space-m);
+  padding-block-start: var(--space-m);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.mobile-menu__list .mobile-menu__service a {
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  color: var(--accent);
+}
+
+/* ---- Footer --------------------------------------------------------------- */
+.site-footer {
+  margin-block-start: var(--space-3xl);
+  padding-block: var(--space-xl) var(--space-l);
+  background: var(--ground-950);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: var(--space-l);
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3xs);
+}
+
+.site-footer a {
+  color: var(--text-muted);
+}
+
+.site-footer a:hover {
+  color: var(--text);
+}
+
+.site-footer__legal {
+  margin-block-start: var(--space-xl);
+  padding-block-start: var(--space-m);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
