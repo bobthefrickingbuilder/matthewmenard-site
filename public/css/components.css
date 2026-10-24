@@ -401,7 +401,7 @@ fieldset {
   font-weight: 600;
 }
 
-@media (max-width: 62rem) {
+@media (max-width: 66rem) {
   .menu-toggle {
     display: inline-flex;
   }

@@ -1,4 +1,4 @@
-// Upcoming performances, shown on Home (next three) and Performing (all).
+// Upcoming performances, shown on Home (next three) and Performance (all).
 // Add one entry per date. Past dates hide themselves; no need to delete them.
 //
 //   { date: "YYYY-MM-DD", title: "Concert title", ensemble: "Ensemble name", venue: "Venue", url: "https://…" },
