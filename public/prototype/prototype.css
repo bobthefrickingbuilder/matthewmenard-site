@@ -1,0 +1,31 @@
+/* Prototype page layout only. Not used on the site. */
+
+.proto-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-m);
+  padding-block: var(--space-2xl);
+}
+
+.proto-hero .lead {
+  max-width: 36ch;
+}
+
+.proto-tune {
+  display: grid;
+  gap: var(--space-l);
+}
+
+.proto-tune__fields {
+  display: grid;
+  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+}
+
+.proto-tune label {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: var(--step--1);
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-CA" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Intro prototype — Matthew Menard (internal)</title>
+  <meta name="robots" content="noindex">
+  <script>(function(d){d.classList.replace("no-js","js");try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&(/[?&]intro\b/.test(location.search)||!sessionStorage.getItem("mm-intro-played")))d.classList.add("intro-on")}catch(e){}})(document.documentElement)</script>
+  <link rel="preload" href="/fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/prototype/intro.css">
+  <link rel="stylesheet" href="/prototype/prototype.css">
+  <script type="module" src="/prototype/tune.js"></script>
+</head>
+<body>
+  <div class="intro" data-intro aria-hidden="true">
+    <div class="intro-stage is-waiting">
+      <div class="intro-name">
+        <span class="intro-word"><span class="intro-letter">M</span><span class="intro-letter">A</span><span class="intro-letter">T</span><span class="intro-letter">T</span><span class="intro-letter">H</span><span class="intro-letter">E</span><span class="intro-letter">W</span></span>
+        <span class="intro-word"><span class="intro-letter">M</span><span class="intro-letter">E</span><span class="intro-letter">N</span><span class="intro-letter">A</span><span class="intro-letter">R</span><span class="intro-letter">D</span></span>
+      </div>
+    </div>
+    <div class="intro-tiles"></div>
+    <p class="intro-hint"></p>
+  </div>
+  <button class="intro-skip" type="button" data-intro-skip>Skip intro</button>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <main id="main" tabindex="-1">
+    <!-- Stand-in for the Home hero so the reveal has something real to uncover. -->
+    <section class="proto-hero wrapper">
+      <p class="eyebrow">Bass · Composer · Choral musician</p>
+      <h1 class="display">Matthew Menard</h1>
+      <p class="lead">Bass singer, composer, and choral musician based in Ottawa.</p>
+      <div class="cluster">
+        <a class="button button--primary" href="#tune">Tune the intro</a>
+        <a class="button" href="/design/styleguide">Style guide</a>
+      </div>
+    </section>
+
+    <section class="section wrapper" id="tune" aria-labelledby="tune-title">
+      <div class="stack stack-l">
+        <div class="stack measure">
+          <p class="eyebrow">Internal · Phase 2</p>
+          <h2 id="tune-title">Tune the intro</h2>
+          <p>Change any value and press <strong>Replay</strong>. The intro plays again with the new numbers. Times are in milliseconds. When it feels right, send me the link from the address bar.</p>
+          <p class="meta">The intro is skipped with reduced motion turned on in your system settings, and plays once per browser session. Replay always plays it.</p>
+        </div>
+        <form class="proto-tune" method="get" action="/prototype/intro">
+          <input type="hidden" name="intro" value="">
+          <div class="proto-tune__fields" data-tune-fields></div>
+          <div class="cluster">
+            <button class="button button--secondary" type="submit">Replay</button>
+            <a class="button" href="/prototype/intro?intro">Reset to defaults</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
