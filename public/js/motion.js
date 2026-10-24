@@ -1,8 +1,7 @@
 // Site-wide motion: scroll reveals, gentle parallax on [data-parallax] images, the header
-// shadow and reading-progress line, headings that rise word by word, the names ticker that
-// speeds up with scrolling, and (with a mouse) light that follows the pointer, hero photos
-// that shift with it, and buttons that lean toward it. With reduced motion only the header
-// shadow and progress line run.
+// shadow and reading-progress line, headings that rise word by word, and (with a mouse)
+// light that follows the pointer, hero photos that shift with it, and buttons that lean
+// toward it. With reduced motion only the header shadow and progress line run.
 // Loaded on every page through nav.js. Styles live in the Motion section of components.css.
 
 const root = document.documentElement;
@@ -155,42 +154,6 @@ function headingWords() {
   }
 }
 
-// The names ticker runs on its own and speeds up while the page is scrolled, in the
-// direction of the scroll. Pauses on hover and when off screen. Replaces the CSS animation.
-function ticker() {
-  const marquee = document.querySelector(".marquee");
-  const track = marquee?.querySelector(".marquee__track");
-  if (!track) return;
-  marquee.classList.add("is-driven");
-  let x = 0, boost = 0, last = scrollY, visible = false, hovered = false, prev = 0;
-  addEventListener("scroll", () => {
-    boost += (scrollY - last) * 0.35;
-    boost = Math.max(-40, Math.min(40, boost));
-    last = scrollY;
-  }, { passive: true });
-  marquee.addEventListener("pointerenter", () => (hovered = true));
-  marquee.addEventListener("pointerleave", () => (hovered = false));
-  const frame = (now) => {
-    const dt = Math.min((now - prev) / 16.7, 3);
-    prev = now;
-    if (visible) {
-      const half = track.scrollWidth / 2;
-      const speed = hovered ? 0 : 0.45 + boost * 0.12;
-      x -= speed * dt;
-      if (x <= -half) x += half;
-      if (x > 0) x -= half;
-      track.style.transform = `translate3d(${x.toFixed(2)}px, 0, 0)`;
-      boost *= 0.92;
-      requestAnimationFrame(frame);
-    }
-  };
-  new IntersectionObserver(([entry]) => {
-    const was = visible;
-    visible = entry.isIntersecting;
-    if (visible && !was) requestAnimationFrame((now) => { prev = now; frame(now); });
-  }).observe(marquee);
-}
-
 // Mouse-only touches. Touch screens and pens skip these.
 function pointerTouches() {
   if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
@@ -240,7 +203,6 @@ if (!reduced && "IntersectionObserver" in window) {
   counters();
   parallax();
   headingWords();
-  ticker();
   pointerTouches();
   // Without this class the CSS failsafe shows everything after a moment.
   root.classList.add("motion-ready");

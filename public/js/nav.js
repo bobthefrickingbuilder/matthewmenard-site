@@ -1,7 +1,8 @@
 // Full-screen mobile menu: open/close, focus trap, Escape, scroll lock.
 // Without JS the header nav stays visible and wraps (see .no-js in components.css).
-// Also loads the site-wide motion layer.
+// Also loads the site-wide motion layer and the custom cursor.
 import "/js/motion.js";
+import "/js/cursor.js";
 import "/js/palette-preview.js";
 
 const toggle = document.querySelector("[data-menu-open]");

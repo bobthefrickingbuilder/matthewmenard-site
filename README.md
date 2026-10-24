@@ -106,8 +106,11 @@ The contact form and the website request form on `/commissions` both send to `CO
 - Sections rise into view as you scroll, pages cross-fade when you click between them, and buttons, cards, photos, and menu links ease on hover. All of it lives in the Motion section at the end of `public/css/components.css` and in `public/js/motion.js`.
 - Speeds are tokens in `tokens.css` (`--dur-reveal`, `--reveal-stagger`, `--reveal-distance`). Bigger numbers = slower, farther.
 - Anything new placed inside the usual page blocks (sections, grids, cards, lists) animates automatically. To add another kind of block, add its selector to the list in both `components.css` and `motion.js`.
+- Changing page: the old page sinks back and softens out of focus while the new one is drawn down from the top; the header stays put (`::view-transition-old/new(root)` in `components.css`). Chrome, Edge, and Safari; other browsers just load the page.
+- Custom cursor (`public/js/cursor.js`): a sage dot exactly on the pointer, a ring over anything clickable, a wide capsule over the draggable photo strip. Mouse only; text fields keep the normal I-beam; off with reduced motion.
 - Visitors who turn on "reduce motion" on their device see everything still, and the marquee becomes a plain list.
-- Reactive touches (all in `motion.js`): a thin progress line under the header shows how far down the page you are; section headings rise word by word; the names ticker speeds up while you scroll. With a mouse, a soft light follows the pointer over the hero, cards, and panels, the hero photos shift slightly with it, buttons lean toward it, and the photo strip can be dragged. Phones skip the mouse-only ones.
+- Reactive touches (all in `motion.js`): a thin progress line under the header shows how far down the page you are; section headings rise word by word. With a mouse, a soft light follows the pointer over the hero, cards, and panels, the hero photos shift slightly with it, buttons lean toward it, and the photo strip can be dragged. Phones skip the mouse-only ones.
+- Compositions (the store): a **Sort by** menu (title, newest/oldest, price, scores for sale first). Options appear only when they would change the order, so with today's two scores only the title sorts show. Give each card `data-year` and, for scores on sale, `data-price` in cents.
 - Home: to change the "Music performed by" names, edit both lists in the marquee section of `public/index.html` (the second is a copy for the seamless loop).
 
 ## Signature details
@@ -115,7 +118,7 @@ The contact form and the website request form on `/commissions` both send to `CO
 - **Staff dividers:** the line between sections is a five-line music staff that draws in as you scroll (`.section + .section` in `base.css`).
 - **Film grain:** a faint texture over every page (`body::after` in `components.css`). Change its `opacity` to make it stronger or remove it.
 - **Portrait:** put a photo inside `<div class="arch">` for the single upright portrait frame.
-- **Home only:** the hero's three photos side by side, staggered score cards, the names ticker, the numbers band (numbers with `data-count` tick up), and the sideways photo strip with arrows.
+- **Home only:** the hero's three photos side by side, staggered score cards, the names ticker (steady loop, pauses on hover), the Singer / Composer / Conductor band with openable bios, and the sideways photo strip with arrows.
 
 ## Search engines and link previews
 

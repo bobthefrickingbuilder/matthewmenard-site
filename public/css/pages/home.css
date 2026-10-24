@@ -274,12 +274,6 @@
   }
 }
 
-/* motion.js drives the ticker instead, so it can react to scrolling. */
-.marquee.is-driven .marquee__track {
-  animation: none;
-  will-change: transform;
-}
-
 /* Reduced motion: no scrolling; the names wrap and the copy is hidden. */
 @media (prefers-reduced-motion: reduce) {
   .marquee__track,

@@ -74,12 +74,12 @@
       <header class="page-head measure">
         <p class="eyebrow">Compositions</p>
         <h1>Compositions</h1>
-        <p class="lead">Choral, sacred, and art song works. Scores for sale are PDF downloads, delivered right after payment.</p>
+        <p class="lead">Over 200 pieces written and performed, from choral and sacred music to art song. Selected scores are available to buy as PDF downloads.</p>
       </header>
 
       <!-- [TODO: owner to supply the full works list, including liturgical works for St. Joseph’s Parish and works performed by the Capital Chamber Choir, Ontario Youth Choir, York University Chamber Choir, and Ottawa Bach Choir. Each new work: add a card below and a page from the composition template.] -->
 
-      <form class="filters" data-filters hidden aria-label="Filter compositions">
+      <form class="filters" data-filters hidden aria-label="Filter and sort compositions">
         <div class="field">
           <label for="f-type">Type</label>
           <select class="select" id="f-type" data-filter="type"><option value="">All types</option></select>
@@ -92,12 +92,26 @@
           <label for="f-year">Year</label>
           <select class="select" id="f-year" data-filter="year"><option value="">All years</option></select>
         </div>
+        <div class="field">
+          <label for="f-sort">Sort by</label>
+          <select class="select" id="f-sort" data-sort>
+            <option value="">Featured</option>
+            <option value="title">Title, A to Z</option>
+            <option value="title-desc">Title, Z to A</option>
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="price">Price, low to high</option>
+            <option value="price-desc">Price, high to low</option>
+            <option value="for-sale">Scores for sale first</option>
+          </select>
+        </div>
         <p class="meta filters__count" role="status" aria-live="polite" data-filter-count></p>
       </form>
 
-      <!-- Each card: data-type, data-voicing, data-year feed the filters. Leave a value empty if unknown. -->
+      <!-- Each card: data-type, data-voicing, data-year feed the filters; data-year and data-price (in cents, only
+           for scores on sale, matching lib/products.js) feed the sorting. Leave a value empty if unknown. -->
       <ul class="grid grid--fit works" role="list" data-works>
-        <li class="card work-card" data-type="Art song" data-voicing="Bass voice and piano" data-year="">
+        <li class="card work-card" data-type="Art song" data-voicing="Bass voice and piano" data-year="" data-price="400">
           <div class="card__media">
             <picture>
               <source type="image/avif" srcset="/img/score-when-i-am-dead-480.avif 480w, /img/score-when-i-am-dead-800.avif 800w" sizes="(min-width: 60rem) 30vw, (min-width: 36rem) 46vw, 92vw">
@@ -110,7 +124,7 @@
           <p>A setting of Christina Rossetti’s poem on grief, and the quiet it leaves behind.</p>
           <p class="meta">Bass voice and piano · Score for sale</p>
         </li>
-        <li class="card work-card" data-type="Art song" data-voicing="Bass voice and piano" data-year="">
+        <li class="card work-card" data-type="Art song" data-voicing="Bass voice and piano" data-year="" data-price="400">
           <div class="card__media">
             <picture>
               <source type="image/avif" srcset="/img/score-golden-sunset-480.avif 480w, /img/score-golden-sunset-800.avif 800w" sizes="(min-width: 60rem) 30vw, (min-width: 36rem) 46vw, 92vw">
