@@ -360,13 +360,32 @@ fieldset {
 }
 
 /* Service link, set apart from the music nav. */
-.nav__service {
+/* Store: the one highlighted item, a small copper button set apart from the links. */
+.nav__store {
   padding-inline-start: var(--space-m);
   border-inline-start: 1px solid var(--color-border-subtle);
 }
 
-.nav__list .nav__service a {
-  color: var(--accent);
+.nav__list .nav__store a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.3em 1em;
+  border-radius: var(--radius-m);
+  background: var(--spark);
+  color: var(--color-on-spark);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.nav__list .nav__store a:hover {
+  background: var(--spark-hover);
+  color: var(--color-on-spark);
+}
+
+.nav__list .nav__store a::after {
+  display: none;
 }
 
 .menu-toggle {
@@ -382,7 +401,7 @@ fieldset {
   font-weight: 600;
 }
 
-@media (max-width: 75rem) {
+@media (max-width: 62rem) {
   .menu-toggle {
     display: inline-flex;
   }
@@ -449,16 +468,21 @@ fieldset {
   color: var(--accent);
 }
 
-.mobile-menu__service {
+.mobile-menu__store {
   margin-block-start: var(--space-m);
   padding-block-start: var(--space-m);
   border-top: 1px solid var(--color-border-subtle);
 }
 
-.mobile-menu__list .mobile-menu__service a {
+.mobile-menu__list .mobile-menu__store a {
+  display: inline-flex;
+  padding: 0.35em 1.2em;
+  border-radius: var(--radius-m);
+  background: var(--spark);
+  color: var(--color-on-spark);
   font-family: var(--font-body);
   font-size: var(--step-1);
-  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ---- Footer --------------------------------------------------------------- */
