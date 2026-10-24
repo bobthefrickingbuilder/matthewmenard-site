@@ -51,6 +51,12 @@ Prints every declared text/background pairing with its contrast ratio. Vercel ru
 - Push a branch to GitHub → Vercel builds a **preview** at its own URL. The live site does not change.
 - Merge into `main` → Vercel deploys to **matthewmenardmusic.com**.
 
+## Tune the intro
+
+Open `/prototype/intro` (on a preview or locally). The form under the hero lists every timing value. Change numbers, press **Replay**, and the intro runs again with them. The address bar then holds the exact settings, so you can send that link. Defaults live at the top of `public/prototype/intro.js`.
+
+The intro plays once per browser session. Add `?intro` to the address to force it. It never plays with reduced motion turned on.
+
 ## Edit text
 
 Each page is one HTML file in `public/`. Open it, find the sentence, change it, save. Keep the tags (`<p>`, `<h2>`, and so on) around the text as they are.

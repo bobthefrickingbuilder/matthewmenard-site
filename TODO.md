@@ -2,10 +2,14 @@
 
 Everything waiting on Matthew, with the file it affects. Kept current every phase.
 
+## Decisions (Phase 2 checkpoint)
+
+- [ ] **Approve intro feel and timing.** Tune at `/prototype/intro` on the preview; send the address-bar link when it feels right.
+
 ## Decisions (Phase 1 checkpoint)
 
 - [x] Type pairing: A, Fraunces + Source Sans 3 (picked 2026-10-23).
-- [ ] **Approve tokens and style guide.** See `public/design/styleguide.html`.
+- [x] Tokens and style guide approved (2026-10-23).
 - [ ] **Paid PDFs are public on the live site.** Patch `main` now, or wait for launch? See `store-audit.md`.
 
 ## Defaults I chose while you were away (confirm or change)
@@ -39,4 +43,5 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 - [ ] Confirm on the first preview that each old URL redirects in one hop, including trailing-slash forms, and that `/success/?session_id=…` keeps its query string. (`vercel.json`)
 - [ ] Store port: serve PDFs through `/api/download` after payment check; update `lib/products.js` file paths (still point at old `/files/`). (`store-audit.md`)
+- [ ] Favicon and touch icon (new mark) — every page currently 404s on `/favicon.ico`. (Phase 3)
 - [ ] CSP: add `frame-src` for click-to-load players on Listen and Watch (Phase 4) and the Turnstile domain if approved (Phase 5). (`vercel.json`)
