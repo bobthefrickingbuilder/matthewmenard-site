@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Bass Violet — design tokens
+   The only file allowed to contain raw color values.
+   Every text/background pairing used on the site is declared in the
+   @pairings block below and checked by `npm run check:contrast`.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin-var-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/fonts/source-sans-3-latin-var.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/fonts/source-sans-3-latin-var-italic.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* ---- Core palette (the five Bass Violet colors) ---------------------- */
+  --ground: #1b1020;  /* Page background. Aubergine. */
+  --panel: #5a2e6b;   /* Fills, cards, borders, decoration. Plum. Never text on ground (1.8:1). */
+  --text: #f4efe8;    /* Body text. Parchment. */
+  --accent: #c9b8e0;  /* Links, heading accents, focus ring. Lilac. */
+  --spark: #e8743b;   /* Primary action only. One per view. Ember. */
+
+  /* ---- Tonal ramps ------------------------------------------------------ */
+  --ground-950: #120a16; /* Deepest: footer, intro backdrop edges. */
+  --ground-850: #22152a; /* Raised surface 1: cards on ground. */
+  --ground-800: #2b1a33; /* Raised surface 2: inputs, nested cards. */
+  --ground-700: #36223f; /* Raised surface 3: hovered rows, disabled fills. */
+
+  --panel-700: #4a2558;  /* Plum pressed. */
+  --panel-400: #6b3a7e;  /* Plum hover fill. */
+  --panel-200: #8d6a9c;  /* Strong border: inputs and controls on ground (3:1). */
+
+  --text-muted: #c9bfcc; /* Secondary text: captions, meta, labels. */
+  --text-subtle: #ab9eb0;/* Tertiary text: footnotes, timestamps. On ground and raised surfaces only. */
+
+  --accent-hover: #ddd1ee;  /* Link and lilac button hover. */
+  --accent-pressed: #b29dcf;/* Lilac button pressed. */
+
+  --spark-hover: #f08b57;   /* Ember button hover. */
+  --spark-pressed: #d4632d; /* Ember button pressed. */
+
+  /* ---- Status (forms) --------------------------------------------------- */
+  --danger: #f4a3ab;  /* Error text and error borders. */
+  --success: #a9dcb8; /* Success text. */
+
+  /* ---- Semantic aliases ------------------------------------------------- */
+  --color-bg: var(--ground);
+  --color-surface: var(--ground-850);
+  --color-surface-2: var(--ground-800);
+  --color-fill: var(--panel);             /* Plum feature panels. Text on it: --text or --accent. */
+  --color-text: var(--text);
+  --color-heading: var(--text);
+  --color-link: var(--accent);
+  --color-link-hover: var(--accent-hover);
+  --color-on-spark: var(--ground);        /* Text on ember buttons. */
+  --color-on-accent: var(--ground);       /* Text on lilac buttons. */
+  --color-border-subtle: var(--panel);    /* Hairlines and dividers. Decoration only. */
+  --color-border-control: var(--panel-200); /* Input and control outlines (needs 3:1). */
+  --color-focus: var(--accent);
+  --color-disabled-bg: var(--ground-700);
+  --color-disabled-text: var(--text-subtle);
+
+  /* ---- Focus ring ------------------------------------------------------- */
+  --focus-width: 2px;
+  --focus-offset: 2px;
+
+  /* ---- Shadows (aubergine-tinted, never pure black) -------------------- */
+  --shadow-color: 280 45% 4%;
+  --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.5);
+  --shadow-2: 0 4px 12px hsl(var(--shadow-color) / 0.55), 0 1px 3px hsl(var(--shadow-color) / 0.4);
+  --shadow-3: 0 16px 40px hsl(var(--shadow-color) / 0.6), 0 4px 10px hsl(var(--shadow-color) / 0.4);
+
+  /* ---- Type ------------------------------------------------------------- */
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Fluid scale, 360px → 1440px viewport. Ratio ~1.2 at small, ~1.333 at large. */
+  --step--1: clamp(0.83rem, 0.81rem + 0.1vw, 0.9rem);    /* Small print, captions. */
+  --step-0: clamp(1rem, 0.96rem + 0.19vw, 1.125rem);     /* Body. */
+  --step-1: clamp(1.2rem, 1.13rem + 0.33vw, 1.5rem);     /* Lead paragraph, h4. */
+  --step-2: clamp(1.44rem, 1.3rem + 0.6vw, 2rem);        /* h3. */
+  --step-3: clamp(1.73rem, 1.48rem + 1.08vw, 2.67rem);   /* h2. */
+  --step-4: clamp(2.07rem, 1.65rem + 1.87vw, 3.55rem);   /* h1. */
+  --step-5: clamp(2.49rem, 1.8rem + 3.07vw, 4.74rem);    /* Display, hero name. */
+  --step-6: clamp(2.99rem, 1.9rem + 4.83vw, 6.31rem);    /* Intro name, oversized display. */
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+  --tracking-caps: 0.12em;
+  --measure: 66ch;
+
+  /* ---- Space (fluid, 4px base) ------------------------------------------ */
+  --space-3xs: clamp(0.25rem, 0.24rem + 0.05vw, 0.31rem);
+  --space-2xs: clamp(0.5rem, 0.48rem + 0.09vw, 0.56rem);
+  --space-xs: clamp(0.75rem, 0.72rem + 0.14vw, 0.88rem);
+  --space-s: clamp(1rem, 0.96rem + 0.19vw, 1.13rem);
+  --space-m: clamp(1.5rem, 1.44rem + 0.28vw, 1.69rem);
+  --space-l: clamp(2rem, 1.92rem + 0.37vw, 2.25rem);
+  --space-xl: clamp(3rem, 2.88rem + 0.56vw, 3.38rem);
+  --space-2xl: clamp(4rem, 3.67rem + 1.48vw, 5rem);
+  --space-3xl: clamp(6rem, 5.33rem + 2.96vw, 8rem);
+  --gutter: clamp(1rem, 0.5rem + 2.2vw, 2.5rem);
+  --page-max: 80rem;
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-s: 4px;   /* Inputs, tags. */
+  --radius-m: 8px;   /* Buttons, cards. */
+  --radius-l: 16px;  /* Feature panels, media. */
+  --radius-pill: 999px;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-med: 250ms;
+}
+
+/* @pairings
+   text            on ground          text
+   text            on ground-850      text
+   text            on ground-800      text
+   text            on ground-700      text
+   text            on panel           text
+   text            on panel-700       text
+   text            on panel-400       text
+   text-muted      on ground          text
+   text-muted      on ground-850      text
+   text-muted      on ground-800      text
+   text-muted      on panel           text
+   text-subtle     on ground          text
+   text-subtle     on ground-850      text
+   text-subtle     on ground-800      text
+   text-subtle     on ground-700      text
+   accent          on ground          text
+   accent          on ground-850      text
+   accent          on ground-800      text
+   accent          on panel           text
+   accent-hover    on ground          text
+   accent-hover    on panel           text
+   spark           on ground          text
+   ground          on spark           text
+   ground          on spark-hover     text
+   ground          on spark-pressed   text
+   ground          on accent          text
+   ground          on accent-hover    text
+   ground          on accent-pressed  text
+   danger          on ground          text
+   danger          on ground-800      text
+   success         on ground          text
+   success         on ground-800      text
+   accent          on ground          ui
+   accent          on ground-850      ui
+   accent          on ground-800      ui
+   accent          on panel           ui
+   panel-200       on ground          ui
+   panel-200       on ground-800      ui
+   danger          on ground-800      ui
+   spark           on ground          ui
+   panel           on ground          decor
+*/
