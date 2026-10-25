@@ -22,7 +22,7 @@ const IMAGES = [
   { name: "singing-warm", src: "gallery/photo-3.jpg" },
   { name: "conducting", src: "gallery/photo-4.jpg" },
   { name: "choir-stage", src: "gallery/photo-5.jpg" },
-  { name: "choir-bw", src: "gallery/photo-6.jpg" },
+  { name: "choir-bw", src: "gallery/photo-6.jpg", widths: [480, 800, 1200, 1400, 2000] },
   { name: "score-when-i-am-dead", src: "covers/when-i-am-dead.jpg", widths: [480, 800, 1200] },
   { name: "score-golden-sunset", src: "covers/golden-sunset.jpg", widths: [480, 800, 1200] },
 ];

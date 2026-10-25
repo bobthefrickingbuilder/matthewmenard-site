@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="/css/pages/inner.css">
   <script type="module" src="/js/nav.js"></script>
   <script type="module" src="/js/performances.js"></script>
+  <script type="module" src="/js/hero-scroll.js"></script>
 </head>
 <body>
   <!-- header -->
@@ -70,12 +71,22 @@
   <!-- /header -->
 
   <main id="main" tabindex="-1">
+    <!-- Photo behind the heading. Decorative, so alt is empty; overlay and filter in the Photo hero section of components.css keep the text readable. -->
+    <div class="photo-hero photo-hero--choir" data-hero-scroll>
+      <picture class="photo-hero__photo">
+        <source type="image/avif" srcset="/img/choir-bw-800.avif 800w, /img/choir-bw-1200.avif 1200w, /img/choir-bw-1400.avif 1400w, /img/choir-bw-2000.avif 2000w" sizes="100vw">
+        <source type="image/webp" srcset="/img/choir-bw-800.webp 800w, /img/choir-bw-1200.webp 1200w, /img/choir-bw-1400.webp 1400w, /img/choir-bw-2000.webp 2000w" sizes="100vw">
+        <img src="/img/choir-bw-1400.jpg" srcset="/img/choir-bw-800.jpg 800w, /img/choir-bw-1200.jpg 1200w, /img/choir-bw-1400.jpg 1400w, /img/choir-bw-2000.jpg 2000w" sizes="100vw" width="2000" height="1333" fetchpriority="high" alt="">
+      </picture>
+      <div class="wrapper">
+        <header class="page-head measure">
+          <p class="eyebrow">Performance</p>
+          <h1>Performance</h1>
+          <p class="lead">Matthew sings bass with the Capital Chamber Choir and the Ottawa Regional Youth Choir.</p>
+        </header>
+      </div>
+    </div>
     <div class="wrapper">
-      <header class="page-head measure">
-        <p class="eyebrow">Performance</p>
-        <h1>Performance</h1>
-        <p class="lead">Matthew sings bass with the Capital Chamber Choir and the Ottawa Regional Youth Choir.</p>
-      </header>
 
       <section class="section" aria-labelledby="upcoming-title" data-performances-section hidden>
         <h2 id="upcoming-title">Upcoming</h2>
