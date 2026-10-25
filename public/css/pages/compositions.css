@@ -72,10 +72,15 @@
 /* Piano photo behind the page heading. The photo is muted and darkened, and a forest
    gradient sits over it (heaviest behind the text, fading into the page below), so the
    heading and lead stay well above 4.5:1 on any part of the image. */
+/* Fills the first screen below the header at any size, so the list starts out of view;
+   hero-scroll.js then glides down to it. */
 .compositions-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  display: grid;
+  align-items: center;
+  min-height: calc(100svh - 4.5rem);
   margin-bottom: var(--space-l);
 }
 
@@ -108,17 +113,11 @@
 }
 
 .compositions-hero .page-head {
-  padding-block: var(--space-3xl) var(--space-3xl);
+  padding-block: var(--space-2xl);
 }
 
-@media (min-width: 48rem) {
-  .compositions-hero .page-head {
-    padding-block: clamp(6rem, 14vw, 11rem) clamp(5rem, 10vw, 8rem);
-  }
-}
-
-@media (max-width: 47.99rem) {
-  /* On phones the text covers most of the photo: show it full width and darken it evenly. */
+@media (max-width: 47.99rem), (orientation: portrait) {
+  /* On phones and upright tablets the text covers most of the photo: show it full width and darken it evenly. */
   .compositions-hero__photo {
     width: 100%;
     -webkit-mask-image: none;
