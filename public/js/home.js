@@ -98,3 +98,38 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
     });
   }
 }
+
+// Hero panels: the open panel moves to the next role every few seconds. Hovering or
+// focusing a panel opens it and pauses the turns until the pointer leaves the hero.
+// No turns with reduced motion or while the hero is off screen.
+const hero = document.querySelector("[data-hero]");
+if (hero) {
+  const panels = [...hero.querySelectorAll(".hero__panel")];
+  const TURN = 5000;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let current = 0;
+  let timer = 0;
+  let visible = true;
+
+  const open = (n) => {
+    current = n;
+    panels.forEach((panel, i) => panel.classList.toggle("is-active", i === n));
+  };
+  const stop = () => clearInterval(timer);
+  const start = () => {
+    stop();
+    if (still || !visible) return;
+    timer = setInterval(() => open((current + 1) % panels.length), TURN);
+  };
+
+  panels.forEach((panel, i) => {
+    panel.addEventListener("pointerenter", () => { stop(); open(i); });
+    panel.addEventListener("focus", () => { stop(); open(i); });
+    panel.addEventListener("blur", start);
+  });
+  hero.addEventListener("pointerleave", start);
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    start();
+  }).observe(hero);
+}

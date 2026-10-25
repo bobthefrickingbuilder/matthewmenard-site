@@ -1,92 +1,113 @@
 /* Home page. */
 
-/* ---- Hero: a mosaic of photos filling the first screen ------------------------
-   Seven tiles with even gaps: the title in a tile of its own, six photos around it.
-   Wide screens: one screen tall, 5 columns × 3 rows. Tablets: 4 columns. Phones: the
-   title, then three photos. Photos crop themselves (object-fit) to any tile shape. */
+/* ---- Hero: three role panels filling the first screen -------------------------
+   Singer, Composer, Conductor side by side with even gaps. The open panel is wider and
+   in full colour; the open one takes turns (home.js), and hovering or focusing a panel
+   opens it. The name sits across the bottom of all three. Photos crop themselves
+   (object-fit); set the crop per panel with object-position below. */
 .hero {
   --gap: clamp(0.5rem, 1.5vw, 1rem);
-  display: grid;
-  gap: var(--gap);
-  padding: var(--gap);
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 11rem 11rem;
-  grid-template-areas:
-    "t t"
-    "a b"
-    "a c";
-}
-
-.hero__title { grid-area: t; }
-.hero__tile--a { grid-area: a; }
-.hero__tile--b { grid-area: b; }
-.hero__tile--c { grid-area: c; }
-.hero__tile--d { grid-area: d; }
-.hero__tile--e { grid-area: e; }
-.hero__tile--f { grid-area: f; }
-
-.hero__tile--d,
-.hero__tile--e,
-.hero__tile--f {
-  display: none;
-}
-
-@media (min-width: 40rem) {
-  .hero {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto 13rem 13rem;
-    grid-template-areas:
-      "t t t t"
-      "a a b c"
-      "a a d e";
-  }
-
-  .hero__tile--d,
-  .hero__tile--e {
-    display: block;
-  }
-}
-
-@media (min-width: 64rem) and (min-height: 34rem) {
-  .hero {
-    height: calc(100svh - 4.5rem);
-    min-height: 34rem;
-    grid-template-columns: 1fr 1fr 1.15fr 0.9fr 0.9fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-      "t t a b b"
-      "t t a c d"
-      "e f a c d";
-  }
-
-  .hero__tile--f {
-    display: block;
-  }
-}
-
-.hero__tile {
-  min-height: 0;
-}
-
-.hero__tile--a img { object-position: 45% 40%; }
-.hero__tile--c img,
-.hero__tile--d img { object-position: 50% 30%; }
-
-/* The title tile: forest panel with a slow-drifting glow. Its size sets the type size. */
-.hero__title {
   position: relative;
-  isolation: isolate;
-  container-type: inline-size;
-  display: grid;
-  align-content: end;
-  justify-items: start;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
-  border-radius: var(--radius-l);
-  background:
-    radial-gradient(60% 70% at var(--glow-x, 70%) var(--glow-y, 30%), color-mix(in srgb, var(--panel) 60%, transparent), transparent 75%),
-    var(--ground-850);
-  border: 1px solid var(--color-border-subtle);
+  height: calc(100svh - 4.5rem);
+  min-height: 32rem;
+  padding: var(--gap);
+}
+
+.hero__panels {
+  display: flex;
+  gap: var(--gap);
+  height: 100%;
+}
+
+.hero__panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
   overflow: hidden;
+  border-radius: var(--radius-l);
+  background: var(--ground-850);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: flex-grow 900ms var(--ease-out);
+}
+
+.hero__panel.is-active {
+  flex-grow: 2.4;
+}
+
+.hero__panel picture {
+  display: block;
+  height: 100%;
+}
+
+.hero__panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(0.5);
+  transform: scale(1.04);
+  transition: filter 900ms var(--ease-out), transform 6s var(--ease-out);
+}
+
+.hero__panel.is-active img {
+  filter: none;
+  transform: scale(1.1);
+}
+
+.hero__panel--singer img { object-position: 42% 30%; }
+.hero__panel--composer img { object-position: 30% 55%; }
+.hero__panel--conductor img { object-position: 45% 22%; }
+
+/* Darkens the bottom of every panel so the name reads over any photo. */
+.hero__panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--ground) 0%, color-mix(in srgb, var(--ground) 70%, transparent) 28%, transparent 58%);
+  pointer-events: none;
+}
+
+.hero__label {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: var(--space-s);
+  inset-inline-start: var(--space-s);
+  display: flex;
+  gap: 0.6em;
+  align-items: baseline;
+  padding: 0.35em 0.8em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ground) 65%, transparent);
+  backdrop-filter: blur(6px);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero__num {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__panel:focus-visible {
+  outline-offset: -4px;
+}
+
+/* The name and buttons, laid over the bottom of the panels. Clicks pass through to the
+   panels except on the buttons. */
+.hero__text {
+  position: absolute;
+  z-index: 2;
+  inset-inline: calc(var(--gap) * 2);
+  inset-block-end: calc(var(--gap) * 2);
+  padding: clamp(0.75rem, 2.5vw, 2rem);
+  pointer-events: none;
+}
+
+.hero__text .cluster {
+  pointer-events: auto;
 }
 
 .hero__text > * + * {
@@ -94,14 +115,23 @@
 }
 
 .hero h1 {
-  font-size: clamp(2.75rem, 15cqi, var(--step-6));
+  font-size: clamp(3.25rem, 11vw, 10rem);
   font-weight: 400;
-  line-height: 0.95;
+  line-height: 0.92;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 30px color-mix(in srgb, var(--ground) 60%, transparent);
 }
 
 .hero .lead {
   max-width: 30ch;
+}
+
+/* Phones: inactive panels are thin slivers, so their labels turn sideways. */
+@media (max-width: 47.99rem) {
+  .hero__panel:not(.is-active) .hero__label {
+    writing-mode: vertical-rl;
+    padding: 0.8em 0.35em;
+  }
 }
 
 [data-parallax] {
@@ -150,26 +180,10 @@
   display: inline-block;
 }
 
-@property --glow-x {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 70%;
-}
-
-@property --glow-y {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 40%;
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .hero__title {
-    animation: glow-drift 18s ease-in-out infinite alternate;
-  }
-
   .intro-on .hero__text > *,
   .intro-on .hero__word > span,
-  .intro-on .hero__tile {
+  .intro-on .hero__panel {
     opacity: 0;
   }
 
@@ -177,9 +191,9 @@
     animation: rise-in 900ms var(--ease-out) both;
   }
 
-  .js:not(.intro-on) .hero__text > :nth-child(1) { animation-delay: 100ms; }
-  .js:not(.intro-on) .hero__text > :nth-child(3) { animation-delay: 650ms; }
-  .js:not(.intro-on) .hero__text > :nth-child(4) { animation-delay: 800ms; }
+  .js:not(.intro-on) .hero__text > :nth-child(1) { animation-delay: 500ms; }
+  .js:not(.intro-on) .hero__text > :nth-child(3) { animation-delay: 950ms; }
+  .js:not(.intro-on) .hero__text > :nth-child(4) { animation-delay: 1100ms; }
 
   /* The heading itself stays put; its words slide up. */
   .js:not(.intro-on) .hero__text > h1 {
@@ -188,24 +202,27 @@
 
   .js:not(.intro-on) .hero__word > span {
     animation: word-up 1100ms var(--ease-out) both;
-    animation-delay: 250ms;
+    animation-delay: 600ms;
   }
 
   .js:not(.intro-on) .hero__word + .hero__word > span {
-    animation-delay: 380ms;
+    animation-delay: 730ms;
   }
 
-  /* Photos wipe up into their tiles one after another, the main one first. */
-  .js:not(.intro-on) .hero__tile {
+  /* Panels wipe up one after another. */
+  .js:not(.intro-on) .hero__panel {
     animation: photo-in 1300ms var(--ease-out) both;
   }
 
-  .js:not(.intro-on) .hero__tile--a { animation-delay: 150ms; }
-  .js:not(.intro-on) .hero__tile--b { animation-delay: 300ms; }
-  .js:not(.intro-on) .hero__tile--c { animation-delay: 420ms; }
-  .js:not(.intro-on) .hero__tile--d { animation-delay: 540ms; }
-  .js:not(.intro-on) .hero__tile--e { animation-delay: 660ms; }
-  .js:not(.intro-on) .hero__tile--f { animation-delay: 780ms; }
+  .js:not(.intro-on) .hero__panel:nth-child(2) { animation-delay: 140ms; }
+  .js:not(.intro-on) .hero__panel:nth-child(3) { animation-delay: 280ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__panel,
+  .hero__panel img {
+    transition: none;
+  }
 }
 
 @keyframes word-up {
@@ -222,17 +239,6 @@
   to {
     clip-path: inset(0 0 0 0 round var(--radius-l));
     opacity: 1;
-  }
-}
-
-@keyframes glow-drift {
-  50% {
-    --glow-x: 55%;
-    --glow-y: 60%;
-  }
-  to {
-    --glow-x: 80%;
-    --glow-y: 25%;
   }
 }
 

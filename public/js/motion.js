@@ -167,7 +167,7 @@ function pointerTouches() {
     });
     el.classList.add("has-light");
   };
-  document.querySelectorAll(".hero__title, main .card, main .panel").forEach(lit);
+  document.querySelectorAll("main .card, main .panel").forEach(lit);
 
   // Buttons lean a few pixels toward the pointer.
   for (const button of document.querySelectorAll(".button")) {
