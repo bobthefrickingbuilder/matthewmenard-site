@@ -15,6 +15,7 @@ const WIDTHS = [480, 800, 1200, 1600];
 // name: output base name · src: file in source-media/ · widths: optional override
 const IMAGES = [
   { name: "headshot", src: "photos/headshot.jpg" },
+  { name: "singing-front", src: "photos/singing-front.jpg" },
   { name: "choir-strings", src: "gallery/photo-1.jpg" },
   { name: "singing-folder", src: "gallery/photo-2.jpg" },
   { name: "singing-warm", src: "gallery/photo-3.jpg" },

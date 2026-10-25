@@ -68,3 +68,24 @@
 .embed__play .meta {
   font-family: var(--font-body);
 }
+
+/* Wide photo under the page heading. Cropped to a banner; Matthew sits left of centre. */
+.compositions-hero {
+  margin-block: var(--space-l) var(--space-xl);
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.compositions-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 45%;
+}
+
+@media (min-width: 48rem) {
+  .compositions-hero {
+    aspect-ratio: 21 / 9;
+  }
+}
