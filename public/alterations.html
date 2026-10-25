@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en-CA" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Request an alteration — Matthew Menard</title>
+  <meta name="description" content="Private page for website clients to request alterations.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#101b17">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <script>document.documentElement.classList.replace("no-js","js")</script>
+  <link rel="preload" href="/fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/forms.css">
+  <link rel="stylesheet" href="/css/pages/alterations.css">
+  <script type="module" src="/js/nav.js"></script>
+  <script type="module" src="/js/alterations.js"></script>
+</head>
+<body>
+  <!-- header -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  
+  <header class="site-header">
+    <div class="wrapper site-header__inner">
+      <a class="wordmark" href="/">Matthew Menard</a>
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="/about">About</a></li>
+          <li><a href="/compositions">Compositions</a></li>
+          <li><a href="/performing">Performance</a></li>
+          <li><a href="/commissions">Websites</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li class="nav__store"><a href="/compositions">Store</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>Menu</button>
+    </div>
+  </header>
+  
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+    <div class="mobile-menu__top">
+      <a class="wordmark" href="/">Matthew Menard</a>
+      <button class="menu-toggle" type="button" data-menu-close>Close</button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/compositions">Compositions</a></li>
+      <li><a href="/performing">Performance</a></li>
+      <li><a href="/commissions">Websites</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li class="mobile-menu__store"><a href="/compositions">Store</a></li>
+    </ul>
+  </div>
+  <!-- /header -->
+
+  <main id="main" tabindex="-1">
+    <div class="wrapper">
+      <!-- Private page for website clients. Each client's link carries their key after #k=, so it never reaches server logs. -->
+      <header class="page-head measure stack">
+        <p class="eyebrow">Website care</p>
+        <h1>Request an alteration</h1>
+        <p class="lead" data-intro>Loading your plan.</p>
+      </header>
+
+      <noscript><p class="panel measure">This page needs JavaScript. Email <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a> with your request instead.</p></noscript>
+
+      <div class="panel measure stack" data-missing hidden>
+        <h2 class="h4">This page needs your private link</h2>
+        <p data-missing-text>Open the link Matthew emailed you. If you cannot find it, email <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a> for a new one.</p>
+      </div>
+
+      <div class="alt-layout" data-app hidden>
+        <section class="stack" aria-labelledby="new-title">
+          <h2 id="new-title">New alteration</h2>
+          <form class="form-stack" data-alt-form novalidate>
+            <div class="field">
+              <label for="a-title">What to change <span class="required">(required)</span></label>
+              <p class="hint" id="a-title-hint">A short summary, like "Add the March 14 concert" or "New headshot on About".</p>
+              <input class="input" id="a-title" name="title" type="text" maxlength="140" required aria-describedby="a-title-hint">
+            </div>
+            <div class="field">
+              <label for="a-details">Details <span class="required">(required)</span></label>
+              <p class="hint" id="a-details-hint">Which page, and exactly what should change. Paste any new text here.</p>
+              <textarea class="textarea" id="a-details" name="details" rows="7" maxlength="5000" required aria-describedby="a-details-hint"></textarea>
+            </div>
+            <div class="field">
+              <label for="a-links">Links to photos or files <span class="optional">(optional)</span></label>
+              <p class="hint" id="a-links-hint">For example a Google Drive or Dropbox link. One per line.</p>
+              <textarea class="textarea" id="a-links" name="links" rows="3" maxlength="2000" aria-describedby="a-links-hint"></textarea>
+            </div>
+            <p class="alt-note" data-over hidden>This month's alterations are used up. You can still send this request; Matthew will let you know before doing extra work.</p>
+            <div><button class="button button--primary" type="submit">Send request</button></div>
+            <p class="alt-status" role="status" data-alt-status></p>
+          </form>
+        </section>
+
+        <aside class="stack" aria-label="Your plan">
+          <div class="panel stack alt-plan">
+            <p class="eyebrow" data-plan-name></p>
+            <p class="alt-plan__site" data-site></p>
+            <p class="alt-plan__count"><span data-used>0</span> of <span data-allowance>0</span></p>
+            <p class="meta">alterations used in <span data-month></span></p>
+            <div class="meter" aria-hidden="true"><span class="meter__fill" data-meter></span></div>
+            <p class="meta">The count starts again on the 1st of each month.</p>
+          </div>
+          <section class="stack" aria-labelledby="recent-title">
+            <h2 class="h4" id="recent-title">Your recent requests</h2>
+            <ul class="alt-recent" role="list" data-recent></ul>
+            <p class="meta" data-recent-empty>None yet.</p>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="site-footer__grid">
+        <div class="stack">
+          <a class="wordmark" href="/">Matthew Menard</a>
+          <p>Bass, composer, and conductor in Ottawa.</p>
+          <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a>
+        </div>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/compositions">Compositions</a></li>
+            <li><a href="/performing">Performance</a></li>
+            <li><a href="/conducting-teaching">Conducting &amp; Teaching</a></li>
+            <li><a href="/listen">Listen &amp; Watch</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Services and policies">
+          <ul>
+            <li><a href="/commissions">Websites</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/refund">Refund policy</a></li>
+          </ul>
+        </nav>
+        <ul class="cluster" aria-label="Social">
+          <li><a href="https://instagram.com/matthewmenardbass" rel="me"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg><span class="visually-hidden">Instagram</span></a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61580524025330" rel="me"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6a22 22 0 0 0-2.5-.1c-2.4 0-4.1 1.5-4.1 4.2v2.2H7.5V14h2.7v8h3.3Z"/></svg><span class="visually-hidden">Facebook</span></a></li>
+        </ul>
+      </div>
+      <p class="site-footer__legal">© 2026 Matthew Menard. All rights reserved.</p>
+    </div>
+  </footer>
+  <!-- /footer -->
+</body>
+</html>

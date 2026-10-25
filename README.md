@@ -101,6 +101,17 @@ Open `public/listen.html`. The comment above the list shows one recording; copy 
 
 The contact form and the website request form on `/commissions` both send to `COMMISSION_TO_EMAIL` through Resend. The request form also sends the visitor a short fixed confirmation (nothing they typed is echoed back, so it can't be used to spam others). To change the request form's choices (project types, pages, budget ranges), edit both `public/commissions.html` and the lists at the top of `api/commission.js`; they must match. Spam defenses: a hidden field bots fill in, a minimum fill time, and a limit of 5 messages per 10 minutes per visitor. Bots get a fake "sent" so they don't retry. No CAPTCHA.
 
+## Website clients and alterations
+
+Website clients request alterations from a private page; you track them on another.
+
+- **Your tracker:** `/admin`. Sign in with `ADMIN_PASSWORD`. It lists requests (open, in progress, done, cancelled), each client's alterations used this month against their plan, and lets you add clients, change plans, pause a link, or make a new link.
+- **Client page:** each client gets a private link like `/alterations#k=…`. Add the client in the tracker, copy the link it shows, and email it to them. It is shown only once; "New private link" makes another and stops the old one.
+- **Counts** start again on the 1st of each month (Ottawa time). Marking a request "Cancelled" stops it counting. A client can still send requests past their plan; the email to you says "over the plan".
+- **Emails:** you get each request; the client gets a confirmation, and another when you mark it done (untick the box on the tracker to skip that).
+- **Plans** (names and alterations per month) live in `lib/alterations.js`. Keep them in step with the package cards on `/commissions`.
+- **Setup on Vercel:** add Upstash for Redis under Storage and connect it to the project, then set `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` (see `.env.example`). Locally, without Upstash, requests are kept in memory until the dev server stops.
+
 ## Motion
 
 - Sections rise into view as you scroll, pages cross-fade when you click between them, and buttons, cards, photos, and menu links ease on hover. All of it lives in the Motion section at the end of `public/css/components.css` and in `public/js/motion.js`.

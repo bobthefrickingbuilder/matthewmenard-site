@@ -1,0 +1,222 @@
+/* Website care: the client request page (/alterations) and Matthew's tracker (/admin). */
+
+.alt-layout {
+  display: grid;
+  gap: var(--space-2xl);
+  align-items: start;
+  padding-block: var(--space-l) var(--space-3xl);
+}
+
+@media (min-width: 56rem) {
+  .alt-layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+  }
+}
+
+.alt-plan__site {
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.alt-plan__count {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  line-height: var(--leading-tight);
+  color: var(--color-heading);
+}
+
+.alt-note {
+  padding: var(--space-xs) var(--space-s);
+  border-left: 3px solid var(--spark);
+  background: var(--color-surface-2);
+}
+
+.alt-status:empty {
+  display: none;
+}
+
+/* Allowance bar. The count is always given in text beside it. */
+.meter {
+  height: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-2);
+  overflow: hidden;
+}
+
+.meter__fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width var(--dur-med) var(--ease-out);
+}
+
+.meter__fill.is-full {
+  background: var(--spark);
+}
+
+.alt-recent {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.alt-recent li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 var(--space-s);
+  padding-block: var(--space-xs);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.alt-recent__title {
+  grid-column: 1;
+  color: var(--color-heading);
+}
+
+.alt-recent .meta {
+  grid-column: 1;
+}
+
+.alt-recent .badge {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--space-3xs) var(--space-xs);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-control);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.badge--done {
+  border-color: var(--accent);
+  color: var(--color-heading);
+}
+
+.badge--in-progress {
+  border-color: var(--spark);
+}
+
+.badge--cancelled {
+  color: var(--text-muted);
+}
+
+/* Tracker */
+.admin-head {
+  padding-bottom: 0;
+}
+
+.admin-login {
+  max-width: 24rem;
+  margin-block: var(--space-l) var(--space-3xl);
+}
+
+.admin-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-s) var(--space-l);
+}
+
+.admin-bar__field {
+  min-width: 14rem;
+}
+
+.admin-requests,
+.admin-clients {
+  display: grid;
+  gap: var(--space-s);
+}
+
+@media (min-width: 48rem) {
+  .admin-clients {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}
+
+.admin-request,
+.admin-client {
+  gap: var(--space-xs);
+}
+
+/* These cards are not links, so they do not lift on hover. */
+.admin-request:hover,
+.admin-client:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.admin-request.is-open {
+  border-left: 3px solid var(--spark);
+}
+
+.admin-request.is-in-progress {
+  border-left: 3px solid var(--accent);
+}
+
+.admin-request.is-done,
+.admin-request.is-cancelled {
+  opacity: 0.8;
+}
+
+.admin-request__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2xs) var(--space-s);
+}
+
+.admin-request__id {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.admin-request__body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-top: var(--space-xs);
+}
+
+.admin-request__links {
+  margin-top: var(--space-xs);
+  overflow-wrap: anywhere;
+}
+
+.admin-request__status {
+  max-width: 16rem;
+}
+
+.admin-client__count {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  color: var(--color-heading);
+}
+
+.admin-client.is-paused {
+  opacity: 0.75;
+}
+
+.admin-client .meta {
+  overflow-wrap: anywhere;
+}
+
+.admin-link__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.admin-link__row .input {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.admin-add {
+  max-width: 40rem;
+}

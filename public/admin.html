@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en-CA" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Alterations tracker — Matthew Menard</title>
+  <meta name="description" content="Private tracker.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#101b17">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <script>document.documentElement.classList.replace("no-js","js")</script>
+  <link rel="preload" href="/fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/forms.css">
+  <link rel="stylesheet" href="/css/pages/alterations.css">
+  <script type="module" src="/js/nav.js"></script>
+  <script type="module" src="/js/admin.js"></script>
+</head>
+<body>
+  <!-- header -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  
+  <header class="site-header">
+    <div class="wrapper site-header__inner">
+      <a class="wordmark" href="/">Matthew Menard</a>
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="/about">About</a></li>
+          <li><a href="/compositions">Compositions</a></li>
+          <li><a href="/performing">Performance</a></li>
+          <li><a href="/commissions">Websites</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li class="nav__store"><a href="/compositions">Store</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>Menu</button>
+    </div>
+  </header>
+  
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+    <div class="mobile-menu__top">
+      <a class="wordmark" href="/">Matthew Menard</a>
+      <button class="menu-toggle" type="button" data-menu-close>Close</button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/compositions">Compositions</a></li>
+      <li><a href="/performing">Performance</a></li>
+      <li><a href="/commissions">Websites</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li class="mobile-menu__store"><a href="/compositions">Store</a></li>
+    </ul>
+  </div>
+  <!-- /header -->
+
+  <main id="main" tabindex="-1">
+    <div class="wrapper">
+      <!-- Matthew's private tracker. Signed-in state is a cookie set by /api/admin. -->
+      <header class="page-head stack admin-head">
+        <p class="eyebrow">Private</p>
+        <h1>Alterations tracker</h1>
+        <p class="lead" data-admin-month>Sign in to see requests.</p>
+        <div data-signed-in hidden><button class="button button--secondary" type="button" data-logout>Sign out</button></div>
+      </header>
+
+      <noscript><p class="panel measure">The tracker needs JavaScript.</p></noscript>
+
+      <section data-login hidden aria-labelledby="login-title">
+        <form class="form-stack panel admin-login" data-login-form>
+          <h2 class="h4" id="login-title">Sign in</h2>
+          <div class="field">
+            <label for="ad-pass">Password</label>
+            <input class="input" id="ad-pass" name="password" type="password" autocomplete="current-password" required>
+          </div>
+          <div><button class="button button--primary" type="submit">Sign in</button></div>
+          <p class="alt-status" role="status" data-login-status></p>
+        </form>
+      </section>
+
+      <div data-dashboard hidden>
+        <section class="section stack" aria-labelledby="queue-title">
+          <div class="admin-bar">
+            <h2 id="queue-title">Requests</h2>
+            <div class="field admin-bar__field">
+              <label for="ad-show">Show</label>
+              <select class="select" id="ad-show" data-show>
+                <option value="active">Open and in progress</option>
+                <option value="done">Done</option>
+                <option value="cancelled">Cancelled</option>
+                <option value="all">All</option>
+              </select>
+            </div>
+          </div>
+          <label class="choice admin-notify"><input type="checkbox" data-notify checked> <span>Email the client when I mark a request done</span></label>
+          <ul class="admin-requests" role="list" data-requests></ul>
+          <p class="meta" data-requests-empty hidden>Nothing here.</p>
+          <p class="alt-status" role="status" data-request-status></p>
+        </section>
+
+        <section class="section stack" aria-labelledby="clients-title">
+          <h2 id="clients-title">Clients</h2>
+          <div class="panel stack admin-link" data-link-panel hidden tabindex="-1">
+            <p>Private link for <strong data-link-for></strong>. Send it to the client. It is shown only now; making a new one stops the old one working.</p>
+            <div class="admin-link__row">
+              <input class="input" type="text" readonly data-link aria-label="Private link">
+              <button class="button button--primary" type="button" data-copy>Copy</button>
+            </div>
+          </div>
+          <ul class="admin-clients" role="list" data-clients></ul>
+          <p class="meta" data-clients-empty hidden>No clients yet.</p>
+          <p class="alt-status" role="status" data-client-status></p>
+
+          <details class="faq__item admin-add">
+            <summary>Add a client</summary>
+            <form class="form-stack" data-add-form novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="c-name">Name <span class="required">(required)</span></label>
+                  <input class="input" id="c-name" name="name" type="text" maxlength="120" required>
+                </div>
+                <div class="field">
+                  <label for="c-email">Email <span class="required">(required)</span></label>
+                  <input class="input" id="c-email" name="email" type="email" maxlength="200" required>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="c-site">Website <span class="optional">(optional)</span></label>
+                  <input class="input" id="c-site" name="site" type="text" maxlength="200">
+                </div>
+                <div class="field">
+                  <label for="c-plan">Plan <span class="required">(required)</span></label>
+                  <select class="select" id="c-plan" name="plan" required data-plan-options></select>
+                </div>
+              </div>
+              <div><button class="button button--primary" type="submit">Add client</button></div>
+              <p class="alt-status" role="status" data-add-status></p>
+            </form>
+          </details>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="site-footer__grid">
+        <div class="stack">
+          <a class="wordmark" href="/">Matthew Menard</a>
+          <p>Bass, composer, and conductor in Ottawa.</p>
+          <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a>
+        </div>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/compositions">Compositions</a></li>
+            <li><a href="/performing">Performance</a></li>
+            <li><a href="/conducting-teaching">Conducting &amp; Teaching</a></li>
+            <li><a href="/listen">Listen &amp; Watch</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Services and policies">
+          <ul>
+            <li><a href="/commissions">Websites</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/refund">Refund policy</a></li>
+          </ul>
+        </nav>
+        <ul class="cluster" aria-label="Social">
+          <li><a href="https://instagram.com/matthewmenardbass" rel="me"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg><span class="visually-hidden">Instagram</span></a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61580524025330" rel="me"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6a22 22 0 0 0-2.5-.1c-2.4 0-4.1 1.5-4.1 4.2v2.2H7.5V14h2.7v8h3.3Z"/></svg><span class="visually-hidden">Facebook</span></a></li>
+        </ul>
+      </div>
+      <p class="site-footer__legal">© 2026 Matthew Menard. All rights reserved.</p>
+    </div>
+  </footer>
+  <!-- /footer -->
+</body>
+</html>

@@ -98,3 +98,92 @@ h2 + .grid {
 #request:focus {
   outline: none;
 }
+
+/* Websites page: package cards. The middle card is marked as recommended. */
+.tiers {
+  display: grid;
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+  align-items: stretch;
+}
+
+@media (min-width: 56rem) {
+  .tiers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.tier {
+  gap: var(--space-s);
+}
+
+.tier__name {
+  font-size: var(--step-2);
+}
+
+.tier__for {
+  color: var(--text-muted);
+}
+
+.tier__price {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: var(--leading-tight);
+  color: var(--color-heading);
+}
+
+.tier__from {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tier__monthly {
+  margin-top: calc(var(--space-s) * -0.5);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+
+.tier__list {
+  display: grid;
+  gap: var(--space-2xs);
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.tier__list li {
+  position: relative;
+  padding-left: 1.25em;
+}
+
+.tier__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.tier--featured {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-2);
+}
+
+.tier__badge {
+  position: absolute;
+  top: 0;
+  left: var(--space-m);
+  translate: 0 -50%;
+  padding: var(--space-3xs) var(--space-xs);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--color-on-accent);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
