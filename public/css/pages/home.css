@@ -12,7 +12,7 @@
 
 @media (min-width: 52rem) {
   .hero {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 0.8fr 1.2fr;
   }
 }
 
@@ -35,10 +35,10 @@
   position: relative;
   justify-self: center;
   display: grid;
-  grid-template-columns: 0.62fr 1fr 0.62fr;
+  grid-template-columns: 0.55fr 1fr 0.55fr;
   align-items: end;
   gap: clamp(0.5rem, 1.5vw, 1rem);
-  width: min(100%, 36rem);
+  width: 100%;
   padding-block: var(--space-l);
 }
 
@@ -53,7 +53,11 @@
 
 .hero__photo {
   z-index: 1;
-  max-height: 72svh;
+  max-height: min(74svh, 100svh - 15rem); /* Keeps the photos inside the first screen on short laptops. */
+}
+
+.hero__photo img {
+  object-position: 45% 40%;
 }
 
 /* With a mouse, the photos shift a few pixels with the pointer, the side ones the
@@ -491,6 +495,11 @@
 
 .role[open] .role__toggle::after {
   scale: 0 1;
+}
+
+/* While the bio slides shut (home.js), the minus already turns back into a plus. */
+.role.is-closing .role__toggle::after {
+  scale: 1;
 }
 
 .role summary:hover .role__toggle {
