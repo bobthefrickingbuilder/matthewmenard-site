@@ -36,7 +36,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
   - **Packages** (3 cards): draft written (Artist Bio, Portfolio, Studio; monthly plans with alterations per month). Confirm names, scope, timelines, one-time prices, and monthly rates.
   - **Recent sites** (ORYC, the luthier site, Esmée Peets): URL, screenshot, one line, and permission. Or delete the section to launch without it.
   - **FAQ answers:** code and content ownership, hosting and domain, maintenance, timeline, revisions.
-  - **Budget ranges** for the form's select (`public/commissions.html` and `api/commission.js`; only "Not sure yet" now).
+  - **Budget ranges**: drafted (Under $200, $200 to $500, $500 to $1,000, Over $1,000, Not sure yet). Confirm or change in `public/commissions.html` and `api/commission.js`.
 - [ ] Confirm the wording: hero line, "What gets built" sentence (from the brief), and the 7 process steps.
 - [ ] **Privacy policy:** I drafted sections for both forms, Resend, and retention (`public/privacy.html`). I'm not a lawyer; review it and set a new effective date.
 - [ ] Spam: honeypot + minimum fill time + in-memory rate limit. Approve Cloudflare Turnstile only if spam gets through.

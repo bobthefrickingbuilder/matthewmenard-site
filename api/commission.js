@@ -5,8 +5,8 @@ const { sendMail, addresses } = require("../lib/mail");
 const PROJECT_TYPES = ["Musician", "Ensemble or choir", "Artist", "Small business", "Other"];
 const PAGES = ["Home", "About or bio", "Music, works, or portfolio", "Events or calendar", "Listen and watch",
   "Shop or store", "Booking or lessons", "Blog or news", "Contact form", "Other"];
-// [TODO: owner to set budget ranges; keep in sync with the select on /commissions]
-const BUDGETS = ["Not sure yet"];
+// One-time build budget. Keep in sync with the select on /commissions.
+const BUDGETS = ["Under $200", "$200 to $500", "$500 to $1,000", "Over $1,000", "Not sure yet"];
 
 const SCHEMA = {
   name: { label: "Name", required: true, max: 100 },

@@ -276,13 +276,16 @@
           </fieldset>
           <div class="field-row">
             <div class="field">
-              <label for="r-budget">Budget range <span class="optional">(optional)</span></label>
+              <label for="r-budget">Budget for the build <span class="optional">(optional)</span></label>
               <select class="select" id="r-budget" name="budget">
                 <option value="">Choose one</option>
-                <!-- [TODO: owner to set budget ranges; add one <option> per range here and in api/commission.js] -->
+                <!-- Keep in sync with BUDGETS in api/commission.js. -->
+                <option>Under $200</option>
+                <option>$200 to $500</option>
+                <option>$500 to $1,000</option>
+                <option>Over $1,000</option>
                 <option>Not sure yet</option>
               </select>
-              <p class="todo">[TODO: budget ranges from Matthew]</p>
             </div>
             <div class="field">
               <label for="r-launch">Desired launch date <span class="optional">(optional)</span></label>
