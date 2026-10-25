@@ -84,9 +84,9 @@
   <!-- /header -->
 
   <main id="main" tabindex="-1">
-    <section class="wrapper hero" aria-labelledby="hero-title">
-      <div class="hero__glow" aria-hidden="true"></div>
-      <div class="hero__text">
+    <!-- Hero: a mosaic of photos with the title in a tile of its own. Layout in home.css. -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__title hero__text">
         <p class="eyebrow">Bass · Composer · Conductor</p>
         <h1 id="hero-title"><span class="hero__word"><span>Matthew</span></span> <span class="hero__word"><span>Menard</span></span></h1>
         <p class="lead">Bass singer, composer, and conductor based in Ottawa.</p>
@@ -95,29 +95,48 @@
           <a class="button" href="/about">About</a>
         </div>
       </div>
-      <div class="hero__media">
-        <figure class="photo hero__inset hero__inset--back" aria-hidden="true">
-          <picture>
-            <source type="image/avif" srcset="/img/choir-bw-480.avif 480w, /img/choir-bw-800.avif 800w" sizes="(min-width: 52rem) 16vw, 30vw">
-            <source type="image/webp" srcset="/img/choir-bw-480.webp 480w, /img/choir-bw-800.webp 800w" sizes="(min-width: 52rem) 16vw, 30vw">
-            <img src="/img/choir-bw-800.jpg" srcset="/img/choir-bw-480.jpg 480w, /img/choir-bw-800.jpg 800w" sizes="(min-width: 52rem) 16vw, 30vw" width="1400" height="933" data-parallax="10" fetchpriority="low" decoding="async" alt="">
-          </picture>
-        </figure>
-        <figure class="photo hero__photo">
-          <picture>
-            <source type="image/avif" srcset="/img/rehearsal-480.avif 480w, /img/rehearsal-800.avif 800w, /img/rehearsal-1200.avif 1200w, /img/rehearsal-1600.avif 1600w" sizes="(min-width: 52rem) 26vw, 50vw">
-            <source type="image/webp" srcset="/img/rehearsal-480.webp 480w, /img/rehearsal-800.webp 800w, /img/rehearsal-1200.webp 1200w, /img/rehearsal-1600.webp 1600w" sizes="(min-width: 52rem) 26vw, 50vw">
-            <img src="/img/rehearsal-800.jpg" srcset="/img/rehearsal-480.jpg 480w, /img/rehearsal-800.jpg 800w, /img/rehearsal-1200.jpg 1200w, /img/rehearsal-1600.jpg 1600w" sizes="(min-width: 52rem) 26vw, 50vw" width="1600" height="2000" fetchpriority="high" data-parallax="5" alt="Matthew Menard smiling with a colleague over sheet music at a music stand in a church">
-          </picture>
-        </figure>
-        <figure class="photo hero__inset hero__inset--front" aria-hidden="true">
-          <picture>
-            <source type="image/avif" srcset="/img/conducting-480.avif 480w, /img/conducting-800.avif 800w" sizes="(min-width: 52rem) 16vw, 30vw">
-            <source type="image/webp" srcset="/img/conducting-480.webp 480w, /img/conducting-800.webp 800w" sizes="(min-width: 52rem) 16vw, 30vw">
-            <img src="/img/conducting-800.jpg" srcset="/img/conducting-480.jpg 480w, /img/conducting-800.jpg 800w" sizes="(min-width: 52rem) 16vw, 30vw" width="933" height="1400" data-parallax="-12" fetchpriority="low" decoding="async" alt="">
-          </picture>
-        </figure>
-      </div>
+      <figure class="photo hero__tile hero__tile--a">
+        <picture>
+          <source type="image/avif" srcset="/img/rehearsal-480.avif 480w, /img/rehearsal-800.avif 800w, /img/rehearsal-1200.avif 1200w, /img/rehearsal-1600.avif 1600w" sizes="(min-width: 64rem) 24vw, 50vw">
+          <source type="image/webp" srcset="/img/rehearsal-480.webp 480w, /img/rehearsal-800.webp 800w, /img/rehearsal-1200.webp 1200w, /img/rehearsal-1600.webp 1600w" sizes="(min-width: 64rem) 24vw, 50vw">
+          <img src="/img/rehearsal-800.jpg" srcset="/img/rehearsal-480.jpg 480w, /img/rehearsal-800.jpg 800w, /img/rehearsal-1200.jpg 1200w, /img/rehearsal-1600.jpg 1600w" sizes="(min-width: 64rem) 24vw, 50vw" width="1600" height="2000" fetchpriority="high" alt="Matthew Menard smiling with a colleague over sheet music at a music stand in a church">
+        </picture>
+      </figure>
+      <figure class="photo hero__tile hero__tile--b" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="/img/choir-strings-480.avif 480w, /img/choir-strings-800.avif 800w, /img/choir-strings-1200.avif 1200w, /img/choir-strings-1400.avif 1400w" sizes="(min-width: 64rem) 36vw, 25vw">
+          <source type="image/webp" srcset="/img/choir-strings-480.webp 480w, /img/choir-strings-800.webp 800w, /img/choir-strings-1200.webp 1200w, /img/choir-strings-1400.webp 1400w" sizes="(min-width: 64rem) 36vw, 25vw">
+          <img src="/img/choir-strings-800.jpg" srcset="/img/choir-strings-480.jpg 480w, /img/choir-strings-800.jpg 800w, /img/choir-strings-1200.jpg 1200w, /img/choir-strings-1400.jpg 1400w" sizes="(min-width: 64rem) 36vw, 25vw" width="1400" height="980" decoding="async" alt="">
+        </picture>
+      </figure>
+      <figure class="photo hero__tile hero__tile--c" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="/img/conducting-480.avif 480w, /img/conducting-800.avif 800w, /img/conducting-933.avif 933w" sizes="(min-width: 64rem) 18vw, 25vw">
+          <source type="image/webp" srcset="/img/conducting-480.webp 480w, /img/conducting-800.webp 800w, /img/conducting-933.webp 933w" sizes="(min-width: 64rem) 18vw, 25vw">
+          <img src="/img/conducting-800.jpg" srcset="/img/conducting-480.jpg 480w, /img/conducting-800.jpg 800w, /img/conducting-933.jpg 933w" sizes="(min-width: 64rem) 18vw, 25vw" width="933" height="1400" decoding="async" alt="">
+        </picture>
+      </figure>
+      <figure class="photo hero__tile hero__tile--d" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="/img/singing-folder-480.avif 480w, /img/singing-folder-800.avif 800w, /img/singing-folder-933.avif 933w" sizes="(min-width: 64rem) 18vw, 25vw">
+          <source type="image/webp" srcset="/img/singing-folder-480.webp 480w, /img/singing-folder-800.webp 800w, /img/singing-folder-933.webp 933w" sizes="(min-width: 64rem) 18vw, 25vw">
+          <img src="/img/singing-folder-800.jpg" srcset="/img/singing-folder-480.jpg 480w, /img/singing-folder-800.jpg 800w, /img/singing-folder-933.jpg 933w" sizes="(min-width: 64rem) 18vw, 25vw" width="933" height="1400" decoding="async" alt="">
+        </picture>
+      </figure>
+      <figure class="photo hero__tile hero__tile--e" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="/img/choir-stage-480.avif 480w, /img/choir-stage-800.avif 800w, /img/choir-stage-1080.avif 1080w" sizes="(min-width: 64rem) 20vw, 25vw">
+          <source type="image/webp" srcset="/img/choir-stage-480.webp 480w, /img/choir-stage-800.webp 800w, /img/choir-stage-1080.webp 1080w" sizes="(min-width: 64rem) 20vw, 25vw">
+          <img src="/img/choir-stage-800.jpg" srcset="/img/choir-stage-480.jpg 480w, /img/choir-stage-800.jpg 800w, /img/choir-stage-1080.jpg 1080w" sizes="(min-width: 64rem) 20vw, 25vw" width="1080" height="1350" decoding="async" alt="">
+        </picture>
+      </figure>
+      <figure class="photo hero__tile hero__tile--f" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="/img/singing-warm-480.avif 480w, /img/singing-warm-800.avif 800w, /img/singing-warm-1200.avif 1200w" sizes="(min-width: 64rem) 20vw, 25vw">
+          <source type="image/webp" srcset="/img/singing-warm-480.webp 480w, /img/singing-warm-800.webp 800w, /img/singing-warm-1200.webp 1200w" sizes="(min-width: 64rem) 20vw, 25vw">
+          <img src="/img/singing-warm-800.jpg" srcset="/img/singing-warm-480.jpg 480w, /img/singing-warm-800.jpg 800w, /img/singing-warm-1200.jpg 1200w" sizes="(min-width: 64rem) 20vw, 25vw" width="1400" height="933" decoding="async" alt="">
+        </picture>
+      </figure>
     </section>
 
 

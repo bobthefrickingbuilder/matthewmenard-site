@@ -1,7 +1,7 @@
 // Site-wide motion: scroll reveals, gentle parallax on [data-parallax] images, the header
 // shadow and reading-progress line, headings that rise word by word, and (with a mouse)
-// light that follows the pointer, hero photos that shift with it, and buttons that lean
-// toward it. With reduced motion only the header shadow and progress line run.
+// light that follows the pointer and buttons that lean toward it. With reduced motion
+// only the header shadow and progress line run.
 // Loaded on every page through nav.js. Styles live in the Motion section of components.css.
 
 const root = document.documentElement;
@@ -158,7 +158,7 @@ function headingWords() {
 function pointerTouches() {
   if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
-  // A soft light follows the pointer across the hero, cards, and panels.
+  // A soft light follows the pointer across the hero title, cards, and panels.
   const lit = (el) => {
     el.addEventListener("pointermove", (e) => {
       const box = el.getBoundingClientRect();
@@ -167,22 +167,7 @@ function pointerTouches() {
     });
     el.classList.add("has-light");
   };
-  document.querySelectorAll(".hero, main .card, main .panel").forEach(lit);
-
-  // Hero photos shift a few pixels with the pointer, the side photos further than the
-  // middle one, so they read as layers.
-  const hero = document.querySelector(".hero");
-  const media = hero?.querySelector(".hero__media");
-  if (media) {
-    hero.addEventListener("pointermove", (e) => {
-      media.style.setProperty("--mx", ((e.clientX / innerWidth) * 2 - 1).toFixed(3));
-      media.style.setProperty("--my", ((e.clientY / innerHeight) * 2 - 1).toFixed(3));
-    });
-    hero.addEventListener("pointerleave", () => {
-      media.style.setProperty("--mx", 0);
-      media.style.setProperty("--my", 0);
-    });
-  }
+  document.querySelectorAll(".hero__title, main .card, main .panel").forEach(lit);
 
   // Buttons lean a few pixels toward the pointer.
   for (const button of document.querySelectorAll(".button")) {

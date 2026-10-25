@@ -1,27 +1,100 @@
 /* Home page. */
 
+/* ---- Hero: a mosaic of photos filling the first screen ------------------------
+   Seven tiles with even gaps: the title in a tile of its own, six photos around it.
+   Wide screens: one screen tall, 5 columns × 3 rows. Tablets: 4 columns. Phones: the
+   title, then three photos. Photos crop themselves (object-fit) to any tile shape. */
 .hero {
-  position: relative;
-  isolation: isolate;
+  --gap: clamp(0.5rem, 1.5vw, 1rem);
   display: grid;
-  gap: var(--space-xl);
-  align-items: center;
-  min-height: calc(100svh - 4.5rem);
-  padding-block: var(--space-2xl);
+  gap: var(--gap);
+  padding: var(--gap);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 11rem 11rem;
+  grid-template-areas:
+    "t t"
+    "a b"
+    "a c";
 }
 
-@media (min-width: 52rem) {
+.hero__title { grid-area: t; }
+.hero__tile--a { grid-area: a; }
+.hero__tile--b { grid-area: b; }
+.hero__tile--c { grid-area: c; }
+.hero__tile--d { grid-area: d; }
+.hero__tile--e { grid-area: e; }
+.hero__tile--f { grid-area: f; }
+
+.hero__tile--d,
+.hero__tile--e,
+.hero__tile--f {
+  display: none;
+}
+
+@media (min-width: 40rem) {
   .hero {
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 13rem 13rem;
+    grid-template-areas:
+      "t t t t"
+      "a a b c"
+      "a a d e";
+  }
+
+  .hero__tile--d,
+  .hero__tile--e {
+    display: block;
   }
 }
 
+@media (min-width: 64rem) and (min-height: 34rem) {
+  .hero {
+    height: calc(100svh - 4.5rem);
+    min-height: 34rem;
+    grid-template-columns: 1fr 1fr 1.15fr 0.9fr 0.9fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "t t a b b"
+      "t t a c d"
+      "e f a c d";
+  }
+
+  .hero__tile--f {
+    display: block;
+  }
+}
+
+.hero__tile {
+  min-height: 0;
+}
+
+.hero__tile--a img { object-position: 45% 40%; }
+.hero__tile--c img,
+.hero__tile--d img { object-position: 50% 30%; }
+
+/* The title tile: forest panel with a slow-drifting glow. Its size sets the type size. */
+.hero__title {
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(60% 70% at var(--glow-x, 70%) var(--glow-y, 30%), color-mix(in srgb, var(--panel) 60%, transparent), transparent 75%),
+    var(--ground-850);
+  border: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+}
+
 .hero__text > * + * {
-  margin-block-start: var(--space-m);
+  margin-block-start: var(--space-s);
 }
 
 .hero h1 {
-  font-size: var(--step-6);
+  font-size: clamp(2.75rem, 15cqi, var(--step-6));
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.02em;
@@ -30,46 +103,6 @@
 .hero .lead {
   max-width: 30ch;
 }
-
-.hero__media {
-  position: relative;
-  justify-self: center;
-  display: grid;
-  grid-template-columns: 0.55fr 1fr 0.55fr;
-  align-items: end;
-  gap: clamp(0.5rem, 1.5vw, 1rem);
-  width: 100%;
-  padding-block: var(--space-l);
-}
-
-/* Three photos side by side: the main one tall in the middle, a shorter one either
-   side, all lined up along the bottom. */
-.hero__photo,
-.hero__inset {
-  position: relative;
-  aspect-ratio: 3 / 5;
-  box-shadow: var(--shadow-3);
-}
-
-.hero__photo {
-  z-index: 1;
-  max-height: min(74svh, 100svh - 15rem); /* Keeps the photos inside the first screen on short laptops. */
-}
-
-.hero__photo img {
-  object-position: 45% 40%;
-}
-
-/* With a mouse, the photos shift a few pixels with the pointer, the side ones the
-   opposite way to the middle one (motion.js sets --mx / --my from -1 to 1). */
-.hero__media > figure {
-  translate: calc(var(--mx, 0) * var(--depth, 0px)) calc(var(--my, 0) * var(--depth, 0px));
-  transition: translate 1.2s var(--ease-out);
-}
-
-.hero__photo { --depth: 8px; }
-.hero__inset--back { --depth: -14px; }
-.hero__inset--front { --depth: -18px; }
 
 [data-parallax] {
   transform: translateY(var(--parallax, 0%)) scale(1.12);
@@ -104,18 +137,6 @@
    The entrance starts when the page shows, or right after the intro when it plays
    (intro.js removes .intro-on from <html>). */
 
-/* Slow-drifting glow behind the hero. */
-.hero__glow {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(40% 50% at var(--glow-x, 70%) var(--glow-y, 40%), color-mix(in srgb, var(--panel) 55%, transparent), transparent 70%),
-    radial-gradient(30% 40% at 15% 80%, color-mix(in srgb, var(--panel-700) 40%, transparent), transparent 70%);
-  opacity: 0.8;
-}
-
 /* Each word rises out of its own mask. The padding gives italic letters room to
    lean past their box (the "d" in Menard); the negative margin cancels it in the layout. */
 .hero__word {
@@ -142,14 +163,13 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero__glow {
+  .hero__title {
     animation: glow-drift 18s ease-in-out infinite alternate;
   }
 
   .intro-on .hero__text > *,
   .intro-on .hero__word > span,
-  .intro-on .hero__photo,
-  .intro-on .hero__inset {
+  .intro-on .hero__tile {
     opacity: 0;
   }
 
@@ -175,16 +195,17 @@
     animation-delay: 380ms;
   }
 
-  .js:not(.intro-on) .hero__photo {
-    animation: photo-in 1400ms var(--ease-out) 200ms both;
+  /* Photos wipe up into their tiles one after another, the main one first. */
+  .js:not(.intro-on) .hero__tile {
+    animation: photo-in 1300ms var(--ease-out) both;
   }
 
-  .js:not(.intro-on) .hero__inset {
-    animation: print-in 1100ms var(--ease-out) both;
-  }
-
-  .js:not(.intro-on) .hero__inset--back { animation-delay: 700ms; }
-  .js:not(.intro-on) .hero__inset--front { animation-delay: 900ms; }
+  .js:not(.intro-on) .hero__tile--a { animation-delay: 150ms; }
+  .js:not(.intro-on) .hero__tile--b { animation-delay: 300ms; }
+  .js:not(.intro-on) .hero__tile--c { animation-delay: 420ms; }
+  .js:not(.intro-on) .hero__tile--d { animation-delay: 540ms; }
+  .js:not(.intro-on) .hero__tile--e { animation-delay: 660ms; }
+  .js:not(.intro-on) .hero__tile--f { animation-delay: 780ms; }
 }
 
 @keyframes word-up {
@@ -201,14 +222,6 @@
   to {
     clip-path: inset(0 0 0 0 round var(--radius-l));
     opacity: 1;
-  }
-}
-
-/* Side windows fade in from slightly larger. */
-@keyframes print-in {
-  from {
-    opacity: 0;
-    scale: 1.15;
   }
 }
 
