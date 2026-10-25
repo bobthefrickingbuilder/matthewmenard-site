@@ -70,19 +70,22 @@
   <!-- /header -->
 
   <main id="main" tabindex="-1">
+    <!-- Photo behind the heading. Decorative, so alt is empty; overlay and filter in compositions.css keep the text readable. -->
+    <div class="compositions-hero">
+      <picture class="compositions-hero__photo">
+        <source type="image/avif" srcset="/img/piano-hands-800.avif 800w, /img/piano-hands-1200.avif 1200w, /img/piano-hands-1600.avif 1600w, /img/piano-hands-2000.avif 2000w" sizes="100vw">
+        <source type="image/webp" srcset="/img/piano-hands-800.webp 800w, /img/piano-hands-1200.webp 1200w, /img/piano-hands-1600.webp 1600w, /img/piano-hands-2000.webp 2000w" sizes="100vw">
+        <img src="/img/piano-hands-1600.jpg" srcset="/img/piano-hands-800.jpg 800w, /img/piano-hands-1200.jpg 1200w, /img/piano-hands-1600.jpg 1600w, /img/piano-hands-2000.jpg 2000w" sizes="100vw" width="2000" height="1126" fetchpriority="high" alt="">
+      </picture>
+      <div class="wrapper">
+        <header class="page-head measure">
+          <p class="eyebrow">Compositions</p>
+          <h1>Compositions</h1>
+          <p class="lead">Over 200 pieces written and performed, from choral and sacred music to art song. Selected scores are available to buy as PDF downloads.</p>
+        </header>
+      </div>
+    </div>
     <div class="wrapper">
-      <header class="page-head measure">
-        <p class="eyebrow">Compositions</p>
-        <h1>Compositions</h1>
-        <p class="lead">Over 200 pieces written and performed, from choral and sacred music to art song. Selected scores are available to buy as PDF downloads.</p>
-      </header>
-      <figure class="photo compositions-hero">
-        <picture>
-          <source type="image/avif" srcset="/img/choir-bw-800.avif 800w, /img/choir-bw-1200.avif 1200w, /img/choir-bw-1400.avif 1400w" sizes="(min-width: 80rem) 76rem, 94vw">
-          <source type="image/webp" srcset="/img/choir-bw-800.webp 800w, /img/choir-bw-1200.webp 1200w, /img/choir-bw-1400.webp 1400w" sizes="(min-width: 80rem) 76rem, 94vw">
-          <img src="/img/choir-bw-1200.jpg" srcset="/img/choir-bw-800.jpg 800w, /img/choir-bw-1200.jpg 1200w, /img/choir-bw-1400.jpg 1400w" sizes="(min-width: 80rem) 76rem, 94vw" width="1400" height="933" fetchpriority="high" alt="Matthew Menard standing in front of a youth choir in a church, the singers smiling and applauding">
-        </picture>
-      </figure>
 
       <!-- [TODO: owner to supply the full works list, including liturgical works for St. Joseph’s Parish and works performed by the Capital Chamber Choir, Ontario Youth Choir, York University Chamber Choir, and Ottawa Bach Choir. Each new work: add a card below and a page from the composition template.] -->
 
