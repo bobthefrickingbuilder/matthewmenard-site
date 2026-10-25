@@ -16,3 +16,49 @@
   aspect-ratio: 3 / 2;
   max-height: 80svh;
 }
+
+/* Performance: ensemble history, resume style. Years on the left, newest first. */
+.history {
+  display: grid;
+  gap: 0;
+}
+
+.history li {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: var(--space-2xs) var(--space-m);
+  align-items: baseline;
+  padding-block: var(--space-s);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.history li:first-child {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.history__years {
+  font-family: var(--font-display);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.history__body strong {
+  display: block;
+  color: var(--color-heading);
+  font-weight: 600;
+}
+
+.history__note {
+  color: var(--text-muted);
+}
+
+.history--guest li {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 30rem) {
+  .history li {
+    grid-template-columns: 1fr;
+  }
+}
