@@ -68,28 +68,6 @@
   pointer-events: none;
 }
 
-.hero__label {
-  position: absolute;
-  z-index: 1;
-  inset-block-start: var(--space-s);
-  inset-inline-start: var(--space-s);
-  display: flex;
-  gap: 0.6em;
-  align-items: baseline;
-  padding: 0.35em 0.8em;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--ground) 65%, transparent);
-  backdrop-filter: blur(6px);
-  font-size: var(--step--1);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.hero__num {
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
 
 .hero__panel:focus-visible {
   outline-offset: -4px;
@@ -124,14 +102,6 @@
 
 .hero .lead {
   max-width: 30ch;
-}
-
-/* Phones: inactive panels are thin slivers, so their labels turn sideways. */
-@media (max-width: 47.99rem) {
-  .hero__panel:not(.is-active) .hero__label {
-    writing-mode: vertical-rl;
-    padding: 0.8em 0.35em;
-  }
 }
 
 [data-parallax] {
