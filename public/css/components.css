@@ -828,20 +828,25 @@ figure > figcaption {
   object-position: top;
 }
 
-/* Photo grid (About, Performing). Every photo keeps its own shape: each figure
-   carries its width / height as --r (set in the HTML), and rows of mixed widths grow
-   to fill the line, so nothing is cropped. --row sets the rough row height. */
+/* Photo collage (About, Performing). Every photo keeps its own shape: each figure
+   carries its width / height as --r (set in the HTML). Photos stack in columns of
+   staggered heights, and a repeating mix of widths, sides, and drops keeps them from
+   lining up, so the set looks loosely scattered rather than gridded. */
 .gallery {
-  --row: clamp(9rem, 22vw, 18rem);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-s);
+  column-gap: var(--space-l);
 }
 
-/* Keeps the last row from stretching its photos to fill the line. */
-.gallery::after {
-  content: "";
-  flex-grow: 999;
+@media (min-width: 36rem) {
+  .gallery {
+    columns: 2;
+  }
+}
+
+/* Three columns only when there are enough photos to fill them. */
+@media (min-width: 52rem) {
+  .gallery:has(> :nth-child(5)) {
+    columns: 3;
+  }
 }
 
 h2 + .gallery {
@@ -849,10 +854,20 @@ h2 + .gallery {
 }
 
 .gallery .photo {
-  flex: var(--r, 1) 1 calc(var(--r, 1) * var(--row));
+  break-inside: avoid;
+  display: block;
+  width: var(--w, 100%);
   aspect-ratio: var(--r, 1);
+  margin: 0 0 var(--space-l);
   border-radius: var(--radius-m);
 }
+
+/* The scatter: odd cycle lengths so the pattern never repeats in step with the columns. */
+.gallery .photo:nth-child(5n + 2) { --w: 76%; margin-inline-start: auto; }
+.gallery .photo:nth-child(5n + 4) { --w: 86%; margin-inline-start: 7%; }
+.gallery .photo:nth-child(7n + 3) { --w: 92%; margin-block-start: var(--space-xl); }
+.gallery .photo:nth-child(7n + 6) { margin-block-end: var(--space-2xl, 4rem); }
+.gallery .photo:first-child { --w: 100%; }
 
 /* Two columns: text and a photo. */
 .split {
