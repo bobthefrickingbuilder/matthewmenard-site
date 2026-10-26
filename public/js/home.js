@@ -133,3 +133,21 @@ if (hero) {
     start();
   }).observe(hero);
 }
+
+// Scroll button: glides to the section under the hero, and fades out once the page
+// has been scrolled a little (back again at the top).
+const next = document.querySelector("[data-hero-next]");
+if (next) {
+  next.addEventListener("click", (event) => {
+    event.preventDefault();
+    // Measured from the hero's bottom edge: the next section may still be mid-reveal
+    // (shifted down), which would make it land short.
+    const end = next.closest(".hero").getBoundingClientRect().bottom + scrollY;
+    const header = document.querySelector(".site-header")?.offsetHeight || 0;
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scrollTo({ top: end - header, behavior: still ? "auto" : "smooth" });
+  });
+  const update = () => next.classList.toggle("is-gone", scrollY > 80);
+  addEventListener("scroll", update, { passive: true });
+  update();
+}

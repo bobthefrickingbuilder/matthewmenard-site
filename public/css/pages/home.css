@@ -104,6 +104,104 @@
   max-width: 30ch;
 }
 
+/* Scroll button: bottom-right of the hero. A thin ring with a line that drops through
+   it, and a small "Scroll" beside it. It rises in a second after the hero shows, and
+   fades away once the page is scrolled (home.js). */
+.hero__scroll {
+  position: absolute;
+  z-index: 3;
+  inset-inline-end: calc(var(--gap) * 2 + clamp(0.75rem, 2.5vw, 2rem));
+  inset-block-end: calc(var(--gap) * 2 + clamp(0.75rem, 2.5vw, 2rem));
+  display: flex;
+  gap: var(--space-xs, 0.75rem);
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 500ms var(--ease-out), translate 500ms var(--ease-out);
+}
+
+.hero__scroll.is-gone {
+  opacity: 0;
+  translate: 0 0.75rem;
+  pointer-events: none;
+}
+
+.hero__scroll-label {
+  font-size: var(--step--1);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+  transition: color 300ms, letter-spacing 400ms var(--ease-out);
+}
+
+.hero__scroll-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--text) 45%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ground) 35%, transparent);
+  backdrop-filter: blur(8px);
+  transition: border-color 300ms, background-color 300ms, scale 400ms var(--ease-out);
+}
+
+/* A short line with a fine arrowhead, drawn in the middle of the ring. */
+.hero__scroll-line {
+  position: relative;
+  width: 1px;
+  height: 1.25rem;
+  background: currentColor;
+}
+
+.hero__scroll-line::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 50%;
+  width: 0.45rem;
+  aspect-ratio: 1;
+  border-inline-end: 1px solid currentColor;
+  border-block-end: 1px solid currentColor;
+  translate: -50% 0;
+  rotate: 45deg;
+}
+
+.hero__scroll:hover .hero__scroll-ring,
+.hero__scroll:focus-visible .hero__scroll-ring {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  scale: 1.06;
+}
+
+.hero__scroll:hover .hero__scroll-label,
+.hero__scroll:focus-visible .hero__scroll-label {
+  color: var(--accent);
+  letter-spacing: 0.26em;
+}
+
+.hero__scroll:focus-visible {
+  outline: none;
+}
+
+.hero__scroll:focus-visible .hero__scroll-ring {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Phones: just the ring, so it stays clear of the buttons. */
+@media (max-width: 47.99rem) {
+  .hero__scroll-label {
+    display: none;
+  }
+
+  .hero__scroll-ring {
+    width: 2.75rem;
+  }
+}
+
 [data-parallax] {
   transform: translateY(var(--parallax, 0%)) scale(1.12);
   will-change: transform;
@@ -186,6 +284,36 @@
 
   .js:not(.intro-on) .hero__panel:nth-child(2) { animation-delay: 140ms; }
   .js:not(.intro-on) .hero__panel:nth-child(3) { animation-delay: 280ms; }
+
+  /* The scroll button rises in a second after the hero, then its line keeps
+     slipping down through the ring. */
+  .intro-on .hero__scroll {
+    opacity: 0;
+  }
+
+  .js:not(.intro-on) .hero__scroll {
+    animation: scroll-cue-in 900ms var(--ease-out) 1000ms backwards;
+  }
+
+  .js:not(.intro-on) .hero__scroll-line {
+    animation: scroll-cue-drop 2.4s cubic-bezier(0.65, 0, 0.35, 1) 1900ms infinite;
+  }
+}
+
+@keyframes scroll-cue-in {
+  from {
+    opacity: 0;
+    translate: 0 1rem;
+    filter: blur(4px);
+  }
+}
+
+/* Slides down out of the ring, then back in from the top. */
+@keyframes scroll-cue-drop {
+  0%, 15% { translate: 0 0; opacity: 1; }
+  50% { translate: 0 2.2rem; opacity: 0; }
+  51% { translate: 0 -2.2rem; opacity: 0; }
+  85%, 100% { translate: 0 0; opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
