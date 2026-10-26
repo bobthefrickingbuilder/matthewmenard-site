@@ -130,7 +130,7 @@ Website clients request alterations from a private page; you track them on anoth
 - **Staff dividers:** the line between sections is a five-line music staff that draws in as you scroll (`.section + .section` in `base.css`).
 - **Film grain:** a faint texture over every page (`body::after` in `components.css`). Change its `opacity` to make it stronger or remove it.
 - **Portrait:** put a photo inside `<div class="arch">` for the single upright portrait frame.
-- **Home only:** the hero's three role panels (Singer, Composer, Conductor; the open one takes turns every 5 seconds and opens on hover; swap photos in `index.html`, set each crop with `object-position` in `home.css`, change the timing with `TURN` in `home.js`), staggered score cards, the names ticker (steady loop, pauses on hover), the Singer / Composer / Conductor band with openable bios, and the sideways photo strip with arrows.
+- **Home only:** the hero's three role panels (Singer, Composer, Conductor; the open one takes turns every 5 seconds and opens on hover; a Scroll button rises in after 1 second, bottom right; swap photos in `index.html`, set each crop with `object-position` in `home.css`, change the timing with `TURN` in `home.js`), staggered score cards, the names ticker (steady loop, pauses on hover), the Singer / Composer / Conductor band with openable bios, and the sideways photo strip with arrows.
 
 ## Search engines and link previews
 
