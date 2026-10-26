@@ -55,7 +55,7 @@
   transform: scale(1.1);
 }
 
-.hero__panel--singer img { object-position: 42% 30%; }
+.hero__panel--singer img { object-position: 35% 0%; transform-origin: 35% 30%; }
 .hero__panel--composer img { object-position: 30% 55%; }
 .hero__panel--conductor img { object-position: 45% 22%; }
 
