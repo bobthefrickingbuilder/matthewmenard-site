@@ -10,7 +10,7 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 // Keep in sync with the selector list in components.css.
 const REVEAL = [
   "main .page-head > *", "main .section-head", "main .section > h2", "main .section > .stack",
-  "main .grid > *", "main .gallery > *", "main .roles > li", "main .process > li", "main .faq__item",
+  "main .grid > *", "main .gallery .photo", "main .roles > li", "main .process > li", "main .faq__item",
   "main .events > li", "main .split > *", "main .panel", "main .prose > *", "main .bio-teaser > *",
   "main .contact-cta > *", "main .marquee", "main .explore > li", "main .work__aside", "main .facts",
   "main .score-sample", "main .work__section", "main .contact-layout > *", "main .request-form",

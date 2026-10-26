@@ -829,23 +829,16 @@ figure > figcaption {
 }
 
 /* Photo collage (About, Performing). Every photo keeps its own shape: each figure
-   carries its width / height as --r (set in the HTML). Photos stack in columns of
-   staggered heights, and a repeating mix of widths, sides, and drops keeps them from
-   lining up, so the set looks loosely scattered rather than gridded. */
+   carries its width / height as --r (set in the HTML). gallery.js deals the photos
+   into columns of different widths (shortest column first), so sizes vary but there
+   are no holes inside; only the bottom edge is ragged. Without JS: plain columns. */
 .gallery {
-  column-gap: var(--space-l);
+  column-gap: var(--space-s);
 }
 
 @media (min-width: 36rem) {
   .gallery {
     columns: 2;
-  }
-}
-
-/* Three columns only when there are enough photos to fill them. */
-@media (min-width: 52rem) {
-  .gallery:has(> :nth-child(5)) {
-    columns: 3;
   }
 }
 
@@ -856,18 +849,31 @@ h2 + .gallery {
 .gallery .photo {
   break-inside: avoid;
   display: block;
-  width: var(--w, 100%);
   aspect-ratio: var(--r, 1);
-  margin: 0 0 var(--space-l);
+  margin: 0 0 var(--space-s);
   border-radius: var(--radius-m);
 }
 
-/* The scatter: odd cycle lengths so the pattern never repeats in step with the columns. */
-.gallery .photo:nth-child(5n + 2) { --w: 76%; margin-inline-start: auto; }
-.gallery .photo:nth-child(5n + 4) { --w: 86%; margin-inline-start: 7%; }
-.gallery .photo:nth-child(7n + 3) { --w: 92%; margin-block-start: var(--space-xl); }
-.gallery .photo:nth-child(7n + 6) { margin-block-end: var(--space-2xl, 4rem); }
-.gallery .photo:first-child { --w: 100%; }
+.gallery--columns {
+  display: grid;
+  gap: var(--space-s);
+  align-items: start;
+  columns: auto;
+}
+
+.gallery__column {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.gallery__column .photo {
+  margin: 0;
+}
+
+/* The middle column starts a little lower, so the top edge is uneven too. */
+.gallery--columns > .gallery__column:nth-child(2):not(:last-child) {
+  margin-block-start: var(--space-xl);
+}
 
 /* Two columns: text and a photo. */
 .split {
@@ -919,7 +925,7 @@ h2 + .gallery {
 @media (prefers-reduced-motion: no-preference) {
   .js :is(
     main .page-head > *, main .section-head, main .section > h2, main .section > .stack,
-    main .grid > *, main .gallery > *, main .roles > li, main .process > li, main .faq__item,
+    main .grid > *, main .gallery .photo, main .roles > li, main .process > li, main .faq__item,
     main .events > li, main .split > *, main .panel, main .prose > *, main .bio-teaser > *,
     main .contact-cta > *, main .marquee, main .explore > li, main .work__aside, main .facts,
     main .score-sample, main .work__section, main .contact-layout > *, main .request-form,
