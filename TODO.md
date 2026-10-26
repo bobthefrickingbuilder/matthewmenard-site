@@ -39,7 +39,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 - [ ] Look over `/commissions` on the preview. Its placeholders block a production deploy until filled or removed:
   - **Packages** (3 cards): draft written (Artist Bio, Portfolio, Studio; monthly plans with alterations per month). Confirm names, scope, timelines, one-time prices, and monthly rates.
-  - **Recent sites** (ORYC, the luthier site, Esmée Peets): URL, screenshot, one line, and permission. Or delete the section to launch without it.
+  - **Recent sites** (ORYC, the luthier site; Esmée Peets done 2026-10-26): URL, screenshot, one line, and permission. Or delete the section to launch without it.
   - **FAQ answers:** drafted (ownership, hosting and domain, maintenance, timeline, revisions). Confirm, and decide what happens if a client ends their monthly plan.
   - **Budget ranges**: drafted (Under $200, $200 to $500, $500 to $1,000, Over $1,000, Not sure yet). Confirm or change in `public/commissions.html` and `api/commission.js`.
 - [ ] Confirm the wording: hero line, "What gets built" sentence (from the brief), and the 7 process steps.

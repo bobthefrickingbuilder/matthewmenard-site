@@ -270,6 +270,11 @@ fieldset {
   background: var(--ground-800);
 }
 
+/* Website screenshots keep the browser shape (16:10). */
+.card__media--site {
+  aspect-ratio: 16 / 10;
+}
+
 .card__media img {
   width: 100%;
   height: 100%;
@@ -829,7 +834,7 @@ figure > figcaption {
 }
 
 /* Photo collage (About, Performing). Every photo keeps its own shape: each figure
-   carries its width / height as --r (set in the HTML). gallery.js deals the photos
+   carries its width / height as data-r, which gallery.js copies to --r. gallery.js deals the photos
    into columns of different widths (shortest column first), so sizes vary but there
    are no holes inside; only the bottom edge is ragged. Without JS: plain columns. */
 .gallery {
@@ -849,7 +854,7 @@ h2 + .gallery {
 .gallery .photo {
   break-inside: avoid;
   display: block;
-  aspect-ratio: var(--r, 1);
+  aspect-ratio: var(--r, auto);
   margin: 0 0 var(--space-s);
   border-radius: var(--radius-m);
 }

@@ -1,7 +1,7 @@
 // Photo collage: deals the photos into columns of different widths, each photo going
 // to whichever column is shortest so far. Every photo keeps its own shape and fills its
 // column, so there are no holes inside the collage; only the bottom edge is ragged.
-// Without JS the photos sit in plain equal columns (components.css).
+// Without JS the photos sit in plain equal columns at their natural shape (components.css).
 
 const LAYOUTS = [
   // [minimum screen width, column widths]
@@ -12,6 +12,9 @@ const LAYOUTS = [
 
 for (const gallery of document.querySelectorAll(".gallery")) {
   const photos = [...gallery.querySelectorAll(":scope > .photo")];
+  // Each photo carries its shape as data-r (width ÷ height). It is set here because the
+  // security policy blocks style="" attributes in the HTML.
+  for (const photo of photos) photo.style.setProperty("--r", photo.dataset.r);
   let current = null;
 
   const layout = () => {
@@ -31,7 +34,7 @@ for (const gallery of document.querySelectorAll(".gallery")) {
       return { column, width: w, height: 0 };
     });
     for (const photo of photos) {
-      const ratio = parseFloat(photo.style.getPropertyValue("--r")) || 1;
+      const ratio = parseFloat(photo.dataset.r) || 1;
       // Height of this photo relative to the others: column width ÷ photo shape.
       const shortest = columns.reduce((a, b) => (b.height < a.height ? b : a));
       shortest.column.append(photo);

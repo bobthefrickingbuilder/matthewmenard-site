@@ -22,6 +22,7 @@ const IMAGES = [
   { name: "singing-pews", src: "photos/singing-pews.jpg" },
   { name: "portrait-bw", src: "photos/portrait-bw.jpg" },
   { name: "conducting-suit", src: "photos/conducting-suit.jpg" },
+  { name: "site-esmee-peets", src: "sites/esmee-peets.png", widths: [480, 800, 1200] },
   { name: "piano-hands", src: "photos/piano-hands.jpg", widths: [800, 1200, 1600, 2000] },
   { name: "choir-strings", src: "gallery/photo-1.jpg" },
   { name: "singing-folder", src: "gallery/photo-2.jpg" },
