@@ -31,8 +31,8 @@ const production = process.env.VERCEL_ENV === "production";
 if (found.length) {
   console.log(found.join("\n"));
   if (production) {
-    console.error("\nVisible [TODO] placeholders block a production deploy. Fill or remove them.");
-    process.exit(1);
+    // Owner chose to launch with these showing (2026-10-26). Put process.exit(1) back to block again.
+    console.warn("\nVisible [TODO] placeholders are live on production. Fill or remove them.");
   }
 }
 console.log(`${found.length} page(s) with visible placeholders${production ? "" : " (allowed on previews)"}.`);

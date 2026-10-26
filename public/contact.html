@@ -78,39 +78,11 @@
       </header>
 
       <div class="contact-layout">
-        <form class="form-stack" method="post" action="/api/contact" data-form data-success="Thank you. Your message was sent. Matthew will reply by email.">
-          <div class="field">
-            <label for="c-name">Name <span class="required">(required)</span></label>
-            <input class="input" id="c-name" name="name" type="text" autocomplete="name" maxlength="100" required>
-          </div>
-          <div class="field">
-            <label for="c-email">Email <span class="required">(required)</span></label>
-            <input class="input" id="c-email" name="email" type="email" autocomplete="email" maxlength="200" required>
-          </div>
-          <div class="field">
-            <label for="c-topic">Topic <span class="required">(required)</span></label>
-            <select class="select" id="c-topic" name="topic" required>
-              <option value="">Choose one</option>
-              <option>A score</option>
-              <option>A music commission</option>
-              <option>A performance or booking</option>
-              <option>Lessons</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="c-message">Message <span class="required">(required)</span></label>
-            <textarea class="textarea" id="c-message" name="message" maxlength="5000" rows="7" required></textarea>
-          </div>
-          <div class="honeypot" aria-hidden="true">
-            <label for="c-website">Leave this field empty</label>
-            <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <input type="hidden" name="t" value="">
-          <label class="choice"><input type="checkbox" name="consent" required data-error="Tick the box so Matthew can store and reply to your message."> <span>Matthew may store this message to reply to it. <a href="/privacy">Privacy policy</a> <span class="required">(required)</span></span></label>
-          <p class="meta" role="status" aria-live="polite" data-form-status></p>
-          <div><button class="button button--primary" type="submit">Send message</button></div>
-        </form>
+        <div class="panel stack">
+          <h2 class="h4">Send Matthew an email</h2>
+          <p>Write to <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a>. He replies to every message himself.</p>
+          <div><a class="button button--primary" href="mailto:mmenardproduction@gmail.com">Email Matthew</a></div>
+        </div>
 
         <aside class="stack stack-l" aria-label="Other ways to reach Matthew">
           <div class="stack">

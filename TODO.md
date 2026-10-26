@@ -21,6 +21,11 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - Search: Open Graph and Twitter tags on every public page; Person data on Home and About; composition data with price on both score pages; `sitemap.xml`, `robots.txt`.
 - [ ] **Vercel Web Analytics:** the old site used it. Keep it? (Cookieless; one script tag, a CSP line, and a sentence in the privacy policy.)
 
+## Launched 2026-10-26
+
+- Launched with the visible placeholders showing (owner decision); `scripts/todo-check.mjs` now warns instead of failing.
+- Contact and commission forms replaced by email links until Resend is set up. The form markup is in git history (commit 303db99) to restore.
+
 ## Before launch (Phase 7)
 
 - [ ] Every visible `[TODO]` filled or its section removed. Production deploys fail until then (`npm run check:todo`). Now: Commissions (3, recent sites), Teaching (1), Listen (1).

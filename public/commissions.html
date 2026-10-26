@@ -229,92 +229,12 @@
       <section class="section" id="request" aria-labelledby="request-title" tabindex="-1">
         <div class="stack measure">
           <h2 id="request-title">Request a website</h2>
-          <p>Tell Matthew about the project. He replies by email, usually to set up a short call. Fields marked (required) must be filled in.</p>
+          <p>Tell Matthew about the project. He replies by email, usually to set up a short call.</p>
         </div>
-        <form class="form-stack request-form" method="post" action="/api/commission" data-form data-success="Thank you. Your request was sent, and a confirmation is on its way to your inbox. Matthew will reply by email.">
-          <div class="field-row">
-            <div class="field">
-              <label for="r-name">Name <span class="required">(required)</span></label>
-              <input class="input" id="r-name" name="name" type="text" autocomplete="name" maxlength="100" required>
-            </div>
-            <div class="field">
-              <label for="r-email">Email <span class="required">(required)</span></label>
-              <input class="input" id="r-email" name="email" type="email" autocomplete="email" maxlength="200" required>
-            </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="r-org">Organization <span class="optional">(optional)</span></label>
-              <input class="input" id="r-org" name="organization" type="text" autocomplete="organization" maxlength="200">
-            </div>
-            <div class="field">
-              <label for="r-type">Project type <span class="required">(required)</span></label>
-              <select class="select" id="r-type" name="projectType" required>
-                <option value="">Choose one</option>
-              <option>Musician</option>
-              <option>Ensemble or choir</option>
-              <option>Artist</option>
-              <option>Small business</option>
-              <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label for="r-needs">What the site needs to do <span class="required">(required)</span></label>
-            <p class="hint" id="r-needs-hint">For example: show your work, sell tickets or scores, take bookings, share news.</p>
-            <textarea class="textarea" id="r-needs" name="needs" maxlength="5000" rows="6" required aria-describedby="r-needs-hint"></textarea>
-          </div>
-          <fieldset class="field">
-            <legend>Pages needed <span class="optional">(optional)</span></legend>
-            <div class="choice-grid">
-                <label class="choice"><input type="checkbox" name="pages" value="Home"> <span>Home</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="About or bio"> <span>About or bio</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Music, works, or portfolio"> <span>Music, works, or portfolio</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Events or calendar"> <span>Events or calendar</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Listen and watch"> <span>Listen and watch</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Shop or store"> <span>Shop or store</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Booking or lessons"> <span>Booking or lessons</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Blog or news"> <span>Blog or news</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Contact form"> <span>Contact form</span></label>
-                <label class="choice"><input type="checkbox" name="pages" value="Other"> <span>Other</span></label>
-            </div>
-          </fieldset>
-          <div class="field-row">
-            <div class="field">
-              <label for="r-budget">Budget for the build <span class="optional">(optional)</span></label>
-              <select class="select" id="r-budget" name="budget">
-                <option value="">Choose one</option>
-                <!-- Keep in sync with BUDGETS in api/commission.js. -->
-                <option>Under $200</option>
-                <option>$200 to $500</option>
-                <option>$500 to $1,000</option>
-                <option>Over $1,000</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="r-launch">Desired launch date <span class="optional">(optional)</span></label>
-              <input class="input" id="r-launch" name="launch" type="date">
-            </div>
-          </div>
-          <div class="field">
-            <label for="r-links">Links to sites you like <span class="optional">(optional)</span></label>
-            <p class="hint" id="r-links-hint">One per line.</p>
-            <textarea class="textarea" id="r-links" name="inspiration" maxlength="2000" rows="3" aria-describedby="r-links-hint"></textarea>
-          </div>
-          <div class="field">
-            <label for="r-source">How did you hear about Matthew? <span class="optional">(optional)</span></label>
-            <input class="input" id="r-source" name="referral" type="text" maxlength="300">
-          </div>
-          <div class="honeypot" aria-hidden="true">
-            <label for="r-website">Leave this field empty</label>
-            <input id="r-website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <input type="hidden" name="t" value="">
-          <label class="choice"><input type="checkbox" name="consent" required data-error="Tick the box so Matthew can store and reply to your request."> <span>Matthew may store this request to reply to it. <a href="/privacy">Privacy policy</a> <span class="required">(required)</span></span></label>
-          <p class="meta" role="status" aria-live="polite" data-form-status></p>
-          <div><button class="button button--primary" type="submit">Send request</button></div>
-        </form>
+        <div class="panel stack measure">
+          <p>Email <a href="mailto:mmenardproduction@gmail.com?subject=Website%20request">mmenardproduction@gmail.com</a> with your name, what the site is for, any sites you like, your timeline, and a rough budget.</p>
+          <div><a class="button button--primary" href="mailto:mmenardproduction@gmail.com?subject=Website%20request">Email a request</a></div>
+        </div>
       </section>
     </div>
   </main>
