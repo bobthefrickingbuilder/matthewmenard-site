@@ -828,12 +828,20 @@ figure > figcaption {
   object-position: top;
 }
 
-/* Photo grid (About, Performing). One column on phones, two on tablets,
-   three on desktop where wide photos span two. Fixed rows and dense packing
-   keep the tiles free of holes. */
+/* Photo grid (About, Performing). Every photo keeps its own shape: each figure
+   carries its width / height as --r (set in the HTML), and rows of mixed widths grow
+   to fill the line, so nothing is cropped. --row sets the rough row height. */
 .gallery {
-  display: grid;
+  --row: clamp(9rem, 22vw, 18rem);
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-s);
+}
+
+/* Keeps the last row from stretching its photos to fill the line. */
+.gallery::after {
+  content: "";
+  flex-grow: 999;
 }
 
 h2 + .gallery {
@@ -841,36 +849,9 @@ h2 + .gallery {
 }
 
 .gallery .photo {
-  aspect-ratio: 4 / 5;
+  flex: var(--r, 1) 1 calc(var(--r, 1) * var(--row));
+  aspect-ratio: var(--r, 1);
   border-radius: var(--radius-m);
-}
-
-.gallery .photo--wide {
-  aspect-ratio: 3 / 2;
-}
-
-@media (min-width: 36rem) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: clamp(16rem, 40vw, 22rem);
-    grid-auto-flow: dense;
-  }
-
-  .gallery .photo,
-  .gallery .photo--wide {
-    aspect-ratio: auto;
-  }
-}
-
-@media (min-width: 52rem) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: clamp(18rem, 26vw, 24rem);
-  }
-
-  .gallery .photo--wide {
-    grid-column: span 2;
-  }
 }
 
 /* Two columns: text and a photo. */
