@@ -59,7 +59,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/((?!pay(?:/|$)).*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -113,6 +113,25 @@
           "value": "no-store"
         }
       ]
+    },
+    {
+      "source": "/pay/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/pay",
+      "destination": "https://payments-six-chi.vercel.app/pay"
+    },
+    {
+      "source": "/pay/:path*",
+      "destination": "https://payments-six-chi.vercel.app/pay/:path*"
     }
   ]
 }

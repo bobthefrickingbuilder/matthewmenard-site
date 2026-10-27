@@ -149,3 +149,9 @@ Fonts are named once, in `tokens.css` (`--font-display` and `--font-body`). Font
 ## Secrets
 
 API keys go in Vercel → Project → Settings → Environment Variables. Never in the code. `.env.example` lists the names.
+
+## Payments (/pay) and Studio
+
+- `/studio` is a private page (noindex, linked quietly from the footer) listing Matthew's tools. Each tool has its own password.
+- `/pay/*` is the separate **payments** Vercel project (code in `Documents/annual-payments`, deployed with `npx vercel deploy --prod` from that folder). `vercel.json` here forwards `/pay` and `/pay/*` to `https://payments-six-chi.vercel.app`.
+- This site's security headers skip `/pay`, so the payments app sends its own. If the payments project's address ever changes, update the two `rewrites` in `vercel.json`.
