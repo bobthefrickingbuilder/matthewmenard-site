@@ -532,6 +532,12 @@ fieldset {
   border-top: 1px solid var(--color-border-subtle);
 }
 
+/* Quiet way into the private Studio page. */
+.site-footer__studio {
+  margin-inline-start: var(--space-s);
+  color: inherit;
+}
+
 .social-icon {
   width: 1.25rem;
   height: 1.25rem;

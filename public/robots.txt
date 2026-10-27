@@ -4,5 +4,7 @@ Disallow: /design/
 Disallow: /prototype/
 Disallow: /admin
 Disallow: /alterations
+Disallow: /studio
+Disallow: /pay
 
 Sitemap: https://www.matthewmenardmusic.com/sitemap.xml
