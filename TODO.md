@@ -26,7 +26,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - Conducting & Teaching hidden: no links point to it, it is out of the sitemap, and it is marked noindex. Home's conductor photo and role link now go to About. To bring it back, see the comment at the top of `public/conducting-teaching.html`.
 - Websites page packages, FAQ, and budget ranges approved as drafted (owner, 2026-10-28).
 - Website clients pay through /pay: a monthly quote with an optional one-time build fee charged with the first payment.
-- Request button for client sites: `public/js/request-button.js` (snippet on `/admin`). Still needs Upstash and the admin env vars below before requests can be sent.
+- Request link for client sites (snippet on `/admin`): clients sign in by email; no private links needed.
 
 ## Launched 2026-10-26
 

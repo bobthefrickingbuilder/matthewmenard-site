@@ -61,7 +61,7 @@
 
   <main id="main" tabindex="-1">
     <div class="wrapper">
-      <!-- Private page for website clients. Each client's link carries their key after #k=, so it never reaches server logs. -->
+      <!-- Page for website clients. They sign in by email; the emailed link carries a one-time token after #t=, so it never reaches server logs. -->
       <header class="page-head measure stack">
         <p class="eyebrow">Website care</p>
         <h1>Request an alteration</h1>
@@ -70,9 +70,17 @@
 
       <noscript><p class="panel measure">This page needs JavaScript. Email <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a> with your request instead.</p></noscript>
 
-      <div class="panel measure stack" data-missing hidden>
-        <h2 class="h4">This page needs your private link</h2>
-        <p data-missing-text>Open the link Matthew emailed you. If you cannot find it, email <a href="mailto:mmenardproduction@gmail.com">mmenardproduction@gmail.com</a> for a new one.</p>
+      <div class="panel measure stack" data-signin hidden>
+        <h2 class="h4">Sign in</h2>
+        <form class="form-stack" data-signin-form novalidate>
+          <div class="field">
+            <label for="s-email">Your email</label>
+            <p class="hint" id="s-email-hint">The one Matthew has for you. We'll email you a link to sign in; no password needed.</p>
+            <input class="input" id="s-email" name="email" type="email" autocomplete="email" maxlength="200" required aria-describedby="s-email-hint">
+          </div>
+          <div><button class="button button--primary" type="submit">Email me a sign-in link</button></div>
+          <p class="alt-status" role="status" data-signin-status></p>
+        </form>
       </div>
 
       <div class="alt-layout" data-app hidden>
@@ -109,15 +117,12 @@
             <div class="meter" aria-hidden="true"><span class="meter__fill" data-meter></span></div>
             <p class="meta">The count starts again on the 1st of each month.</p>
           </div>
-          <div class="panel stack" data-button-tip hidden>
-            <h2 class="h4">Request button on your site</h2>
-            <p class="meta">Open <a data-button-link href="/" target="_blank" rel="noopener">your website with the button turned on</a> once on each phone or computer you use. A "Request a change" button then appears on your site, only for you, and brings you back here.</p>
-          </div>
           <section class="stack" aria-labelledby="recent-title">
             <h2 class="h4" id="recent-title">Your recent requests</h2>
             <ul class="alt-recent" role="list" data-recent></ul>
             <p class="meta" data-recent-empty>None yet.</p>
           </section>
+          <div><button class="button button--secondary" type="button" data-signout>Sign out on this device</button></div>
         </aside>
       </div>
     </div>

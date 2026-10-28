@@ -147,9 +147,9 @@
 
         <section class="section stack measure" aria-labelledby="button-title">
           <h2 id="button-title">Request button for client sites</h2>
-          <p>Paste this line before <code>&lt;/body&gt;</code> on every page of a client's site:</p>
-          <pre class="panel admin-snippet"><code>&lt;script src="https://www.matthewmenardmusic.com/js/request-button.js" defer&gt;&lt;/script&gt;</code></pre>
-          <p class="meta">Visitors never see the button. The client turns it on for themselves from their request page (or by opening their site with <code>?requests=on</code> once per device; <code>?requests=off</code> hides it). It opens their request page, which remembers their private link.</p>
+          <p>Put this link in the footer of every page of a client's site (style it like that site's buttons):</p>
+          <pre class="panel admin-snippet"><code>&lt;a href="https://www.matthewmenardmusic.com/alterations" target="_blank" rel="noopener"&gt;Request a change&lt;/a&gt;</code></pre>
+          <p class="meta">It opens the request page. The first time on each device, the client types the email you have for them and gets a one-time sign-in link; after that they stay signed in for about four months. Anyone else gets nothing, since their email is not on your list. Pausing a client signs them out everywhere.</p>
         </section>
       </div>
     </div>
