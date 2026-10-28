@@ -107,6 +107,7 @@ Website clients request alterations from a private page; you track them on anoth
 
 - **Your tracker:** `/admin`. Sign in with `ADMIN_PASSWORD`. It lists requests (open, in progress, done, cancelled), each client's alterations used this month against their plan, and lets you add clients, change plans, pause a link, or make a new link.
 - **Client page:** each client gets a private link like `/alterations#k=…`. Add the client in the tracker, copy the link it shows, and email it to them. It is shown only once; "New private link" makes another and stops the old one.
+- **Button on client sites:** paste `<script src="https://www.matthewmenardmusic.com/js/request-button.js" defer></script>` on every page of a client's site (also shown on `/admin`). Visitors never see it. The client's request page links to their site with `?requests=on`; opening that once per device shows a "Request a change" button that brings them back to the request page, which remembers their private link in that browser.
 - **Counts** start again on the 1st of each month (Ottawa time). Marking a request "Cancelled" stops it counting. A client can still send requests past their plan; the email to you says "over the plan".
 - **Emails:** you get each request; the client gets a confirmation, and another when you mark it done (untick the box on the tracker to skip that).
 - **Plans** (names and alterations per month) live in `lib/alterations.js`. Keep them in step with the package cards on `/commissions`.

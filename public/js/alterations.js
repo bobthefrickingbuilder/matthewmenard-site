@@ -1,5 +1,6 @@
-// Client alteration page. The private key comes from the link (#k=…), is kept for this
-// browser session so a refresh still works, and is sent with each call to /api/alterations.
+// Client alteration page. The private key comes from the link (#k=…), is remembered in this
+// browser (so the "Request a change" button on the client's own site, public/js/request-button.js,
+// can open this page without it), and is sent with each call to /api/alterations.
 
 const $ = (sel) => document.querySelector(sel);
 const STATUS_LABEL = { open: "Received", "in-progress": "In progress", done: "Done", cancelled: "Cancelled" };
@@ -7,8 +8,8 @@ const STATUS_LABEL = { open: "Received", "in-progress": "In progress", done: "Do
 function readKey() {
   const fromHash = new URLSearchParams(location.hash.slice(1)).get("k");
   try {
-    if (fromHash) sessionStorage.setItem("alt-key", fromHash);
-    return fromHash || sessionStorage.getItem("alt-key");
+    if (fromHash) localStorage.setItem("alt-key", fromHash);
+    return fromHash || localStorage.getItem("alt-key");
   } catch {
     return fromHash;
   }
@@ -65,13 +66,25 @@ function showRecent(items) {
 
 async function load() {
   const data = await call({ action: "status" });
-  if (!data.ok) return missing(data.message);
+  if (!data.ok) {
+    // A stopped or replaced link: forget it so the next visit asks for the new one.
+    if (data.status === 404) try { localStorage.removeItem("alt-key"); } catch {}
+    return missing(data.message);
+  }
   $("[data-intro]").textContent = `Hello ${data.client.name}. Tell Matthew what to change on your website and he will take care of it.`;
   $("[data-plan-name]").textContent = `${data.client.plan} plan`;
   $("[data-site]").textContent = data.client.site || "";
   $("[data-month]").textContent = data.month;
   showCount(data.used, data.allowance);
   showRecent(data.recent);
+  try {
+    const site = new URL(/^https?:\/\//.test(data.client.site) ? data.client.site : `https://${data.client.site}`);
+    site.searchParams.set("requests", "on");
+    $("[data-button-link]").href = site.href;
+    $("[data-button-tip]").hidden = false;
+  } catch {
+    // No website on file, or not a usable address: leave the tip hidden.
+  }
   $("[data-app]").hidden = false;
 }
 

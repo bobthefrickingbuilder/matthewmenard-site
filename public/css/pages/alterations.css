@@ -220,3 +220,6 @@
 .admin-add {
   max-width: 40rem;
 }
+
+/* Embed snippet on /admin: wraps instead of widening the page on phones. */
+.admin-snippet { white-space: pre-wrap; overflow-wrap: anywhere; font-size: var(--step--1, 0.875rem); }

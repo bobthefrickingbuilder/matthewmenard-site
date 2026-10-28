@@ -21,6 +21,13 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - Search: Open Graph and Twitter tags on every public page; Person data on Home and About; composition data with price on both score pages; `sitemap.xml`, `robots.txt`.
 - [ ] **Vercel Web Analytics:** the old site used it. Keep it? (Cookieless; one script tag, a CSP line, and a sentence in the privacy policy.)
 
+## 2026-10-28
+
+- Conducting & Teaching hidden: no links point to it, it is out of the sitemap, and it is marked noindex. Home's conductor photo and role link now go to About. To bring it back, see the comment at the top of `public/conducting-teaching.html`.
+- Websites page packages, FAQ, and budget ranges approved as drafted (owner, 2026-10-28).
+- Website clients pay through /pay: a monthly quote with an optional one-time build fee charged with the first payment.
+- Request button for client sites: `public/js/request-button.js` (snippet on `/admin`). Still needs Upstash and the admin env vars below before requests can be sent.
+
 ## Launched 2026-10-26
 
 - Launched with the visible placeholders showing (owner decision); `scripts/todo-check.mjs` now warns instead of failing.
@@ -57,7 +64,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 ## Decisions (Phase 3 checkpoint)
 
 - [x] Home and the composition template approved (2026-10-23).
-- [ ] **The Golden Sunset voicing:** the live site says bass voice; the score names Baritone. Which is right? (`public/index.html`, `public/compositions/golden-sunset.html`)
+- [x] **The Golden Sunset voicing:** Baritone and piano (owner, 2026-10-28).
 - [ ] **Years and durations** for both works. *When I am dead, my dearest* is marked © 2025 on the score; is that the composition year?
 - [x] **Commissions teaser wording** on Home: teaser removed from Home (2026-10-24, owner request). The Websites page stays in the menu.
 
