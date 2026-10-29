@@ -2,7 +2,8 @@
 // flip tiles from the click/tap point and reveals the page underneath.
 //
 // The page decides whether to play before first paint (inline script in <head> adds
-// `intro-on` to <html>): never with reduced motion, once per browser session.
+// `intro-on` to <html>): never with reduced motion, once per browser (and never when coming from another page on the site).
+// Add ?intro to the address to see it again.
 // Without JS, `intro-on` is never set and the page shows immediately. If this file fails
 // to load, a CSS failsafe hides the intro after a few seconds (see intro.css).
 
@@ -53,7 +54,7 @@ export function runIntro(overrides = {}) {
   let tiles = null;
 
   try {
-    sessionStorage.setItem(STORAGE_KEY, "1");
+    localStorage.setItem(STORAGE_KEY, "1");
   } catch {}
 
   intro.classList.add("is-running");
