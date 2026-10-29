@@ -79,9 +79,11 @@ function renderRequests() {
 }
 
 function renderClients() {
+  const current = state.clients.filter((c) => !c.removed);
+  const removed = state.clients.filter((c) => c.removed);
   const list = $("[data-clients]");
   list.replaceChildren(
-    ...state.clients.map((c) => {
+    ...current.map((c) => {
       const plan = el("select", { class: "select", id: `pl-${c.id}` },
         ...Object.entries(state.plans).map(([value, p]) => el("option", { value, text: `${p.name} (${p.allowance} a month)`, selected: c.plan === value })));
       plan.addEventListener("change", () => updateClient(c, { plan: plan.value }));
@@ -89,6 +91,10 @@ function renderClients() {
       linkButton.addEventListener("click", () => newLink(c));
       const pause = el("button", { class: "button button--secondary", type: "button", text: c.active ? "Pause link" : "Resume link" });
       pause.addEventListener("click", () => updateClient(c, { active: !c.active }));
+      const remove = el("button", { class: "button button--secondary", type: "button", text: "Remove" });
+      remove.addEventListener("click", () => {
+        if (confirm(`Remove ${c.name}? They move to the Removed list and can no longer sign in or send requests. You can restore them later.`)) updateClient(c, { removed: true }, "removed");
+      });
       const pct = Math.min(100, c.allowance ? (c.used / c.allowance) * 100 : 100);
       const fill = el("span", { class: `meter__fill${c.used >= c.allowance ? " is-full" : ""}` });
       fill.style.width = `${pct}%`;
@@ -100,10 +106,26 @@ function renderClients() {
         el("p", { class: "admin-client__count", text: `${c.used} of ${c.allowance} used` }),
         el("div", { class: "meter", "aria-hidden": "true" }, fill),
         el("div", { class: "field" }, el("label", { for: `pl-${c.id}`, text: "Plan" }), plan),
-        el("div", { class: "cluster" }, linkButton, pause));
+        el("div", { class: "cluster" }, linkButton, pause, remove));
     })
   );
-  $("[data-clients-empty]").hidden = state.clients.length > 0;
+  $("[data-clients-empty]").hidden = current.length > 0;
+
+  $("[data-removed-count]").textContent = removed.length;
+  $("[data-removed]").hidden = removed.length === 0;
+  $("[data-removed-clients]").replaceChildren(
+    ...removed.map((c) => {
+      const restore = el("button", { class: "button button--secondary", type: "button", text: "Restore" });
+      restore.addEventListener("click", () => updateClient(c, { removed: false }, "restored"));
+      const when = new Date(c.removed).toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" });
+      return el("li", { class: "admin-client card is-paused" },
+        el("div", { class: "admin-client__head" },
+          el("h3", { class: "h4", text: c.name }),
+          el("p", { class: "meta", text: [c.site, c.email].filter(Boolean).join(" · ") }),
+          el("p", { class: "meta", text: `Removed ${when}` })),
+        el("div", { class: "cluster" }, restore));
+    })
+  );
 }
 
 async function refresh() {
@@ -132,9 +154,9 @@ async function setStatus(request, select) {
   await refresh();
 }
 
-async function updateClient(client, changes) {
+async function updateClient(client, changes, done = "updated") {
   const data = await call("updateClient", { id: client.id, ...changes });
-  $("[data-client-status]").textContent = data.ok ? `${client.name} updated.` : data.message || Object.values(data.errors || {}).join(" ");
+  $("[data-client-status]").textContent = data.ok ? `${client.name} ${done}.` : data.message || Object.values(data.errors || {}).join(" ");
   await refresh();
 }
 

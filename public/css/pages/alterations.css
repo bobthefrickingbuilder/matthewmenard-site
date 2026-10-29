@@ -223,3 +223,10 @@
 
 /* Embed snippet on /admin: wraps instead of widening the page on phones. */
 .admin-snippet { white-space: pre-wrap; overflow-wrap: anywhere; font-size: var(--step--1, 0.875rem); }
+
+/* Removed clients on /admin: folded away under the client list. */
+.admin-removed > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-heading);
+}

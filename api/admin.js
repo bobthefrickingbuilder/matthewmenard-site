@@ -29,7 +29,7 @@ async function overview() {
     month: alt.monthLabel(month),
     plans: alt.PLANS,
     clients: clients.map((c, i) => ({
-      id: c.id, name: c.name, email: c.email, site: c.site, plan: c.plan, active: c.active !== false,
+      id: c.id, name: c.name, email: c.email, site: c.site, plan: c.plan, active: c.active !== false, removed: c.removed || null,
       used: counts[i], allowance: alt.PLANS[c.plan]?.allowance ?? 0,
     })),
     requests,
@@ -75,6 +75,11 @@ module.exports = async function handler(req, res) {
       if (Object.keys(errors).length) return res.status(400).json({ ok: false, errors });
       const changes = { ...data };
       if (typeof body.active === "boolean") changes.active = body.active;
+      // Removing moves a client to the Removed list and stops their link and sign-in; restoring undoes both.
+      if (typeof body.removed === "boolean") {
+        changes.removed = body.removed ? new Date().toISOString() : null;
+        changes.active = !body.removed;
+      }
       await alt.updateClient(body.id, changes);
       return res.status(200).json({ ok: true });
     }

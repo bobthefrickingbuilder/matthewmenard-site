@@ -105,7 +105,7 @@ The contact form and the website request form on `/commissions` both send to `CO
 
 Website clients request alterations from a private page; you track them on another.
 
-- **Your tracker:** `/admin`. Sign in with `ADMIN_PASSWORD`. It lists requests (open, in progress, done, cancelled), each client's alterations used this month against their plan, and lets you add clients, change plans, pause a link, or make a new link.
+- **Your tracker:** `/admin`. Sign in with `ADMIN_PASSWORD`. It lists requests (open, in progress, done, cancelled), each client's alterations used this month against their plan, and lets you add clients, change plans, pause a link, make a new link, or remove a client (they move to a folded "Removed clients" list and can be restored).
 - **Client page:** each client gets a private link like `/alterations#k=…`. Add the client in the tracker, copy the link it shows, and email it to them. It is shown only once; "New private link" makes another and stops the old one.
 - **Link on client sites:** put `<a href="https://www.matthewmenardmusic.com/alterations" target="_blank" rel="noopener">Request a change</a>` in the footer of every page of a client's site (also shown on `/admin`). Clients sign in by email: they type the address you have for them and get a one-time link (30 minutes); after that a cookie keeps them signed in for 120 days (`lib/client-auth.js`). Unknown emails get nothing. The private links from "Add client" still work and sign them in too.
 - **Counts** start again on the 1st of each month (Ottawa time). Marking a request "Cancelled" stops it counting. A client can still send requests past their plan; the email to you says "over the plan".

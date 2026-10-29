@@ -115,6 +115,11 @@
           <ul class="admin-clients" role="list" data-clients></ul>
           <p class="meta" data-clients-empty hidden>No clients yet.</p>
           <p class="alt-status" role="status" data-client-status></p>
+          <details class="admin-removed stack" data-removed hidden>
+            <summary>Removed clients (<span data-removed-count>0</span>)</summary>
+            <p class="meta">They cannot sign in or send requests. Their past requests stay in the list above. Restore puts them back as they were.</p>
+            <ul class="admin-clients" role="list" data-removed-clients></ul>
+          </details>
 
           <details class="faq__item admin-add">
             <summary>Add a client</summary>
