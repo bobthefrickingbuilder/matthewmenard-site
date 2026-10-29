@@ -1,6 +1,6 @@
 // Client alteration page. Clients sign in with their email (a one-time link, #t=…, is emailed to
-// them) or an old private link (#k=…). Either starts a session cookie, so later visits, such as from the
-// "Request a change" link on their own site, open straight to the form. Server: api/alterations.js.
+// them) or an old private link (#k=…). Either starts a session cookie, so later visits (from the
+// Websites page, which client sites credit and link to) open straight to the form. Server: api/alterations.js.
 
 const $ = (sel) => document.querySelector(sel);
 const STATUS_LABEL = { open: "Received", "in-progress": "In progress", done: "Done", cancelled: "Cancelled" };
