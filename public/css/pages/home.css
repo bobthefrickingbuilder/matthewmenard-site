@@ -73,6 +73,58 @@
   outline-offset: -4px;
 }
 
+/* The visible button on each panel. The whole panel is the link; this shows that it is. */
+.hero__cta {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: var(--space-s);
+  inset-inline-start: var(--space-s);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  min-height: 2.75rem;
+  padding: 0.5em 1.1em;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-m);
+  background: var(--ground);
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--shadow-2);
+  transition: background-color var(--dur-med) ease, color var(--dur-med) ease;
+}
+
+.hero__panel.is-active .hero__cta,
+.hero__panel:hover .hero__cta,
+.hero__panel:focus-visible .hero__cta {
+  background: var(--accent);
+  color: var(--color-on-accent);
+}
+
+.hero__cta-arrow {
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.hero__panel:hover .hero__cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Closed panels are narrow on phones: centre the button and drop the arrow so the word fits. */
+@media (max-width: 47.99rem) {
+  .hero__cta {
+    inset-block-start: var(--space-2xs);
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    min-height: 2.25rem;
+    padding: 0.3em 0.45em;
+    font-size: 0.8rem;
+  }
+
+  .hero__cta-arrow {
+    display: none;
+  }
+}
+
 /* The name and buttons, laid over the bottom of the panels. Clicks pass through to the
    panels except on the buttons. */
 .hero__text {
@@ -318,7 +370,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero__panel,
-  .hero__panel img {
+  .hero__panel img,
+  .hero__cta,
+  .hero__cta-arrow {
     transition: none;
   }
 }
