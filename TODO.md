@@ -27,6 +27,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - Websites page packages, FAQ, and budget ranges approved as drafted (owner, 2026-10-28).
 - Website clients pay through /pay: a monthly quote with an optional one-time build fee charged with the first payment.
 - ORYC and luthier placeholder cards removed from Recent sites (owner, 2026-10-30). Add them when the URL, screenshot, one line, and permission are ready.
+- Listen & Watch placeholder removed (owner, 2026-10-30). The page has only its heading until recordings are added.
 - Request link for client sites (snippet on `/admin`): clients sign in by email; no private links needed.
 
 ## Launched 2026-10-26
