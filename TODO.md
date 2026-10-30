@@ -26,6 +26,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - Conducting & Teaching hidden: no links point to it, it is out of the sitemap, and it is marked noindex. Home's conductor photo and role link now go to About. To bring it back, see the comment at the top of `public/conducting-teaching.html`.
 - Websites page packages, FAQ, and budget ranges approved as drafted (owner, 2026-10-28).
 - Website clients pay through /pay: a monthly quote with an optional one-time build fee charged with the first payment.
+- ORYC and luthier placeholder cards removed from Recent sites (owner, 2026-10-30). Add them when the URL, screenshot, one line, and permission are ready.
 - Request link for client sites (snippet on `/admin`): clients sign in by email; no private links needed.
 
 ## Launched 2026-10-26
@@ -46,7 +47,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 - [ ] Look over `/commissions` on the preview. Its placeholders block a production deploy until filled or removed:
   - **Packages** (3 cards): draft written (Artist Bio, Portfolio, Studio; monthly plans with alterations per month). Confirm names, scope, timelines, one-time prices, and monthly rates.
-  - **Recent sites** (ORYC, the luthier site; Esmée Peets done 2026-10-26): URL, screenshot, one line, and permission. Or delete the section to launch without it.
+  - **Recent sites**: Paige Robinson and Esmée Peets are up. ORYC and the luthier site can be added later: URL, screenshot, one line, and permission.
   - **FAQ answers:** drafted (ownership, hosting and domain, maintenance, timeline, revisions). Confirm, and decide what happens if a client ends their monthly plan.
   - **Budget ranges**: drafted (Under $200, $200 to $500, $500 to $1,000, Over $1,000, Not sure yet). Confirm or change in `public/commissions.html` and `api/commission.js`.
 - [ ] Confirm the wording: hero line, "What gets built" sentence (from the brief), and the 7 process steps.
