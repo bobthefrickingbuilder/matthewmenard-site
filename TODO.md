@@ -32,8 +32,8 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 ## 2026-10-31
 
-- Choral licences built: 10 or 20 copies at a flat price per copy, or 40+ at one fixed price, 40 times the copy price (`lib/copies.js`; how to add a score is in the README). No choral score is on sale yet.
-- [ ] When the first choral score is added: send the price per copy, the PDF, and the page text, then do one Stripe test purchase.
+- Choral licences built: 10 or 20 copies at a flat price per copy, or 40+ at one fixed price, 40 times the copy price (`lib/copies.js`; how to add a score is in the README). First choral score on sale: Sorrowing of Winds, $1.50 per copy.
+- [ ] One Stripe test purchase of a choral licence. Tenor bar 13 on page 2 of the Sorrowing of Winds PDF reads "Hlaf" instead of "Half".
 
 ## Launched 2026-10-26
 
