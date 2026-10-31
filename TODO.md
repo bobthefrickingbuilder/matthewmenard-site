@@ -30,6 +30,11 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - Listen & Watch hidden until recordings are in (owner, 2026-10-30): placeholder removed, no links point to it, out of the sitemap, marked noindex. To bring it back, see the comment at the top of `public/listen.html`.
 - Request link for client sites (snippet on `/admin`): clients sign in by email; no private links needed.
 
+## 2026-10-31
+
+- Choral licences built: 10, 20, or 40+ copies, flat price per copy (`lib/copies.js`; how to add a score is in the README). No choral score is on sale yet.
+- [ ] When the first choral score is added: send the price per copy, the PDF, and the page text, then do one Stripe test purchase.
+
 ## Launched 2026-10-26
 
 - Launched with the visible placeholders showing (owner decision); `scripts/todo-check.mjs` now warns instead of failing.

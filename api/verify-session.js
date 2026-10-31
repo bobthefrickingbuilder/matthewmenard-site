@@ -15,6 +15,7 @@ module.exports = async function handler(req, res) {
     const items = result.ids.map((id) => ({
       id,
       title: PRODUCTS[id].title,
+      copies: result.copies[id] || null,
       download: `/api/download?session_id=${sid}&id=${encodeURIComponent(id)}`,
     }));
     return res.status(200).json({ status: result.paid ? "paid" : "unpaid", items });

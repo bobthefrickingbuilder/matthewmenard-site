@@ -29,11 +29,18 @@ if (!sessionId) {
           a.href = item.download;
           a.textContent = `Download ${item.title} (PDF)`;
           li.append(a);
+          if (item.copies) {
+            const licence = document.createElement("p");
+            licence.className = "meta";
+            licence.textContent = `Licensed for ${item.copies} copies.`;
+            li.append(licence);
+          }
           return li;
         })
       );
       try {
         localStorage.removeItem("mm_cart");
+        localStorage.removeItem("mm_cart_copies");
       } catch {}
     }
   } catch {

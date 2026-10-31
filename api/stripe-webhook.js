@@ -1,6 +1,7 @@
 const PRODUCTS = require("../lib/products");
 const { stripeClient } = require("../lib/stripe");
 const { sendMail, addresses } = require("../lib/mail");
+const { unpackCopies } = require("../lib/copies");
 
 // Stripe calls this when a checkout is paid. It emails the buyer their download links,
 // so a closed thank-you page never loses a purchase. The links are the same ones the
@@ -21,7 +22,8 @@ async function rawBody(req) {
 
 function downloadEmail(origin, session, ids) {
   const sid = encodeURIComponent(session.id);
-  const list = ids.map((id) => `${PRODUCTS[id].title}\n${origin}/api/download?session_id=${sid}&id=${encodeURIComponent(id)}`);
+  const copies = unpackCopies(session.metadata?.copies);
+  const list = ids.map((id) => `${PRODUCTS[id].title}${copies[id] ? `\nLicensed for ${copies[id]} copies` : ""}\n${origin}/api/download?session_id=${sid}&id=${encodeURIComponent(id)}`);
   return [
     `Thank you for your order. Your ${ids.length === 1 ? "score is" : "scores are"} ready to download:`,
     "",

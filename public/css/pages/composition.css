@@ -44,6 +44,38 @@
   line-height: 1;
 }
 
+/* Copies picker on choral scores. */
+.buy__copies {
+  display: grid;
+  gap: var(--space-3xs);
+  margin-block-end: var(--space-s);
+  border: 0;
+  padding: 0;
+}
+
+.buy__copies legend {
+  padding: 0;
+  font-weight: 600;
+}
+
+.buy__copies > label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-height: 2.75rem;
+}
+
+.buy__copies input[type="radio"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--accent);
+}
+
+.buy__total {
+  margin-block-end: var(--space-s);
+  font-weight: 600;
+}
+
 .work__section > h2 {
   font-size: var(--step-2);
   margin-block-end: var(--space-s);

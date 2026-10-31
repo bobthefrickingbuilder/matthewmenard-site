@@ -1,4 +1,4 @@
-import { getCart, removeFromCart } from "/js/cart.js";
+import { getCart, getCopies, removeFromCart } from "/js/cart.js";
 
 const list = document.querySelector("[data-cart]");
 const empty = document.querySelector("[data-cart-empty]");
@@ -12,6 +12,9 @@ const money = (cents, currency) =>
 
 let products = [];
 
+// Choral scores are charged per copy; a cart entry with no saved number means the smallest licence.
+const copiesOf = (p) => (p.licensed ? getCopies()[p.id] || 10 : 1);
+
 function render() {
   const items = getCart().map((id) => products.find((p) => p.id === id)).filter(Boolean);
   empty.hidden = items.length > 0;
@@ -23,8 +26,9 @@ function render() {
       link.href = p.page;
       link.innerHTML = "<em></em>";
       link.firstChild.textContent = p.title;
+      if (p.licensed) link.append(`, licence for ${copiesOf(p)} copies`);
       const price = document.createElement("span");
-      price.textContent = money(p.amount, p.currency);
+      price.textContent = money(p.amount * copiesOf(p), p.currency);
       const remove = document.createElement("button");
       remove.type = "button";
       remove.className = "cart__remove";
@@ -39,7 +43,7 @@ function render() {
       return li;
     })
   );
-  if (items.length) total.textContent = money(items.reduce((sum, p) => sum + p.amount, 0), items[0].currency);
+  if (items.length) total.textContent = money(items.reduce((sum, p) => sum + p.amount * copiesOf(p), 0), items[0].currency);
 }
 
 payButton.addEventListener("click", async () => {
@@ -49,7 +53,7 @@ payButton.addEventListener("click", async () => {
     const res = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: getCart() }),
+      body: JSON.stringify({ items: getCart(), copies: Object.fromEntries(products.filter((p) => p.licensed).map((p) => [p.id, copiesOf(p)])) }),
     });
     const data = await res.json();
     if (!res.ok || !data.url) throw new Error(data.error);

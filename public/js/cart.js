@@ -1,6 +1,8 @@
 // Cart: an array of score IDs in localStorage (same key as the old site, so existing carts survive).
+// Choral scores also keep their number of copies, under a second key.
 
 const KEY = "mm_cart";
+const COPIES_KEY = "mm_cart_copies";
 
 export function getCart() {
   try {
@@ -18,4 +20,24 @@ export function setCart(items) {
 }
 
 export const addToCart = (id) => setCart([...getCart(), id]);
-export const removeFromCart = (id) => setCart(getCart().filter((x) => x !== id));
+export const removeFromCart = (id) => {
+  setCart(getCart().filter((x) => x !== id));
+  const { [id]: _, ...rest } = getCopies();
+  saveCopies(rest);
+};
+
+export function getCopies() {
+  try {
+    return JSON.parse(localStorage.getItem(COPIES_KEY) || "{}") || {};
+  } catch {
+    return {};
+  }
+}
+
+function saveCopies(copies) {
+  try {
+    localStorage.setItem(COPIES_KEY, JSON.stringify(copies));
+  } catch {}
+}
+
+export const setCopies = (id, n) => saveCopies({ ...getCopies(), [id]: n });
