@@ -1,4 +1,4 @@
-import { getCart, getCopies, removeFromCart } from "/js/cart.js";
+import { copiesLabel, getCart, getCopies, removeFromCart } from "/js/cart.js";
 
 const list = document.querySelector("[data-cart]");
 const empty = document.querySelector("[data-cart-empty]");
@@ -26,7 +26,7 @@ function render() {
       link.href = p.page;
       link.innerHTML = "<em></em>";
       link.firstChild.textContent = p.title;
-      if (p.licensed) link.append(`, licence for ${copiesOf(p)} copies`);
+      if (p.licensed) link.append(`, licence for ${copiesLabel(copiesOf(p))} copies`);
       const price = document.createElement("span");
       price.textContent = money(p.amount * copiesOf(p), p.currency);
       const remove = document.createElement("button");

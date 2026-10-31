@@ -41,3 +41,6 @@ function saveCopies(copies) {
 }
 
 export const setCopies = (id, n) => saveCopies({ ...getCopies(), [id]: n });
+
+// 40 is the 40+ licence: one fixed price for any number from 40 up.
+export const copiesLabel = (n) => (n === 40 ? "40+" : String(n));

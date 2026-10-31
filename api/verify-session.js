@@ -1,5 +1,6 @@
 const PRODUCTS = require("../lib/products");
 const { stripeClient, paidItems } = require("../lib/stripe");
+const { copiesLabel } = require("../lib/copies");
 
 // Confirms a checkout session. Returns download links only when it is paid.
 module.exports = async function handler(req, res) {
@@ -15,7 +16,7 @@ module.exports = async function handler(req, res) {
     const items = result.ids.map((id) => ({
       id,
       title: PRODUCTS[id].title,
-      copies: result.copies[id] || null,
+      copies: result.copies[id] ? copiesLabel(result.copies[id]) : null,
       download: `/api/download?session_id=${sid}&id=${encodeURIComponent(id)}`,
     }));
     return res.status(200).json({ status: result.paid ? "paid" : "unpaid", items });

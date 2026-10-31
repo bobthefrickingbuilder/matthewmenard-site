@@ -97,18 +97,14 @@ Open `public/listen.html`. The comment above the list shows one recording; copy 
 2. Add it to `lib/products.js` (id, title, price in cents, file name, page).
 3. On its composition page, copy the buy box from `when-i-am-dead.html` and change the `items` value to the new id.
 
-**Choral scores** sell as a licence for 10, 20, or 40 or more copies, charged per copy. In `lib/products.js`, add `licensed: true` and set `amount` to the price of one copy. In the buy box, write the price as "per copy" and add this inside the form, above the button:
+**Choral scores** sell as a licence for 10, 20, or 40+ copies. In `lib/products.js`, add `licensed: true` and set `amount` to the price of one copy. 10 and 20 copies cost that price times the number; 40+ is one fixed price, 40 times it, for any number from 40 up. In the buy box, write the price as "per copy" and add this inside the form, above the button:
 
 ```html
 <fieldset class="buy__copies" data-copies>
   <legend>Number of copies</legend>
   <label><input type="radio" name="copies" value="10" checked> 10 copies</label>
   <label><input type="radio" name="copies" value="20"> 20 copies</label>
-  <label><input type="radio" name="copies" value="more"> 40+ copies</label>
-  <div class="field">
-    <label for="copies-more">How many? (40 or more)</label>
-    <input class="input" id="copies-more" name="copies_more" type="number" inputmode="numeric" min="40" max="1000" step="1" value="40">
-  </div>
+  <label><input type="radio" name="copies" value="40"> 40+ copies</label>
 </fieldset>
 <p class="buy__total" data-copies-total aria-live="polite"></p>
 ```

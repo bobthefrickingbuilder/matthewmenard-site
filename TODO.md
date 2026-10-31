@@ -32,7 +32,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 ## 2026-10-31
 
-- Choral licences built: 10, 20, or 40+ copies, flat price per copy (`lib/copies.js`; how to add a score is in the README). No choral score is on sale yet.
+- Choral licences built: 10 or 20 copies at a flat price per copy, or 40+ at one fixed price, 40 times the copy price (`lib/copies.js`; how to add a score is in the README). No choral score is on sale yet.
 - [ ] When the first choral score is added: send the price per copy, the PDF, and the page text, then do one Stripe test purchase.
 
 ## Launched 2026-10-26
