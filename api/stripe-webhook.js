@@ -3,6 +3,7 @@ const { stripeClient } = require("../lib/stripe");
 const { sendMail, addresses } = require("../lib/mail");
 const { copiesLabel, unpackCopies } = require("../lib/copies");
 const donations = require("../lib/donations");
+const book = require("../lib/book");
 
 // Stripe calls this when a checkout is paid. For a score it emails the buyer their download links,
 // so a closed thank-you page never loses a purchase. The links are the same ones the
@@ -52,8 +53,9 @@ async function thankDonor(session, origin) {
       replyTo: owner || undefined,
       subject: "Thank you for the coffee",
       text: [
-        `Thank you for supporting Music Theory Fundamentals. ${monthly ? `Your ${amount} a month` : `Your ${amount}`} helps keep the book free for everyone.`,
+        `Thank you for supporting Music Theory Fundamentals. ${monthly ? `Your ${amount} a month` : `Your ${amount}`} helps keep Part 1 free for everyone.`,
         "",
+        ...((session.amount_total || 0) >= book.UNLOCK ? ["Parts 2 and 3 are yours. Download every chapter here (keep this email: the link always works, and chapters I add later appear on it too):", `${origin}/thank-you?session_id=${encodeURIComponent(session.id)}`, ""] : []),
         ...(monthly ? ["It renews once a month. To update your card or cancel, use this link (cancelling stops it at the end of the month you have paid for):", manage || "Reply to this email and I'll cancel it for you.", ""] : []),
         "Stripe sends your receipt separately.",
         "",

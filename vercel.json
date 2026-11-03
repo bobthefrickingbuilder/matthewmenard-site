@@ -8,6 +8,9 @@
   "functions": {
     "api/download.js": {
       "includeFiles": "private-scores/**"
+    },
+    "api/donate.js": {
+      "includeFiles": "private-book/**"
     }
   },
   "redirects": [
@@ -55,6 +58,16 @@
       "source": "/files/:file*",
       "destination": "/compositions",
       "statusCode": 301
+    },
+    {
+      "source": "/teaching/music-theory-fundamentals-ch01-19.zip",
+      "destination": "/teaching#support",
+      "statusCode": 302
+    },
+    {
+      "source": "/teaching/:file(music-theory-ch0[89]-.*|music-theory-ch1[0-9]-.*)",
+      "destination": "/teaching#support",
+      "statusCode": 302
     }
   ],
   "headers": [

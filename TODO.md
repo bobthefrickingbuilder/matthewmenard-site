@@ -23,8 +23,9 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 
 ## 2026-11-03: Teaching page (free textbook + coffee)
 
-- [ ] Make one real $5 one-time coffee and one monthly coffee, check both emails arrive, then cancel the monthly one from the link in the email (and refund both in Stripe if you like).
-- New chapters: add the PDF to public/teaching/, add a line in public/teaching.html, and rebuild the ZIP.
+- [ ] Make one real $5 one-time coffee and one monthly coffee, check both emails arrive and their chapter links download, then cancel the monthly one from the link in the email (and refund both in Stripe if you like).
+- Part 1 (chapters 1–7) is free in public/teaching/. Parts 2 and 3 are in private-book/ and unlock with any coffee of $5 or more (once or monthly, for good). The thank-you page and the email link list them.
+- New chapters: free ones go in public/teaching/; locked ones go in private-book/ plus a line in lib/book.js. Either way add a line in public/teaching.html and rebuild that ZIP. Earlier donors see new locked chapters on their link automatically.
 - The cancel/update-card page in Stripe is set up automatically the first time a monthly donor uses it.
 
 ## 2026-10-28

@@ -254,3 +254,20 @@
 .textbook-head > * + * {
   margin-block-start: 0;
 }
+
+.chapter-part__lock {
+  margin-block: calc(-1 * var(--space-2xs)) var(--space-s);
+  font-weight: 600;
+}
+
+.chapter-part__lock a::before {
+  content: "🔒 ";
+}
+
+[data-thanks-book][hidden] {
+  display: none;
+}
+
+[data-thanks-book] .chapter-list {
+  max-width: 40rem;
+}
