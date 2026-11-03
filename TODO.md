@@ -21,6 +21,12 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - Search: Open Graph and Twitter tags on every public page; Person data on Home and About; composition data with price on both score pages; `sitemap.xml`, `robots.txt`.
 - [ ] **Vercel Web Analytics:** the old site used it. Keep it? (Cookieless; one script tag, a CSP line, and a sentence in the privacy policy.)
 
+## 2026-11-03: Teaching page (free textbook + coffee)
+
+- [ ] Make one real $5 one-time coffee and one monthly coffee, check both emails arrive, then cancel the monthly one from the link in the email (and refund both in Stripe if you like).
+- New chapters: add the PDF to public/teaching/, add a line in public/teaching.html, and rebuild the ZIP.
+- The cancel/update-card page in Stripe is set up automatically the first time a monthly donor uses it.
+
 ## 2026-10-28
 
 - Conducting & Teaching hidden: no links point to it, it is out of the sitemap, and it is marked noindex. Home's conductor photo and role link now go to About. To bring it back, see the comment at the top of `public/conducting-teaching.html`.

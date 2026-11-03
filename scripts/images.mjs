@@ -34,6 +34,9 @@ const IMAGES = [
   { name: "score-when-i-am-dead", src: "covers/when-i-am-dead.jpg", widths: [480, 800, 1200] },
   { name: "score-golden-sunset", src: "covers/golden-sunset.jpg", widths: [480, 800, 1200] },
   { name: "score-sorrowing-of-winds", src: "covers/sorrowing-of-winds.png", widths: [480, 800, 1200] },
+  { name: "teach-ch01", src: "teaching/ch01.png", widths: [400, 800] },
+  { name: "teach-ch08", src: "teaching/ch08.png", widths: [400, 800] },
+  { name: "teach-ch15", src: "teaching/ch15.png", widths: [400, 800] },
 ];
 
 mkdirSync(OUT, { recursive: true });

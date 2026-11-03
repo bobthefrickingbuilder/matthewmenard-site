@@ -1,0 +1,256 @@
+/* Teaching: the free textbook (chapters as PDFs) and "buy me a coffee". Also the thank-you page. */
+
+/* ---- Heading with a fan of three first pages ----------------------------- */
+.textbook-head {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 52rem) {
+  .textbook-head {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.textbook-fan {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  max-width: 28rem;
+  width: 100%;
+  justify-self: center;
+}
+
+.textbook-fan picture {
+  position: absolute;
+  inset-block-start: 6%;
+  inset-inline-start: 50%;
+  width: 52%;
+}
+
+.textbook-fan__page {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-s);
+  background: #fff;
+  box-shadow: var(--shadow-3);
+}
+
+.textbook-fan picture:nth-child(1) {
+  transform: translateX(-10%) rotate(9deg);
+}
+
+.textbook-fan picture:nth-child(2) {
+  transform: translateX(-90%) rotate(-8deg);
+}
+
+.textbook-fan picture:nth-child(3) {
+  transform: translateX(-50%) translateY(-4%);
+}
+
+/* ---- Chapters, in three parts --------------------------------------------- */
+.chapter-parts {
+  display: grid;
+  gap: var(--space-m);
+}
+
+@media (min-width: 64rem) {
+  .chapter-parts {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+}
+
+.chapter-part {
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border-radius: var(--radius-l);
+}
+
+.chapter-part h3 {
+  margin-block: var(--space-3xs) var(--space-2xs);
+}
+
+.chapter-part__blurb {
+  color: var(--text-muted);
+  margin-block-end: var(--space-s);
+}
+
+.chapter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapter-list li + li {
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.chapter-list a {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  gap: var(--space-2xs);
+  align-items: baseline;
+  padding-block: var(--space-2xs);
+  min-height: 2.75rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.chapter-list__n {
+  font-family: var(--font-display);
+  color: var(--accent);
+}
+
+.chapter-list a:hover .chapter-list__title,
+.chapter-list a:focus-visible .chapter-list__title {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.chapter-list__meta {
+  font-size: var(--step--1);
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
+/* ---- Support (moss panel) ------------------------------------------------- */
+.support {
+  display: grid;
+  gap: var(--space-xl);
+  margin-block: var(--space-2xl);
+  padding: var(--space-xl) var(--space-l);
+  background: var(--color-fill);
+  border-radius: var(--radius-l);
+  scroll-margin-block-start: var(--space-xl);
+}
+
+@media (min-width: 52rem) {
+  .support {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: start;
+  }
+}
+
+.support .eyebrow,
+.support a:not(.button) {
+  color: var(--accent);
+}
+
+.support__text {
+  max-width: var(--measure);
+}
+
+.support__sign {
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.support__options {
+  display: grid;
+  gap: var(--space-s);
+}
+
+@media (min-width: 40rem) {
+  .support__options {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .support__options > .meta {
+    grid-column: 1 / -1;
+  }
+}
+
+.support__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-m);
+  background: var(--ground);
+  border-radius: var(--radius-m);
+}
+
+.support__card .button {
+  margin-block-start: auto;
+}
+
+.support__price {
+  font-size: var(--step-0);
+}
+
+.support__price span {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: 1;
+}
+
+.support__options > .meta {
+  color: var(--text);
+}
+
+/* One-time amounts: native radios, shown as pills. */
+.amounts {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.amounts legend {
+  padding: 0;
+  margin-block-end: var(--space-xs);
+}
+
+.amounts__options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3xs);
+}
+
+.amounts label {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 2.75rem;
+  border: 1px solid var(--color-border-control);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.amounts input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.amounts label:hover {
+  background: var(--ground-700);
+}
+
+.amounts label:has(:checked) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--color-on-accent);
+}
+
+.amounts label:has(:focus-visible) {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+}
+
+/* With JavaScript the custom amount only shows for "More". */
+.js [data-custom][hidden] {
+  display: none;
+}
+
+/* ---- Thank-you page ------------------------------------------------------- */
+[data-thanks-manage][hidden] {
+  display: none;
+}
+
+.textbook-head > * + * {
+  margin-block-start: 0;
+}
