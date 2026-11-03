@@ -46,7 +46,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - [ ] Resend set up (key, verified domain, both addresses) and one test message from each form on a preview.
 - [ ] One Stripe test purchase on a preview, then confirm the live key is on Production.
 - [x] Website alterations: Upstash, ADMIN_PASSWORD and ADMIN_SESSION_SECRET set (2026-10-28). Site email now goes through Gmail: add SMTP_USER and SMTP_PASS (same as payments) to this project, then test a client request.
-- [ ] Stripe webhook for the download-link email: add the endpoint in Stripe (test mode for Preview, live mode for Production; URL and events in `.env.example`), put each signing secret in Vercel as `STRIPE_WEBHOOK_SECRET`, and confirm the test purchase's email arrives with working links. Until then the thank-you page still works, but it says the links were emailed when they were not.
+- [ ] Stripe webhook for the download-link email: live endpoint and `STRIPE_WEBHOOK_SECRET` set on Production (2026-11-03); the site now accepts Stripe events. Still to confirm: one real purchase whose email arrives with working links.
 - [ ] Merge to `main` (your go-ahead), then check redirects and headers on the live domain.
 
 ## Phase 5 (built; auto-approved per your instruction)
