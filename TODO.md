@@ -33,7 +33,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 ## 2026-10-31
 
 - Choral licences built: 10 or 20 copies at a flat price per copy, or 40+ at one fixed price, 40 times the copy price (`lib/copies.js`; how to add a score is in the README). First choral score on sale: Sorrowing of Winds, $1.50 per copy.
-- [ ] One Stripe test purchase of a choral licence. Tenor bar 13 on page 2 of the Sorrowing of Winds PDF reads "Hlaf" instead of "Half".
+- [x] One Stripe purchase of a choral licence (Sorrowing of Winds, 10 copies; 2026-11-03). Tenor bar 13 on page 2 of the Sorrowing of Winds PDF reads "Hlaf" instead of "Half".
 
 ## Launched 2026-10-26
 
@@ -46,7 +46,7 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 - [ ] Resend set up (key, verified domain, both addresses) and one test message from each form on a preview.
 - [ ] One Stripe test purchase on a preview, then confirm the live key is on Production.
 - [x] Website alterations: Upstash, ADMIN_PASSWORD and ADMIN_SESSION_SECRET set (2026-10-28). Site email now goes through Gmail: add SMTP_USER and SMTP_PASS (same as payments) to this project, then test a client request.
-- [ ] Stripe webhook for the download-link email: live endpoint and `STRIPE_WEBHOOK_SECRET` set on Production (2026-11-03); the site now accepts Stripe events. Still to confirm: one real purchase whose email arrives with working links.
+- [x] Stripe webhook for the download-link email: set up on Production, and a real purchase email arrived (2026-11-03).
 - [ ] Merge to `main` (your go-ahead), then check redirects and headers on the live domain.
 
 ## Phase 5 (built; auto-approved per your instruction)
