@@ -487,7 +487,7 @@
 
 .explore__media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   margin: 0;
   overflow: hidden;
   border-radius: 0;
@@ -513,8 +513,8 @@
 .explore__media--paper picture {
   position: absolute;
   inset-inline: 0;
-  inset-block-start: 14%;
-  width: 62%;
+  inset-block-start: 9%;
+  width: 78%;
   margin-inline: auto;
 }
 
@@ -533,12 +533,12 @@
 
 .explore__text {
   display: grid;
-  gap: var(--space-2xs);
-  padding: var(--space-m);
+  gap: var(--space-3xs);
+  padding: var(--space-s) var(--space-m) var(--space-m);
 }
 
 .explore__text h3 {
-  font-size: var(--step-2);
+  font-size: var(--step-1);
 }
 
 .explore__text h3 a {
