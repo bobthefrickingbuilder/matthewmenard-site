@@ -453,7 +453,9 @@
   }
 }
 
-/* ---- Explore: photo cards to the other music pages --------------------------- */
+/* ---- Explore: three cards to the other pages ----------------------------------
+   Score and textbook pages sit as "paper" on moss, bleeding off the bottom, so the white page
+   never glares; the photo card is cropped to the same height. Text sits below, on the card. */
 .explore {
   display: grid;
   gap: var(--space-s);
@@ -462,53 +464,81 @@
   list-style: none;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 40rem) {
   .explore {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .explore__item {
   position: relative;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  background: var(--color-surface);
   border-radius: var(--radius-l);
-  isolation: isolate;
+  transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
 }
 
-.explore__item > * {
-  grid-area: 1 / 1;
+.explore__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
 }
 
-.explore__item .photo {
-  aspect-ratio: 3 / 2;
+.explore__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
   border-radius: 0;
 }
 
-@media (min-width: 48rem) {
-  .explore__item .photo {
-    aspect-ratio: 5 / 4;
-  }
-}
-
-.explore__item .photo img {
-  object-position: center 20%; /* Keeps faces in frame on the wide phone crop. */
+.explore__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
   transition: transform 1.4s var(--ease-out);
 }
 
-.explore__item:hover .photo img {
-  transform: scale(1.06);
+.explore__item:hover .explore__media img {
+  transform: scale(1.05);
 }
 
-/* Solid ground behind the text (fading out only above it), so contrast never depends on the photo. */
+.explore__media--paper {
+  background: var(--panel);
+}
+
+.explore__media--paper picture {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 14%;
+  width: 62%;
+  margin-inline: auto;
+}
+
+.explore__media--paper img {
+  height: auto;
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-3);
+  filter: brightness(0.92);
+  transform: rotate(-2deg);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.explore__item:hover .explore__media--paper img {
+  transform: rotate(0deg) translateY(-4%);
+}
+
 .explore__text {
-  position: relative;
-  z-index: 1;
-  align-self: end;
   display: grid;
   gap: var(--space-2xs);
-  padding: var(--space-xl) var(--space-m) var(--space-m);
-  background: linear-gradient(to top, var(--ground-950) calc(100% - var(--space-xl)), transparent);
+  padding: var(--space-m);
+}
+
+.explore__text h3 {
+  font-size: var(--step-2);
 }
 
 .explore__text h3 a {
@@ -516,6 +546,7 @@
   text-decoration: none;
 }
 
+/* The whole card is the link. */
 .explore__text h3 a::before {
   content: "";
   position: absolute;
@@ -547,6 +578,14 @@
 .explore__text p {
   color: var(--text-muted);
   font-size: var(--step--1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explore__item,
+  .explore__item:hover,
+  .explore__item:hover .explore__media img {
+    transform: none;
+  }
 }
 
 /* ---- Featured scores: staggered, the second set a little lower ------------ */

@@ -32,6 +32,7 @@
   <script type="module" src="/js/nav.js"></script>
   <script type="module" src="/js/gallery.js"></script>
   <script type="module" src="/js/performances.js"></script>
+  <script type="module" src="/js/copy.js"></script>
 </head>
 <body>
   <!-- header -->
@@ -107,6 +108,19 @@
         </aside>
       </section>
 
+      <section class="section" aria-labelledby="short-title">
+        <div class="panel stack measure-panel">
+          <p class="eyebrow">For programs and press</p>
+          <h2 id="short-title">Short biography</h2>
+          <p id="short-bio">Matthew Menard is a Taiwanese-Canadian composer and bass singer from Ottawa. His focus is choral and sacred composition. He is composer-in-residence at St. Joseph’s Parish in downtown Ottawa, and his music has been performed by the Capital Chamber Choir, Ontario Youth Choir, York University Chamber Choir, and the Ottawa Bach Choir.</p>
+          <div class="cluster" data-copy-wrap hidden>
+            <button class="button button--secondary" type="button" data-copy="short-bio">Copy short bio</button>
+            <p class="meta" role="status" aria-live="polite" data-copy-status></p>
+          </div>
+          <!-- [TODO: owner to supply a press kit (PDF bio + high-resolution photos) if wanted; add a download link here] -->
+        </div>
+      </section>
+
       <section class="section" aria-labelledby="upcoming-title" data-performances-section hidden>
         <h2 id="upcoming-title">Upcoming</h2>
         <ul class="events" data-performances></ul>
@@ -178,14 +192,6 @@
         </figure>
       </section>
 
-      <section class="section" aria-labelledby="short-title">
-        <div class="panel stack measure-panel">
-          <p class="eyebrow">For programs and press</p>
-          <h2 id="short-title">Short biography</h2>
-          <p>Matthew Menard is a Taiwanese-Canadian composer and bass singer from Ottawa. His focus is choral and sacred composition. He is composer-in-residence at St. Joseph’s Parish in downtown Ottawa, and his music has been performed by the Capital Chamber Choir, Ontario Youth Choir, York University Chamber Choir, and the Ottawa Bach Choir.</p>
-          <!-- [TODO: owner to supply a press kit (PDF bio + high-resolution photos) if wanted; add a download link here] -->
-        </div>
-      </section>
 
       <section class="section" id="photos" aria-labelledby="photos-title">
         <h2 id="photos-title">Photos</h2>
