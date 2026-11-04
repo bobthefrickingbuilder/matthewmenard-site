@@ -68,6 +68,11 @@
       "source": "/teaching/:file(music-theory-ch0[89]-.*|music-theory-ch1[0-9]-.*)",
       "destination": "/teaching#support",
       "statusCode": 302
+    },
+    {
+      "source": "/performing",
+      "destination": "/about#performance",
+      "statusCode": 301
     }
   ],
   "headers": [
