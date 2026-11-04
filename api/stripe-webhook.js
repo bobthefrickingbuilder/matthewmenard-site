@@ -55,7 +55,7 @@ async function thankDonor(session, origin) {
       text: [
         `Thank you for supporting Music Theory Fundamentals. ${monthly ? `Your ${amount} a month` : `Your ${amount}`} helps keep Part 1 free for everyone.`,
         "",
-        ...((session.amount_total || 0) >= book.UNLOCK ? ["Parts 2 and 3 are yours. Download every chapter here (keep this email: the link always works, and chapters I add later appear on it too):", `${origin}/thank-you?session_id=${encodeURIComponent(session.id)}`, ""] : []),
+        ...((session.amount_total || 0) >= book.UNLOCK ? ["Parts 2 to 4 are yours. Download every chapter here (keep this email: the link always works, and chapters I add later appear on it too):", `${origin}/thank-you?session_id=${encodeURIComponent(session.id)}`, ""] : []),
         ...(monthly ? ["It renews once a month. To update your card or cancel, use this link (cancelling stops it at the end of the month you have paid for):", manage || "Reply to this email and I'll cancel it for you.", ""] : []),
         "Stripe sends your receipt separately.",
         "",
