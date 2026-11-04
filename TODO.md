@@ -45,7 +45,8 @@ Everything waiting on Matthew, with the file it affects. Kept current every phas
 ## Launched 2026-10-26
 
 - Launched with the visible placeholders showing (owner decision); `scripts/todo-check.mjs` now warns instead of failing.
-- Contact and commission forms replaced by email links until Resend is set up. The form markup is in git history (commit 303db99) to restore.
+- Commission form replaced by an email link (markup in git history, commit 6e4c5fe). The contact form is back as of 2026-11-04 and sends through Gmail (SMTP_USER/SMTP_PASS).
+- [ ] Send one test message from /contact and check it arrives.
 
 ## Before launch (Phase 7)
 

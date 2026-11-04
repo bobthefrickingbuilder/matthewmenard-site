@@ -1,7 +1,7 @@
 const { validate, spamReason, respond } = require("../lib/forms");
 const { sendMail, addresses } = require("../lib/mail");
 
-const TOPICS = ["A score", "A music commission", "A performance or booking", "Lessons", "Something else"];
+const TOPICS = ["A score", "A music commission", "A performance or booking", "The textbook (Music Theory Fundamentals)", "Lessons", "Something else"];
 
 const SCHEMA = {
   name: { label: "Name", required: true, max: 100 },
