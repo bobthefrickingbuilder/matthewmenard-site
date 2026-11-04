@@ -421,7 +421,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .marquee__track {
-    animation: marquee 40s linear infinite;
+    animation: marquee 130s linear infinite; /* About 10s per name; keeps the speed steady as names are added. */
   }
 
   .marquee:hover .marquee__track {
